@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -26,56 +27,9 @@
 
   <body>
 	
-
     <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
     
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
-      <div class="container">
-        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        
-        
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-        
-        <div id="mySidenav" class="sidenav">
-		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <a href="#">login</a>
-		  <a href="#">join</a>
-		  <a href="#">photo</a>
-		  <a href="#">닉네임</a>
-		  <a href="#">.</a>
-		</div>
-
-		<!-- Use any element to open the sidenav -->
-		<span onclick="openNav()">open</span>
-		
-		
-        
-        
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="index.html">My Room
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="about.html">Play</a>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="blog.html">Market</a>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="contact.html">Notice</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     <div class="container">
 
@@ -166,17 +120,7 @@
     <script src="${pageContext.request.contextPath}/assets/vendor/popper/popper.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	
-	<script type="text/javascript">
-	/* Set the width of the side navigation to 250px */
-	function openNav() {
-	    document.getElementById("mySidenav").style.width = "250px";
-	}
 	
-	/* Set the width of the side navigation to 0 */
-	function closeNav() {
-	    document.getElementById("mySidenav").style.width = "0";
-	} 
-	</script>
 	
 	
   </body>
