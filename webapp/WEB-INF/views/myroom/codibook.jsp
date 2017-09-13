@@ -15,8 +15,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-
-
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script 
@@ -32,8 +30,10 @@
 
 <style type="text/css">
 html, body {
+	font-size:medium;
 	height:100%;
 	overflow:hidden;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 .box {
 	overflow:hidden;
@@ -56,25 +56,29 @@ html, body {
 	background: #F5DEB3;
 	float: left;
 	width: 48%;
-	min-height:90%;
+	height:750px;
+	min-height:85%;
 	padding:1%
 }
 
 .right-box {
 	float: right;
 	width: 48%;
-	min-height:90%;
+	height:750px;
+	min-height:85%;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 1em;
 }
 
 #space {
 	position: relative;
-	padding-left: 7%;
-	padding-right: 7%;
+	padding-left: 10%;
+	padding-right: 10%;
 	height: 100%;
 }
 
 #row {
-	padding-left: 5%;
+	padding-left: 10%;
 }
 
 div:focus {
@@ -89,7 +93,7 @@ div:focus {
 	<div>
 		<div id="row">
 			<div class="col-md-12">
-				<h5 class="text-left">메인>MY Room>코디북>코디하기</h5>
+				<h10 class="text-left" style="font-size:small;">메인>MY Room>코디북>코디하기</h10>
 			</div>
 		</div>
 		<div id="space">
@@ -100,16 +104,16 @@ div:focus {
 			</div>
 			<div class="right-box">
 				<ul class="nav nav-pills" style="width:100%">
-					<li class="active"><a href="#"> <span class="badge pull-right">42</span>전체</a></li>
-					<li><a href="#"> <span class="badge pull-right">16</span>상의
+					<li class="active menu"><a href="#"> <span class="badge pull-right">42</span>전체</a></li>
+					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>상의
 					</a></li>
-					<li><a href="#"> <span class="badge pull-right">16</span>하의
+					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>하의
 					</a></li>
-					<li><a href="#"> <span class="badge pull-right">16</span>신발
+					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>신발
 					</a></li>
-					<li><a href="#"> <span class="badge pull-right">16</span>외투
+					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>외투
 					</a></li>
-					<li><a href="#"> <span class="badge pull-right">16</span>악세사리
+					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>악세사리
 					</a></li>
 				</ul>
 				<div style="overflow:auto; width:100%; height:85.6%">
@@ -157,8 +161,8 @@ div:focus {
 <!-- 메뉴에 대한 자바스크립트 -->
 <script type="text/javascript">
 	//메뉴를 클릭했을 때 그 메뉴가 강조
-	$("li").click(function(){
-		$("li").removeClass("active");
+	$(".menu").click(function(){
+		$(".menu").removeClass("active");
 		var $this = $(this);
 		console.log($this);
 		$this.addClass("active");
