@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -13,6 +14,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
 
 
 <script
@@ -81,6 +83,9 @@ div:focus {
 </style>
 </head>
 <body>
+    
+    <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+    
 	<div>
 		<div id="row">
 			<div class="col-md-12">
