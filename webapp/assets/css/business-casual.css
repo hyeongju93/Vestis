@@ -22,8 +22,6 @@ h1 {
   
 }
 
-
-
 .tagline-upper {
   font-size: 5rem;
   font-weight: 700;
@@ -61,10 +59,33 @@ hr.divider {
   max-width: 250px;
 }
 
+hr.divider2 {
+  border-color: #292b2c;
+  max-width: 50px;
+}
+
 .map-container iframe {
   pointer-events: none;
 }
 
 .map-container iframe.clicked {
   pointer-events: auto;
+}
+
+
+
+.outter{
+    padding: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.29);
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+
+.image-circle{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    border: 4px solid #FFF;
+    margin: 10px;
 }

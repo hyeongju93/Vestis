@@ -10,7 +10,6 @@ public class MainController {
 	
 	@RequestMapping("/test")
 	public String test() {
-		System.out.println("aaa");
 		return "index";
 	}
 }

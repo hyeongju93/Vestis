@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Business Casual - Start Bootstrap Theme</title>
+    <title>Vestis</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -111,7 +111,7 @@
 
     <footer class="bg-faded text-center py-5">
       <div class="container">
-        <p class="m-0">Copyright &copy; Your Website 2017</p>
+        <p class="m-0">Copyright &copy; Website 2017</p>
       </div>
     </footer>
 
