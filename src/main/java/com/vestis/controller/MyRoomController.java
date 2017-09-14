@@ -12,7 +12,10 @@ public class MyRoomController {
 		return "/myroom/main";
 	}
 	
-	
+	@RequestMapping(value="/codi")
+	public String codi() {
+		return "/myroom/codi";
+	}
 	
 	@RequestMapping(value="/codibook")
 	public String codibook() {

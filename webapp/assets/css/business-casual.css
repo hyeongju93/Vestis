@@ -70,21 +70,10 @@ hr.divider {
 }
 
 
-
-.outter{
-    padding: 0px;
-    border: 1px solid rgba(255, 255, 255, 0.29);
-    border-radius: 50%;
-    width: 90px;
-    height: 90px;
-    margin-top: 40px;
-}
-
 .image-circle{
     border-radius: 50%;
     width: 90px;
     height: 90px;
-    border: 4px solid #FFF;
     margin: 10px;
 }
 

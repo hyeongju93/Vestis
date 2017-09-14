@@ -44,7 +44,10 @@
 	padding:1rem;
 }
 .none ul{
-list-style-type: none;
+	list-style-type: none;
+}
+.top{
+	margin-top:30px;
 }
 
 </style>
@@ -64,44 +67,23 @@ list-style-type: none;
 	
 		<div class="sub-menu bg-faded none ">
 		
-			<div class="outter none"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle"/>
-			<ul>
-		      <li>jisoo</li>
-		      <li>point:100</li>
-		      <h6><li>옷장</li></h6>
+			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle top"/>
+			
+		      <p>jisoo</p>
+		      <p>point:100</p>
+		      <p>옷장</p>
 		      
-	    	</ul>
+	    	
 	    	</div> 
 	    	
-	    	<div class="outter none">
-			<ul>
-		      <li>코디북</li>
-		      <li>코디하기</li>
+	    	<div style="text-align:center">
+		
+		      <p><a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a></p>
+		      <p><a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a></p>
 		      
-	    	</ul>
 	    	</div> 
 	    
 		</div>
-					
-					
-	<!-- 	<table class="bg-faded" width="120"height="800" align="left">
-			<tr>
-			<td class="col-md-12 col-xs-12" align="center">
-			<h6>&#xf013;</h6>
-			<button class="w3-button w3-teal w3-xxlarge">&#xf009;</button>
-            <div class="outter" style="margin-top:5px;"><img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="image-circle"/></div>   
-            <h6>Hi Guest</h6>
-            
-            <h6> <a href="#" class="btn btn-default"> <font> <font> point </ font> </ font> </a></h6>
-            <h6><button class="w3-button w3-round-xlarge">MY ROOM</button></h6>
-            <a href="#" class="btn btn-default"> <font> <font> 기본 </ font> </ font> </a>
-            <a href="#" class="btn btn-primary disabled"> <font> <font> 기본 </ font> </ font> </a>
-            
-            <a href="#" class="btn btn-primary btn-xs"> <font> <font> 미니 버튼 </ font> </ font> </a>
-	   		</td>
-			</tr>
-		</table>  -->
-   
 					
 					
 		<!-- 사진 전체틀1 -->
