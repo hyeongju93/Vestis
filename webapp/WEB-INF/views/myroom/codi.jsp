@@ -97,6 +97,21 @@ div:focus {
 	float:right;
 	width:86%;
 }
+
+
+.top{
+	margin-top:30px;
+}
+
+.none ul{
+	list-style-type: none;
+}
+
+ .sub-menu {
+	width:120px;
+	height:800px;
+	float:left;
+} 
 </style>
 </head>
 <body>
@@ -107,21 +122,24 @@ div:focus {
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<div class="container">
-		<div class="bg-faded  my-4 profile">
-			<table class="bg-faded" width="120" height="500" align="left">
-				<tr>
-					<td class="col-md-12 col-xs-12" align="center">
-						<div class="outter">
-							<img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg"
-								class="image-circle" />
-						</div>
-						<h6>Hi Guest</h6>
-						<h6>point</h6>
-						<button>MY ROOM</button>
-					</td>
-				</tr>
-			</table>
-
+		<div class="sub-menu bg-faded none ">
+		
+			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle top"/>
+			
+		      <p>jisoo</p>
+		      <p>point:100</p>
+		      <p>옷장</p>
+		      
+	    	
+	    	</div> 
+	    	
+	    	<div style="text-align:center">
+		
+		      <p><a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a></p>
+		      <p><a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a></p>
+		      
+	    	</div> 
+	    
 		</div>
 		<div class="codi-space">
 			<div id="row">
@@ -131,7 +149,7 @@ div:focus {
 			</div>
 			<div id="space">
 				<div class="left-box" style="border-radius: 1em;">
-					<label style="float:left;">날씨</label>
+					<label style="float:left;">${weather }</label>
 					<form action="${pageContext.request.contextPath}/myroom/save" method="post">
 						<input type="submit" id="save" style="float: right;" value="Save">
 						<input id="data" name="data" type="hidden">
@@ -159,7 +177,7 @@ div:focus {
 						</a></li>
 					</ul>
 					<div style="overflow: auto; width: 100%; height: 85.6%">
-						<ul style="list-style: none; padding-left: 0px;">
+						<ul style="list-style: none; padding-left: 0px; text-align:center;">
 							<li class="col-sm-3" style="padding-left: 0px;"><a
 								class="thumbnail"> <img
 									src="${pageContext.request.contextPath}/assets/img/coat.png"

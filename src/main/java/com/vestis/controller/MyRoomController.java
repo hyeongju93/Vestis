@@ -14,11 +14,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/myroom")
@@ -30,7 +29,43 @@ public class MyRoomController {
 	}
 
 	@RequestMapping(value = "/codi")
-	public String codi() {
+	public String codi(Model model) {
+		String weather;
+		 try {
+	         String address="http://apis.skplanetx.com/weather/current/hourly?version=1&city=서울&county=강남구&village=도곡동&appKey=41e1162f-7a4b-3add-8f1b-0a60e13c0a98";
+	         BufferedReader br;
+	         String protocol="GET";
+	         HttpURLConnection conn;
+	         URL url=new URL(address);
+	         conn=(HttpURLConnection)url.openConnection();
+	         conn.setRequestMethod(protocol);
+	         br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	         String json;
+	         json=br.readLine();
+	         System.out.println("============================================================================================================");
+	         JSONParser parser=new JSONParser();
+	         JSONObject objs=(JSONObject)parser.parse(json);
+	         JSONObject weathers=(JSONObject)objs.get("weather");      
+	         JSONArray hourlys=(JSONArray)weathers.get("hourly");
+	         JSONObject hours=(JSONObject)hourlys.get(0);
+	         JSONObject temperature=(JSONObject)hours.get("temperature");
+	         System.out.println("현재온도: "+temperature.get("tc"));
+	         System.out.println("습도: "+hours.get("humidity"));
+	         JSONObject sky=(JSONObject)hours.get("sky");
+	         System.out.println("하늘상태: "+sky.get("name"));
+	         System.out.println("하늘상태코드: "+sky.get("code"));
+	         System.out.println("============================================================================================================");
+	      
+	         String temp = (String) temperature.get("tc");
+	         temp = temp.substring(0, 4);
+	         System.out.println(temp);
+	         weather = "온도:"+temp+"도 날씨:"+sky.get("name");
+	         
+	         model.addAttribute("weather", weather);
+	      } catch(Exception e) {
+	      
+	      }
+	         
 		return "/myroom/codi";
 	}
 
@@ -64,47 +99,7 @@ public class MyRoomController {
 
 	
 	   
-	   /*json-simple 사용*/
-	   @RequestMapping(value="/weather")
-	   public String test() {
-	      try {
-	      String address="http://apis.skplanetx.com/weather/current/hourly?version=1&city=서울&county=강남구&village=도곡동&appKey=41e1162f-7a4b-3add-8f1b-0a60e13c0a98";
-	      BufferedReader br;
-	      String protocol="GET";
-	      HttpURLConnection conn;
-	      URL url=new URL(address);
-	      conn=(HttpURLConnection)url.openConnection();
-	      conn.setRequestMethod(protocol);
-	      br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	      String json;
-	      json=br.readLine();
-	      System.out.println(json);
-	      ////////////////////////////////////////////////////
-	      JSONParser parser=new JSONParser();
-	      System.out.println("1"+parser);
-	      JSONObject objs=(JSONObject)parser.parse(json);
-	      System.out.println("2"+objs);
-	      JSONObject weathers=(JSONObject)objs.get("weather");      
-	      System.out.println("3"+weathers);
-	      JSONArray hourlys=(JSONArray)weathers.get("hourly");
-	      System.out.println("4"+hourlys);
-	      JSONObject hours=(JSONObject)hourlys.get(0);
-	      System.out.println("5"+hours);
-	      JSONObject grids=(JSONObject)hours.get("grid");
-	      System.out.println("6"+grids);
-	      System.out.println(grids.get("city"));
-	      System.out.println(grids.get("county"));
-	      System.out.println(grids.get("village"));
-	      System.out.println("=================================================json 값=======================================================");
-	     
-	      
-	      } catch(Exception e) {
-	         e.printStackTrace();
-	      }
-	      return "main/index";
-
-	}
-	   
+	
 	@RequestMapping(value="/codibook")
 	public String codibook() {
 		return "/myroom/codibook";

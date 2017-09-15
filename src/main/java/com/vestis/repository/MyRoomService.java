@@ -1,5 +1,8 @@
 package com.vestis.repository;
 
-public class MyRoomService {
+import org.springframework.stereotype.Service;
 
+@Service
+public class MyRoomService {
+	
 }
