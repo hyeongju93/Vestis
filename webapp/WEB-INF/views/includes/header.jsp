@@ -16,6 +16,7 @@
 .text-expanded {
 	letter-spacing: 2px;
 }
+
 </style>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
@@ -23,7 +24,7 @@
         
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom">my room
+              <a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom/main">my room
                 <span class="sr-only">(current)</span>
               </a>
             </li>
