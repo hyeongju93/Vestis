@@ -61,7 +61,7 @@ public class MyRoomController {
 		return "success";
 	}
 	
-<<<<<<< HEAD
+
 	
 	   
 	   /*json-simple 사용*/
@@ -102,16 +102,12 @@ public class MyRoomController {
 	         e.printStackTrace();
 	      }
 	      return "main/index";
-	   }
-=======
-	@RequestMapping(value="/codi")
-	public String codi() {
-		return "/myroom/codi";
+
 	}
-	
+	   
 	@RequestMapping(value="/codibook")
 	public String codibook() {
 		return "/myroom/codibook";
 	}
->>>>>>> origin/master
+
 }

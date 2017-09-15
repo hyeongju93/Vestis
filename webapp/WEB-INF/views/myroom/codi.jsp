@@ -7,38 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-<<<<<<< HEAD
 	href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/codi_bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" >
 	
-=======
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
->>>>>>> origin/master
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script
-=======
-<script 
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script 
->>>>>>> origin/master
 	src="https://github.com/niklasvh/html2canvas/releases/download/v0.5.0-beta4/html2canvas.min.js"></script>
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" />
 
-<<<<<<< HEAD
 
 <!-- Custom styles for this template -->
 <link
@@ -59,28 +44,12 @@ html, body {
 .box {
 	position:absolute;
 	overflow: hidden;
-=======
-<title>Insert title here</title>
-
-<style type="text/css">
-html, body {
-	font-size:medium;
-	height:100%;
-	overflow:hidden;
-	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-}
-.box {
-	overflow:hidden;
->>>>>>> origin/master
 	width: 200px;
 	height: 200px;
 	min-width: 30px;
 	min-height: 30px;
-<<<<<<< HEAD
 	top:5%; 
 	left:2%; 
-=======
->>>>>>> origin/master
 	background-color: #FFFFFFFF;
 }
 
@@ -95,40 +64,24 @@ html, body {
 .left-box {
 	background: #F5DEB3;
 	float: left;
-<<<<<<< HEAD
 	width: 49.5%;
 	height: 600px;
 	min-height: 65%;
 	padding: 1%
-=======
-	width: 48%;
-	height:750px;
-	min-height:85%;
-	padding:1%
->>>>>>> origin/master
 }
 
 .right-box {
 	float: right;
-<<<<<<< HEAD
 	width: 49.5%;
 	height: 600px;
 	min-height: 65%;
 	background-color: rgba(255, 255, 255, 0.9);
 	border-radius: 1em;
 	padding:1%
-=======
-	width: 48%;
-	height:750px;
-	min-height:85%;
-	background-color: rgba(255, 255, 255, 0.9);
-	border-radius: 1em;
->>>>>>> origin/master
 }
 
 #space {
 	position: relative;
-<<<<<<< HEAD
 	height: 100%;
 }
 
@@ -143,24 +96,10 @@ div:focus {
 .codi-space {
 	float:right;
 	width:86%;
-=======
-	padding-left: 10%;
-	padding-right: 10%;
-	height: 100%;
-}
-
-#row {
-	padding-left: 10%;
-}
-
-div:focus {
-    background-color: Aqua;
->>>>>>> origin/master
 }
 </style>
 </head>
 <body>
-<<<<<<< HEAD
 	<div
 		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">
 		<span style="color: white">VESTIS</span>
@@ -262,87 +201,12 @@ div:focus {
 
 <%-- 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import> --%>
 
-=======
-    
-    <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-    
-	<div>
-		<div id="row">
-			<div class="col-md-12">
-				<h10 class="text-left" style="font-size:small;">메인>MY Room>코디북>코디하기</h10>
-			</div>
-		</div>
-		<div id="space">
-			<div class="left-box" style="border-radius: 1em;">
-				<button id="save" style="float:right;">저장하기</button>
-				
-			
-			</div>
-			<div class="right-box">
-				<ul class="nav nav-pills" style="width:100%">
-					<li class="active menu"><a href="#"> <span class="badge pull-right">42</span>전체</a></li>
-					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>상의
-					</a></li>
-					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>하의
-					</a></li>
-					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>신발
-					</a></li>
-					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>외투
-					</a></li>
-					<li class="menu"><a href="#"> <span class="badge pull-right">16</span>악세사리
-					</a></li>
-				</ul>
-				<div style="overflow:auto; width:100%; height:85.6%">
-				<ul style="list-style:none; padding-left:0px;">
-                    <li class="col-sm-3" style="padding-left:0px;">
-                        <a class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/assets/img/coat.png" name="img" style="width:auto; height:17%">
-                        </a>
-                    </li>
-                    <li class="col-sm-3" style="padding-left:0px;">
-                        <a class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/assets/img/blank.png" name="img" style="width:auto; height:17%">
-                        </a>
-                    </li>
-                    <li class="col-sm-3" style="padding-left:0px;">
-                        <a class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/assets/img/cap.png" name="img" style="width:auto; height:17%">
-                        </a>
-                    </li>
-                    <li class="col-sm-3" style="padding-left:0px;">
-                        <a class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/assets/img/shoes.png" name="img" style="width:auto; height:17%">
-                        </a>
-                    </li>
-                    <li class="col-sm-3" style="padding-left:0px;">
-                        <a class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/assets/img/blank2.png" name="img" style="width:auto; height:17%">
-                        </a>
-                    </li>
-                    <li class="col-sm-3" style="padding-left:0px;">
-                        <a class="thumbnail">
-                            <img src="${pageContext.request.contextPath}/assets/img/coat2.png" name="img" style="width:auto; height:17%">
-                        </a>
-                    </li>
-
-                   
-                </ul>
-				</div>
-
-			</div>
-		</div>
-	</div>
->>>>>>> origin/master
 </body>
 
 <!-- 메뉴에 대한 자바스크립트 -->
 <script type="text/javascript">
 	//메뉴를 클릭했을 때 그 메뉴가 강조
-<<<<<<< HEAD
 	$(".menu").click(function() {
-=======
-	$(".menu").click(function(){
->>>>>>> origin/master
 		$(".menu").removeClass("active");
 		var $this = $(this);
 		console.log($this);
@@ -376,11 +240,7 @@ div:focus {
 		this.bind("touchstart", start);
 		this.bind("touchmove", move);
 	};
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> origin/master
 	//옷 이미지 사이즈 조절
 	$.fn.resizeTouch = function() {
 		var offset = null;
@@ -416,7 +276,6 @@ div:focus {
 						var layer = event.srcElement;
 
 						var img = layer.src
-<<<<<<< HEAD
 
 						//tabindex : 옷 이미지를 클릭했을 때 하늘색 테두리가 나오도록 하기 위함
 						//select(count) : 옷 이미지를 클릭했을 때 옷이 맨 앞으로 나오도록 zIndex를 설정하도록 함
@@ -426,13 +285,6 @@ div:focus {
 								+ "\" tabindex=\"1\" onclick=\"select("
 								+ count
 								+ ")\" class=\"box\" ><img src="
-=======
-						
-						//tabindex : 옷 이미지를 클릭했을 때 하늘색 테두리가 나오도록 하기 위함
-						//select(count) : 옷 이미지를 클릭했을 때 옷이 맨 앞으로 나오도록 zIndex를 설정하도록 함
-						//remove(count) : 옷을 더블클릭하면 옷 이미지가 사라지도록 하는 메소드
-						var tag = "<div id=\"cloth"+count+"\" tabindex=\"-1\" onclick=\"select("+count+")\" class=\"box\" ><img src="
->>>>>>> origin/master
 								+ img
 								+ " name=\"cloth\" ondblclick=\"remove("
 								+ count
@@ -441,22 +293,12 @@ div:focus {
 						count++;
 
 						console.log(tag);
-<<<<<<< HEAD
 
 						//왼쪽 공간에 이미지 추가
 						$(".left-box").append(tag);
 
 						console.log(img);
 
-=======
-						
-						//왼쪽 공간에 이미지 추가
-						$(".left-box").append(tag);
-
-						
-						console.log(img);
-						
->>>>>>> origin/master
 						//드래그와 이미지 조절이 되도록 함
 						// jQuery UI implementation for mouse drag/resize   
 						$(".box").draggable();
@@ -481,7 +323,6 @@ div:focus {
 		$("#cloth" + no).remove()
 	};
 
-<<<<<<< HEAD
 	//이미지를 클릭했을 때 zIndex값을 1씩 증가시켜서 맨 앞으로 나오게 하는 메소드
 	var index = 1;
 	function select(no) {
@@ -492,25 +333,11 @@ div:focus {
 
 		$("#cloth" + no).focus();
 		console.log("click" + index);
-=======
-	
-	//이미지를 클릭했을 때 zIndex값을 1씩 증가시켜서 맨 앞으로 나오게 하는 메소드
-	var index = 1;
-	function select(no) {
-		$("#cloth"+no).css("zIndex", index);
-		index++;
-		
-		$(".box").css("background", "transparent");
-		
-		$("#cloth"+no).focus();
-		console.log("click"+ index);
->>>>>>> origin/master
 	};
 </script>
 
 <!-- 왼쪽 공간에 넣은 이미지를 저장하기 위한 자바스크립트 -->
 <script type="text/javascript">
-<<<<<<< HEAD
 	$("#save").click(function() {
 				/* console.log("button click");
 				makeShareImage(); */
@@ -551,52 +378,5 @@ div:focus {
 				});
 
 			});
-=======
-//이미지 생성
-function makeShareImage() {
-	element = $(".left-box");
-	console.log("make image")
-	html2canvas(element, {
-		onrendered : function(canvas) {
-			getCanvas = canvas;
-			upload();
-		}
-	});
-}
-
-//이미지 업로드
-function upload() {
-	console.log("upload");
-	alert(typeof getCanvas.toDataURL("image/png"));
-
-	var imageData = getCanvas.toDataURL("image/png");
-	window.open(imageData);
-	var formData = new FormData();
-	formData.append('file', imageData);
-}
-
-$("#save").click(function() {
-	/* console.log("button click");
-	makeShareImage(); */
-	
-	//이미지 만들기
-	 html2canvas($(".left-box"), {
-        onrendered: function(canvas) {
-            // canvas is the final rendered <canvas> element
-            //이미지 형태 지정
-            var myImage = canvas.toDataURL("image/png");
-            console.log(myImage);
-            //새 창으로 저장한 이미지 띄우는 것 삭제할 예정
-            var iframe = "<iframe width='100%' height='100%' src='" + myImage + "'></iframe>"
-            var x = window.open();
-            x.document.open();
-            x.document.write(iframe);
-            x.document.close();
-        }
-    }); 
-    
-});
-
->>>>>>> origin/master
 </script>
 </html>
