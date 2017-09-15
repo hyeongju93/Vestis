@@ -24,6 +24,36 @@
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
 
+<style>
+ .sub-menu {
+	width:120px;
+	height:800px;
+	float:left;
+} 
+.photo {
+	float:right;
+	width:40%;
+	margin-left:30px;
+	padding:1rem;
+	
+}
+.photo-size {
+	float:left;
+	width:40%;
+	margin-left:30px;
+	padding:1rem;
+}
+.none ul{
+	list-style-type: none;
+}
+.top{
+	margin-top:30px;
+}
+
+</style>
+
+
+
   </head>
 
   <body>
@@ -32,36 +62,133 @@
 
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
-	
-	
 
-
-	<div class="container">
+	<div class="container" >
 	
-	<div class="bg-faded  my-4">
-		<table class="bg-faded" width="120"height="500" align="left">
-			<tr>
-			<td class="col-md-12 col-xs-12" align="center">
-            <div class="outter"><img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="image-circle"/></div>   
-            <h6>Hi Guest</h6>
-            <h6>point</h6>
-            <button>MY ROOM</button>
-	   		</td>
-			</tr>
-		</table>
-        
-    </div>
-	
+		<div class="sub-menu bg-faded none ">
+		
+			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle top"/>
+			
+		      <p>jisoo</p>
+		      <p>point:100</p>
+		      <p>옷장</p>
+		      
+	    	
+	    	</div> 
+	    	
+	    	<div style="text-align:center">
+		
+		      <p><a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a></p>
+		      <p><a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a></p>
+		      
+	    	</div> 
+	    
+		</div>
+					
+					
+		<!-- 사진 전체틀1 -->
+	  	<div class="photo-size bg-faded  my-4">
+	    	<!-- Image Carousel -->
+	    	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	        	<!-- 사진 내에 버튼 -->
+				<ol class="carousel-indicators">
+				  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<!-- 사진 -->
+				<div class="carousel-inner" role="listbox">
+				  <div class="carousel-item active">
+				    <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/slide-1.jpg" alt="1">
+				  <div class="carousel-caption d-none d-md-block">
+				    <h3 class="text-shadow">First Slide</h3>
+				    <p class="text-shadow">This is the caption for the first slide.</p>
+				  </div>
+				</div>
+				<div class="carousel-item">
+				  <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/c.JPG" alt="2">
+				  <div class="carousel-caption d-none d-md-block">
+				    <h3 class="text-shadow">Second Slide</h3>
+				    <p class="text-shadow">This is the caption for the second slide.</p>
+				  </div>
+				</div>
+				<div class="carousel-item">
+				  <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/slide-3.jpg" alt="3">
+				    <div class="carousel-caption d-none d-md-block">
+				      <h3 class="text-shadow">Third Slide</h3>
+				      <p class="text-shadow">This is the caption for the third slide.</p>
+				    </div>
+				  </div>
+				</div>
+				<!-- 양쪽버튼 -->
+				 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				   <span class="sr-only">Previous</span>
+				 </a>
+				 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				   <span class="sr-only">Next</span>
+				 </a>
+			</div>
+	    </div>
+	    
+      <!-- 사진 전체틀2 -->
+	  	<div class="photo bg-faded my-4">
+	    	<!-- Image Carousel -->
+	    	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	        	<!-- 사진 내에 버튼 -->
+				<ol class="carousel-indicators">
+				  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<!-- 사진 -->
+				<div class="carousel-inner" role="listbox">
+				  <div class="carousel-item active">
+				    <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/slide-1.jpg" alt="1">
+				  <div class="carousel-caption d-none d-md-block">
+				    <h3 class="text-shadow">First Slide</h3>
+				    <p class="text-shadow">This is the caption for the first slide.</p>
+				  </div>
+				</div>
+				<div class="carousel-item">
+				  <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/slide-2.jpg" alt="2">
+				  <div class="carousel-caption d-none d-md-block">
+				    <h3 class="text-shadow">Second Slide</h3>
+				    <p class="text-shadow">This is the caption for the second slide.</p>
+				  </div>
+				</div>
+				<div class="carousel-item">
+				  <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/slide-3.jpg" alt="3">
+				    <div class="carousel-caption d-none d-md-block">
+				      <h3 class="text-shadow">Third Slide</h3>
+				      <p class="text-shadow">This is the caption for the third slide.</p>
+				    </div>
+				  </div>
+				</div>
+				<!-- 양쪽버튼 -->
+				 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				   <span class="sr-only">Previous</span>
+				 </a>
+				 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				   <span class="sr-only">Next</span>
+				 </a>
+			</div>
+	    </div>
+	    
 	</div>
 
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+ 	
 
-
-
- <!-- Bootstrap core JavaScript -->
+ 	<!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/vendor/popper/popper.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	
+	 
 	
 	
 </body>

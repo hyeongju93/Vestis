@@ -27,8 +27,7 @@
 
   <body>
 	
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
-    
+    <a href="${pageContext.request.contextPath }/main/test" class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block" ><span style="color:white" >VESTIS</span></a>
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     <div class="container">
