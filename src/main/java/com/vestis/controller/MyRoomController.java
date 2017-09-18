@@ -104,5 +104,10 @@ public class MyRoomController {
 	public String codibook() {
 		return "/myroom/codibook";
 	}
+	
+	@RequestMapping(value="/clothes")
+	public String clothes() {
+		return "/myroom/clothes";
+	}
 
 }
