@@ -16,6 +16,7 @@
 .text-expanded {
 	letter-spacing: 2px;
 }
+
 </style>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
