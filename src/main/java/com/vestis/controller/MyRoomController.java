@@ -1,6 +1,7 @@
 package com.vestis.controller;
 
 import java.io.FileOutputStream;
+import java.net.URLDecoder;
 import java.util.Random;
 import java.util.UUID;
 
@@ -8,6 +9,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,6 +90,10 @@ public class MyRoomController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@RequestParam("data") String binaryData, @RequestParam("choice") String[] choice)
 			throws Exception {
+		//String binaryData = request.getParameter("data");
+		binaryData = URLDecoder.decode(binaryData, "UTF-8");
+		//binaryData = binaryData.substring(1, binaryData.length()-1);
+
 		FileOutputStream stream = null;
 
 		for (int i = 0; i < choice.length; i++) {
@@ -95,11 +101,11 @@ public class MyRoomController {
 		}
 
 		try {
-			// System.out.println("binary file " + binaryData);
+			System.out.println(binaryData);
 			if (binaryData == null || binaryData == "") {
 				throw new Exception();
 			}
-			binaryData = binaryData.replaceAll("data:image/png;base64,", "");
+			binaryData = binaryData.replaceAll("data=data:image/png;base64,", "");
 			byte[] file = Base64.decodeBase64(binaryData);
 
 			System.out.println("file :::::::: " + file + " || " + file.length);

@@ -383,6 +383,7 @@ div:focus {
 						
 						$("#data").val(myImage);
 						
+						console.log(myImage);
 						var jb = jQuery.noConflict();
 						jQuery.ajaxSettings.traditional = true;
 						var allData = {"data":$("form").serialize(), "choice":JSON.stringify(choice)};
