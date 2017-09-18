@@ -7,21 +7,26 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.vestis.repository.MyRoomService;
 
 @Controller
 @RequestMapping("/myroom")
 public class MyRoomController {
+	@Autowired
+	private MyRoomService myRoomService;
 
 	@RequestMapping(value = "/main")
 	public String main() {
@@ -59,7 +64,7 @@ public class MyRoomController {
 	         String temp = (String) temperature.get("tc");
 	         temp = temp.substring(0, 4);
 	         System.out.println(temp);
-	         weather = "온도:"+temp+"도 날씨:"+sky.get("name");
+	         weather = "온도:"+temp+"°C 날씨:"+sky.get("name");
 	         
 	         model.addAttribute("weather", weather);
 	      } catch(Exception e) {
@@ -71,10 +76,13 @@ public class MyRoomController {
 
 	@ResponseBody
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(HttpServletRequest request) throws Exception {
-		String binaryData = request.getParameter("data");
+	public String save(@RequestParam("data") String binaryData, @RequestParam("choice") String[] choice) throws Exception {
 		FileOutputStream stream = null;
-		System.out.println(binaryData);
+		
+		for(int i=0; i<choice.length; i++) {
+			System.out.println(choice[i]);
+		}
+		
 		try {
 			System.out.println("binary file " + binaryData);
 			if (binaryData == null || binaryData == "") {
@@ -82,8 +90,9 @@ public class MyRoomController {
 			}
 			binaryData = binaryData.replaceAll("data:image/png;base64,", "");
 			byte[] file = Base64.decodeBase64(binaryData);
-			System.out.println("file :::::::: " + file + " || " + file.length);
-			String fileName = UUID.randomUUID().toString();
+			
+			//System.out.println("file :::::::: " + file + " || " + file.length);
+			String fileName = System.currentTimeMillis() + UUID.randomUUID().toString();
 			stream = new FileOutputStream("D:\\javastudy\\file\\" + fileName + ".png");
 			stream.write(file);
 			stream.close();
@@ -95,10 +104,6 @@ public class MyRoomController {
 		}
 		return "success";
 	}
-	
-
-	
-	   
 	
 	@RequestMapping(value="/codibook")
 	public String codibook() {

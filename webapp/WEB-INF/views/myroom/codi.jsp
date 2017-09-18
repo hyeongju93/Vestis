@@ -62,7 +62,7 @@ html, body {
 }
 
 .left-box {
-	background: #F5DEB3;
+	background: #FFFEEE;
 	float: left;
 	width: 49.5%;
 	height: 600px;
@@ -177,36 +177,36 @@ div:focus {
 						</a></li>
 					</ul>
 					<div style="overflow: auto; width: 100%; height: 85.6%">
-						<ul style="list-style: none; padding-left: 0px; text-align:center;">
+						<ul style="list-style: none; padding-left: 0px; text-align:center; display: block; ">
 							<li class="col-sm-3" style="padding-left: 0px;"><a
 								class="thumbnail"> <img
 									src="${pageContext.request.contextPath}/assets/img/coat.png"
-									name="img" style="width: auto; height: 17%">
+									name="cloth" style="width: auto; height: 17%;">
 							</a></li>
 							<li class="col-sm-3" style="padding-left: 0px;"><a
 								class="thumbnail"> <img
 									src="${pageContext.request.contextPath}/assets/img/blank.png"
-									name="img" style="width: auto; height: 17%">
+									name="cloth" style="width: auto; height: 17%;">
 							</a></li>
 							<li class="col-sm-3" style="padding-left: 0px;"><a
 								class="thumbnail"> <img
 									src="${pageContext.request.contextPath}/assets/img/cap.png"
-									name="img" style="width: auto; height: 17%">
+									name="cloth" style="width: auto; height: 17%">
 							</a></li>
 							<li class="col-sm-3" style="padding-left: 0px;"><a
 								class="thumbnail"> <img
 									src="${pageContext.request.contextPath}/assets/img/shoes.png"
-									name="img" style="width: auto; height: 17%">
+									name="cloth" style="width: auto; height: 17%">
 							</a></li>
 							<li class="col-sm-3" style="padding-left: 0px;"><a
 								class="thumbnail"> <img
 									src="${pageContext.request.contextPath}/assets/img/blank2.png"
-									name="img" style="width: auto; height: 17%">
+									name="cloth" style="width: auto; height: 17%">
 							</a></li>
 							<li class="col-sm-3" style="padding-left: 0px;"><a
 								class="thumbnail"> <img
 									src="${pageContext.request.contextPath}/assets/img/coat2.png"
-									name="img" style="width: auto; height: 17%">
+									name="cloth" style="width: auto; height: 17%">
 							</a></li>
 						</ul>
 					</div>
@@ -288,7 +288,7 @@ div:focus {
 
 	//메뉴에서 옷을 클릭했을 때 왼쪽 공간에 옷이 추가되도록 함
 	var count = 0;
-	$("[name=img]")
+	$("[name=cloth]")
 			.click(
 					function choose() {
 						var layer = event.srcElement;
@@ -296,17 +296,11 @@ div:focus {
 						var img = layer.src
 
 						//tabindex : 옷 이미지를 클릭했을 때 하늘색 테두리가 나오도록 하기 위함
-						//select(count) : 옷 이미지를 클릭했을 때 옷이 맨 앞으로 나오도록 zIndex를 설정하도록 함
+						//select(count) : 옷 이미지를 클릭했을 때 옷이 맨 앞으로 나오도록 zIndex를 설정하도록 함	
 						//remove(count) : 옷을 더블클릭하면 옷 이미지가 사라지도록 하는 메소드
-						var tag = "<div id=\"cloth"
-								+ count
-								+ "\" tabindex=\"1\" onclick=\"select("
-								+ count
-								+ ")\" class=\"box\" ><img src="
-								+ img
-								+ " name=\"cloth\" ondblclick=\"remove("
-								+ count
-								+ ")\" class=\"dragger\" id=\"img\" style=\"width: 100%; height: 100%; cursor:pointer\" /></div>";
+						var tag = "<div id=\"cloth"+ count + "\" tabindex=\"1\" onclick=\"select("+ count + ")\" class=\"box\" >"
+								+"<img src="+ img + " ondblclick=\"remove("+ count + ")\" class=\"dragger\" name=\"img\" style=\"width: 100%; height: 100%; cursor:pointer\" />"
+								+"</div>";
 
 						count++;
 
@@ -357,34 +351,36 @@ div:focus {
 <!-- 왼쪽 공간에 넣은 이미지를 저장하기 위한 자바스크립트 -->
 <script type="text/javascript">
 	$("#save").click(function() {
-				/* console.log("button click");
-				makeShareImage(); */
-				
 				event.preventDefault();
 				
+	            var choice = new Array();
+	            $.each($("[name=img]"), function(index, item){
+	    			console.log(index+"번째 요소 : "+item.src);
+	    			choice.push(item.src);
+	    		});
+	           
+	            console.log(choice)
 				//이미지 만들기
 				html2canvas($(".left-box"), {
 					onrendered : function(canvas) {
 						// canvas is the final rendered <canvas> element
 						//이미지 형태 지정
 						var myImage = canvas.toDataURL("image/png");
-						var formData = new FormData();
 						
 						$("#data").val(myImage);
 						
-						console.log($("#data").val());
 						var jb = jQuery.noConflict();
-						
+						jQuery.ajaxSettings.traditional = true;
+						var allData = {"data":$("form").serialize(), "choice":JSON.stringify(choice)};
 						jb.ajax({
 							url : "${pageContext.request.contextPath}/myroom/save",
 							type : "POST",
-							data :	$("form").serialize(),
+							data :	allData,
 							
 							success : function(result) {
 								console.log(result);
-								alert("저장됐습니다.");
-								//location.href = "${pageContext.request.contextPath}/myroom/codi"
-								window.location.replace("${pageContext.request.contextPath}/myroom/codi");
+								//alert("저장됐습니다.");
+								//window.location.replace("${pageContext.request.contextPath}/myroom/codi");
 							},
 							
 							error : function(XHR, status, error) {
@@ -393,7 +389,7 @@ div:focus {
 							}
 						});
 					}
-				});
+				}); 
 
 			});
 </script>
