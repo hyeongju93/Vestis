@@ -49,6 +49,11 @@
 .top{
 	margin-top:30px;
 }
+/* .carousel-control-prev-icon{
+	background-image: url("/Vestis/assets/img/images.png") !important;
+	
+}
+ */
 
 </style>
 
@@ -65,7 +70,8 @@
 
 	<div class="container" >
 	
-		<div class="sub-menu bg-faded none ">
+		<div class="sub-menu bg-faded">
+		<i class="icon-cogs">$#xf013;</i>
 		
 			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle top"/>
 			
@@ -122,11 +128,11 @@
 				</div>
 				<!-- 양쪽버튼 -->
 				 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				   <span style="color:black" aria-hidden="true"><h1>＜</h1></span>
 				   <span class="sr-only">Previous</span>
 				 </a>
 				 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				   <span style="color:black" aria-hidden="true"><h1>》</h1></span>
 				   <span class="sr-only">Next</span>
 				 </a>
 			</div>
@@ -135,12 +141,12 @@
       <!-- 사진 전체틀2 -->
 	  	<div class="photo bg-faded my-4">
 	    	<!-- Image Carousel -->
-	    	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	    	<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
 	        	<!-- 사진 내에 버튼 -->
 				<ol class="carousel-indicators">
-				  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				  <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active" ></li>
+				  <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+				  <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
 				</ol>
 				<!-- 사진 -->
 				<div class="carousel-inner" role="listbox">
@@ -167,12 +173,12 @@
 				  </div>
 				</div>
 				<!-- 양쪽버튼 -->
-				 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				 <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+				   <span style="color:black" aria-hidden="true"><h1>◁</h1></span>
 				   <span class="sr-only">Previous</span>
 				 </a>
-				 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				   <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				 <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+				   <span style="color:black" aria-hidden="true"><h1>&#xf013;</h1></span>
 				   <span class="sr-only">Next</span>
 				 </a>
 			</div>
