@@ -48,6 +48,7 @@
 }
 .top{
 	margin-top:30px;
+	margin-left:5px;
 }
 /* .carousel-control-prev-icon{
 	background-image: url("/Vestis/assets/img/images.png") !important;
@@ -69,11 +70,10 @@
 
 
 	<div class="container" >
-	
+		<!-- 서브메뉴 -->
 		<div class="sub-menu bg-faded">
-		<span class="glyphicon glyphicon-cog"aria-hidden="true"></span>
-		
-			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle top"/>
+			<img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" />
+			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle "/>
 			
 		      <p>jisoo</p>
 		      <p>point:100</p>
