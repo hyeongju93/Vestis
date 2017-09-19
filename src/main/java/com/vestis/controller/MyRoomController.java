@@ -90,9 +90,7 @@ public class MyRoomController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@RequestParam("data") String binaryData, @RequestParam("choice") String[] choice)
 			throws Exception {
-		//String binaryData = request.getParameter("data");
 		binaryData = URLDecoder.decode(binaryData, "UTF-8");
-		//binaryData = binaryData.substring(1, binaryData.length()-1);
 
 		FileOutputStream stream = null;
 
