@@ -156,11 +156,11 @@ div:focus {
 		<div class="codi-space">
 			<div id="row">
 				<div class="col-md-12">
-					<h10 class="text-left">메인>My Room>코디북>코디하기</h10>
+					<h10 class="text-left" style="color:white;">메인>My Room>코디북>코디하기</h10>
 				</div>
 			</div>
 
-			<div style="margin-top: 40px;">
+			<div style="margin-top: 30px;">
 				<input type="button" id="reset" style="margin-left: 37%;"
 					value="Reset">
 				<form action="${pageContext.request.contextPath}/myroom/save"
