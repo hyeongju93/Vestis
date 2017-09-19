@@ -31,7 +31,7 @@
 	rel="stylesheet">
 
 
-<title>Codibook</title>
+<title>Codi</title>
 
 <style type="text/css">
 html, body {
@@ -48,7 +48,7 @@ html, body {
 	height: 200px;
 	min-width: 30px;
 	min-height: 30px;
-	top:5%; 
+	top:7%; 
 	left:2%; 
 	background-color: #FFFFFFFF;
 }
@@ -144,16 +144,24 @@ div:focus {
 		<div class="codi-space">
 			<div id="row">
 				<div class="col-md-12">
-					<h10 class="text-left" style="font-size:small;">메인>My Room>코디북>코디하기</h10>
+					<h10 class="text-left">메인>My Room>코디북>코디하기</h10>
 				</div>
+			</div>
+		
+			<div style="margin-top:40px;">
+				<input type="button" id="reset" style="margin-left:37%;" value="Reset">
+				<form action="${pageContext.request.contextPath}/myroom/save" method="post" style="margin:0px; display:inline">
+					<input type="submit" id="save" value="Save">
+					<input id="data" name="data" type="hidden">
+				</form>
+				
 			</div>
 			<div id="space">
 				<div class="left-box" style="border-radius: 1em;">
-					<label style="float:left;">${weather }</label>
-					<form action="${pageContext.request.contextPath}/myroom/save" method="post">
-						<input type="submit" id="save" style="float: right;" value="Save">
-						<input id="data" name="data" type="hidden">
-					</form>
+					<div style="float:left;">
+						<img alt="날씨" src="${pageContext.request.contextPath}/assets/img/${weather}.png" style="width:30%; height:auto;">${temp }
+					</div>
+					
 				</div>
 				<div class="bts right-box">
 					<ul class="nav nav-pills" style="width: 100%; font-size: small">
@@ -346,6 +354,12 @@ div:focus {
 		$("#cloth" + no).focus();
 		console.log("click" + index);
 	};
+	
+	//리셋 버튼을 클릭했을 때 옷이 다 사라지도록 설정
+	$("#reset").click(function() {
+		console.log("remove!");
+		$(".box").remove();
+	});
 </script>
 
 <!-- 왼쪽 공간에 넣은 이미지를 저장하기 위한 자바스크립트 -->
