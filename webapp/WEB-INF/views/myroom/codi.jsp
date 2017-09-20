@@ -8,8 +8,9 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/codi_bootstrap.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" >
-	
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css">
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
@@ -34,22 +35,15 @@
 <title>Codi</title>
 
 <style type="text/css">
-html, body {
-	font-size: medium;
-	height: 100%;
-	overflow: hidden;
-	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-}
-
 .box {
-	position:absolute;
+	position: absolute;
 	overflow: hidden;
 	width: 200px;
 	height: 200px;
 	min-width: 30px;
 	min-height: 30px;
-	top:7%; 
-	left:2%; 
+	top: 7%;
+	left: 2%;
 	background-color: #FFFFFFFF;
 }
 
@@ -77,7 +71,7 @@ html, body {
 	min-height: 65%;
 	background-color: rgba(255, 255, 255, 0.9);
 	border-radius: 1em;
-	padding:1%
+	padding: 1%
 }
 
 #space {
@@ -90,78 +84,115 @@ div:focus {
 }
 
 .profile {
-	float:left;
+	float: left;
 }
 
 .codi-space {
-	float:right;
-	width:86%;
+	float: right;
+	width: 86%;
 }
 
-
-.top{
-	margin-top:30px;
+.top {
+	margin-top: 30px;
 }
 
-.none ul{
+.none ul {
 	list-style-type: none;
 }
 
- .sub-menu {
-	width:120px;
-	height:800px;
-	float:left;
-} 
+.sub-menu {
+	width: 120px;
+	height: 800px;
+	float: left;
+}
+
+.thumbnail {
+	overflow: hidden;
+	position: absoulte; 
+	width: auto; 
+	height: 20%;
+}
+
+.thumbnail img {
+	position: absoulte; 
+	width: 100%; 
+	height: 100%;
+}
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    0px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow:         0px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.btn-default:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-info:active,
+.btn-warning:active,
+.btn-danger:active {
+    margin-top: 3px;
+    margin-bottom: -3px;
+}
 </style>
 </head>
 <body>
-	<div
-		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">
-		<span style="color: white">VESTIS</span>
-	</div>
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<div class="container">
 		<div class="sub-menu bg-faded none ">
-		
-			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle top"/>
-			
-		      <p>jisoo</p>
-		      <p>point:100</p>
-		      <p>옷장</p>
-		      
-	    	
-	    	</div> 
-	    	
-	    	<div style="text-align:center">
-		
-		      <p><a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a></p>
-		      <p><a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a></p>
-		      
-	    	</div> 
-	    
+
+			<div style="text-align: center">
+				<img src="${pageContext.request.contextPath }/assets/img/f.jpg"
+					class="image-circle top" />
+
+				<p>jisoo</p>
+				<p>point:100</p>
+				<p>옷장</p>
+
+
+			</div>
+
+			<div style="text-align: center">
+
+				<p>
+					<a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a>
+				</p>
+				<p>
+					<a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a>
+				</p>
+
+			</div>
+
 		</div>
 		<div class="codi-space">
 			<div id="row">
 				<div class="col-md-12">
-					<h10 class="text-left">메인>My Room>코디북>코디하기</h10>
+					<h10 class="text-left" style="color:white;">메인>My Room>코디북>코디하기</h10>
 				</div>
 			</div>
-		
-			<div style="margin-top:40px;">
-				<input type="button" id="reset" style="margin-left:37%;" value="Reset">
-				<form action="${pageContext.request.contextPath}/myroom/save" method="post" style="margin:0px; display:inline">
-					<input type="submit" id="save" value="Save">
+
+			<div class="bts" style="margin-top: 27px; margin-bottom:5px;">
+				<button id="reset" class="btn btn-default" style="margin-left: 37%;">Reset</button>
+				<form action="${pageContext.request.contextPath}/myroom/save"
+					method="post" style="margin: 0px; display: inline">
+					<Button id="save" class="btn btn-default">Save</Button> 
 					<input id="data" name="data" type="hidden">
 				</form>
-				
+
 			</div>
 			<div id="space">
 				<div class="left-box" style="border-radius: 1em;">
-					<div style="float:left;">
-						<img alt="날씨" src="${pageContext.request.contextPath}/assets/img/${weather}.png" style="width:30%; height:auto;">${temp }
+					<div style="float: left;">
+						<img alt="날씨"
+							src="${pageContext.request.contextPath}/assets/img/${weather}.png"
+							style="width: 30%; height: auto;">${temp }
 					</div>
-					
+
 				</div>
 				<div class="bts right-box">
 					<ul class="nav nav-pills" style="width: 100%; font-size: small">
@@ -184,46 +215,59 @@ div:focus {
 								class="badge pull-right">16</span>기타
 						</a></li>
 					</ul>
-					<div style="overflow: auto; width: 100%; height: 85.6%">
-						<ul style="list-style: none; padding-left: 0px; text-align:center; display: block; ">
-							<li class="col-sm-3" style="padding-left: 0px;"><a
-								class="thumbnail"> <img
-									src="${pageContext.request.contextPath}/assets/img/coat.png"
-									name="cloth" style="width: auto; height: 17%;">
-							</a></li>
-							<li class="col-sm-3" style="padding-left: 0px;"><a
-								class="thumbnail"> <img
-									src="${pageContext.request.contextPath}/assets/img/blank.png"
-									name="cloth" style="width: auto; height: 17%;">
-							</a></li>
-							<li class="col-sm-3" style="padding-left: 0px;"><a
-								class="thumbnail"> <img
-									src="${pageContext.request.contextPath}/assets/img/cap.png"
-									name="cloth" style="width: auto; height: 17%">
-							</a></li>
-							<li class="col-sm-3" style="padding-left: 0px;"><a
-								class="thumbnail"> <img
-									src="${pageContext.request.contextPath}/assets/img/shoes.png"
-									name="cloth" style="width: auto; height: 17%">
-							</a></li>
-							<li class="col-sm-3" style="padding-left: 0px;"><a
-								class="thumbnail"> <img
-									src="${pageContext.request.contextPath}/assets/img/blank2.png"
-									name="cloth" style="width: auto; height: 17%">
-							</a></li>
-							<li class="col-sm-3" style="padding-left: 0px;"><a
-								class="thumbnail"> <img
-									src="${pageContext.request.contextPath}/assets/img/coat2.png"
-									name="cloth" style="width: auto; height: 17%">
-							</a></li>
+					<div style="overflow:auto; width: 100%; height: 85.6%;">
+						<ul
+							style="list-style: none; padding-left: 0px; text-align: center; display: block;">
+							<li class="col-sm-3" style="padding-left: 0px;">
+								<div class="thumbnail">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/coat.png"
+										name="cloth">
+								</div>
+							</li>
+							<li class="col-sm-3" style="padding-left: 0px;">
+								<div class="thumbnail">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/blank.png"
+										name="cloth">
+								</div>
+							</li>
+							<li class="col-sm-3" style="padding-left: 0px;">
+								<div class="thumbnail">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/cap.png"
+										name="cloth">
+								</div>
+							</li>
+							<li class="col-sm-3" style="padding-left: 0px;">
+								<div class="thumbnail">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/shoes.png"
+										name="cloth">
+								</div>
+							</li>
+							<li class="col-sm-3" style="padding-left: 0px;">
+								<div class="thumbnail">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/blank2.png"
+										name="cloth">
+								</div>
+							</li>
+							<li class="col-sm-3" style="padding-left: 0px;">
+								<div class="thumbnail">
+									<img
+										src="${pageContext.request.contextPath}/assets/img/coat2.png"
+										name="cloth">
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
@@ -306,9 +350,17 @@ div:focus {
 						//tabindex : 옷 이미지를 클릭했을 때 하늘색 테두리가 나오도록 하기 위함
 						//select(count) : 옷 이미지를 클릭했을 때 옷이 맨 앞으로 나오도록 zIndex를 설정하도록 함	
 						//remove(count) : 옷을 더블클릭하면 옷 이미지가 사라지도록 하는 메소드
-						var tag = "<div id=\"cloth"+ count + "\" tabindex=\"1\" onclick=\"select("+ count + ")\" class=\"box\" >"
-								+"<img src="+ img + " ondblclick=\"remove("+ count + ")\" class=\"dragger\" name=\"img\" style=\"width: 100%; height: 100%; cursor:pointer\" />"
-								+"</div>";
+						var tag = "<div id=\"cloth"
+								+ count
+								+ "\" tabindex=\"1\" onclick=\"select("
+								+ count
+								+ ")\" class=\"box\" >"
+								+ "<img src="
+								+ img
+								+ " ondblclick=\"remove("
+								+ count
+								+ ")\" class=\"dragger\" name=\"img\" style=\"width: 100%; height: 100%; cursor:pointer\" />"
+								+ "</div>";
 
 						count++;
 
@@ -354,7 +406,7 @@ div:focus {
 		$("#cloth" + no).focus();
 		console.log("click" + index);
 	};
-	
+
 	//리셋 버튼을 클릭했을 때 옷이 다 사라지도록 설정
 	$("#reset").click(function() {
 		console.log("remove!");
@@ -365,46 +417,50 @@ div:focus {
 <!-- 왼쪽 공간에 넣은 이미지를 저장하기 위한 자바스크립트 -->
 <script type="text/javascript">
 	$("#save").click(function() {
-				event.preventDefault();
-				
-	            var choice = new Array();
-	            $.each($("[name=img]"), function(index, item){
-	    			console.log(index+"번째 요소 : "+item.src);
-	    			choice.push(item.src);
-	    		});
-	           
-	            console.log(choice)
-				//이미지 만들기
-				html2canvas($(".left-box"), {
-					onrendered : function(canvas) {
-						// canvas is the final rendered <canvas> element
-						//이미지 형태 지정
-						var myImage = canvas.toDataURL("image/png");
-						
-						$("#data").val(myImage);
-						
-						var jb = jQuery.noConflict();
-						jQuery.ajaxSettings.traditional = true;
-						var allData = {"data":$("form").serialize(), "choice":JSON.stringify(choice)};
-						jb.ajax({
-							url : "${pageContext.request.contextPath}/myroom/save",
-							type : "POST",
-							data :	allData,
-							
-							success : function(result) {
-								console.log(result);
-								//alert("저장됐습니다.");
-								//window.location.replace("${pageContext.request.contextPath}/myroom/codi");
-							},
-							
-							error : function(XHR, status, error) {
-								//window.location.replace("${pageContext.request.contextPath}/myroom/codi");
-								console.log("실패");
-							}
-						});
-					}
-				}); 
+		event.preventDefault();
 
-			});
+		var choice = new Array();
+		$.each($("[name=img]"), function(index, item) {
+			console.log(index + "번째 요소 : " + item.src);
+			choice.push(item.src);
+		});
+
+		console.log(choice)
+		//이미지 만들기
+		html2canvas($(".left-box"), {
+			onrendered : function(canvas) {
+				// canvas is the final rendered <canvas> element
+				//이미지 형태 지정
+				var myImage = canvas.toDataURL("image/png");
+
+				$("#data").val(myImage);
+
+				console.log(myImage);
+				var jb = jQuery.noConflict();
+				jQuery.ajaxSettings.traditional = true;
+				var allData = {
+					"data" : $("form").serialize(),
+					"choice" : JSON.stringify(choice)
+				};
+				jb.ajax({
+					url : "${pageContext.request.contextPath}/myroom/save",
+					type : "POST",
+					data : allData,
+
+					success : function(result) {
+						console.log(result);
+						alert("저장됐습니다.");
+						window.location.replace("${pageContext.request.contextPath}/myroom/codibook");
+					},
+
+					error : function(XHR, status, error) {
+						//window.location.replace("${pageContext.request.contextPath}/myroom/codi");
+						console.log("실패");
+					}
+				});
+			}
+		});
+
+	});
 </script>
 </html>
