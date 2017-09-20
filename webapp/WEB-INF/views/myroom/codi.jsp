@@ -141,10 +141,6 @@ div:focus {
 </style>
 </head>
 <body>
-	<div
-		class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">
-		<span style="color: white">VESTIS</span>
-	</div>
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<div class="container">
