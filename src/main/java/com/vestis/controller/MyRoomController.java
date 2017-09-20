@@ -130,4 +130,10 @@ public class MyRoomController {
 		return "/myroom/clothes";
 	}
 
+
+	@RequestMapping(value="/add")
+	public String add() {
+		return "/myroom/add";
+	}
+	
 }
