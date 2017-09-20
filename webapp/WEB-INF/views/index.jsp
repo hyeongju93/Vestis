@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Vestis</title>
+    <title>Business Casual - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,24 +24,24 @@
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
 
   </head>
-
+  
   <body>
-	
-    <a href="${pageContext.request.contextPath }/main/test" class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block" ><span style="color:white" >VESTIS</span></a>
+    
+    
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     <div class="container">
-
+    
       <div class="bg-faded p-4 my-4">
         <!-- Image Carousel -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>  
           </ol>
           <div class="carousel-inner" role="listbox">
-            
+            <!-- 이미지 슬라이드  -->
             <div class="carousel-item active">
               <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/slide-1.jpg" alt="1">
               <div class="carousel-caption d-none d-md-block">
