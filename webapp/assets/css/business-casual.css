@@ -13,8 +13,6 @@ body {
   -o-background-size: cover;
 }
 
-
-
 h1, h2, h3, h4, h5, h6, .text-heading {
   font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -23,14 +21,6 @@ h1 {
   font-size: 4rem;
   
 }
-
-/* .login_menu {
-	background: green;
-	position: absolute;
-	right: 10px;
-	top:0px;
-} */
-
 
 .tagline-upper {
   font-size: 5rem;
@@ -80,4 +70,16 @@ hr.divider {
 
 .map-container iframe.clicked {
   pointer-events: auto;
+}
+
+
+image-circle{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+}
+
+.clear{
+	clear:both;
 }

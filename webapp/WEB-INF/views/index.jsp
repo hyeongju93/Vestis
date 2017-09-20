@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <title>Business Casual - Start Bootstrap Theme</title>
-	<!-- 부트스트랩세트3개  -->
+
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -24,14 +24,17 @@
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
 
   </head>
+  
   <body>
+    
+    
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     <div class="container">
+    
       <div class="bg-faded p-4 my-4">
         <!-- Image Carousel -->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <!-- 이미지 슬라이드 관련 번호  -->
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -79,7 +82,7 @@
           </div>
         </div>
       </div>
-		<!-- 여기 까지 상체  -->
+
       <div class="bg-faded p-4 my-4">
         <hr class="divider">
         <h2 class="text-center text-lg text-uppercase my-0">Build a website
@@ -105,11 +108,7 @@
     </div>
     <!-- /.container -->
 
-    <footer class="bg-faded text-center py-5">
-      <div class="container">
-        <p class="m-0">Copyright &copy; Your Website 2017</p>
-      </div>
-    </footer>
+     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
     <!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>

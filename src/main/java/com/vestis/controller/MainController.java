@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/main")
 public class MainController {
-	
 	@RequestMapping("/test")
 	public String test() {
-		System.out.println("aaa");
 		return "index";
 	}
 }
