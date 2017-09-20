@@ -3,7 +3,7 @@
 <configuration>
 	<typeAliases>
 	</typeAliases>
-
 	<mappers>
+		<mapper resource="mybatis/mappers/user.xml" ></mapper>
 	</mappers>
 </configuration>

@@ -6,12 +6,14 @@
 
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background: url('../img/bg10.jpg') no-repeat center center fixed;
+  background: url('../img/bg10.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
 }
+
+
 
 h1, h2, h3, h4, h5, h6, .text-heading {
   font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -22,6 +24,12 @@ h1 {
   
 }
 
+/* .login_menu {
+	background: green;
+	position: absolute;
+	right: 10px;
+	top:0px;
+} */
 
 
 .tagline-upper {
@@ -29,6 +37,11 @@ h1 {
   font-weight: 700;
   line-height: 1;
   
+}
+
+.login_menu {
+	height:30px;
+	font-size:18px;
 }
 
 .tagline-lower {
