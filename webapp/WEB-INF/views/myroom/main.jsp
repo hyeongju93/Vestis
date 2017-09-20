@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta charset="utf-8">
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,7 +25,7 @@
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
 
 <style>
- .sub-menu {
+.sub-menu {
 	width:120px;
 	height:800px;
 	float:left;
@@ -48,6 +48,7 @@
 }
 .top{
 	margin-top:30px;
+	margin-left:5px;
 }
 /* .carousel-control-prev-icon{
 	background-image: url("/Vestis/assets/img/images.png") !important;
@@ -69,15 +70,14 @@
 
 
 	<div class="container" >
-	
+		<!-- 서브메뉴 -->
 		<div class="sub-menu bg-faded">
-		<i class="icon-cogs">$#xf013;</i>
-		
-			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle top"/>
+			<img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" />
+			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle "/>
 			
 		      <p>jisoo</p>
 		      <p>point:100</p>
-		      <p>옷장</p>
+		      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</p>
 		      
 	    	
 	    	</div> 
@@ -151,7 +151,7 @@
 				<!-- 사진 -->
 				<div class="carousel-inner" role="listbox">
 				  <div class="carousel-item active">
-				    <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/slide-1.jpg" alt="1">
+				    <img class="d-block img-fluid w-100" src="${pageContext.request.contextPath}/assets/img/k.png" alt="1">
 				  <div class="carousel-caption d-none d-md-block">
 				    <h3 class="text-shadow">First Slide</h3>
 				    <p class="text-shadow">This is the caption for the first slide.</p>
@@ -178,7 +178,7 @@
 				   <span class="sr-only">Previous</span>
 				 </a>
 				 <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-				   <span style="color:black" aria-hidden="true"><h1>&#xf013;</h1></span>
+				   <span style="color:black" aria-hidden="true"><h1>▶</h1></span>
 				   <span class="sr-only">Next</span>
 				 </a>
 			</div>
