@@ -48,6 +48,7 @@
 	margin-top: 20px;
 	width: 100%;
 }
+
 </style>
 
 </head>
@@ -60,23 +61,24 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
+					코디해준 사람의 닉네임과 프사
 					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
+						aria-label="Close" aria-hidden="true">&times;
 					</button>
-					<h4 class="modal-title" id="image-gallery-title"></h4>
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid bts">
 
 						<div class="row">
 							<div class="col-md-6">
-								<img class="img-responsive showPic" src="">
+								<label style="margin-left:5%;">추천한 코디</label>
+								<img class="img-responsive showPic" src="" style="border:1px solid #FFD7B9; border-radius: 1em;">
 							</div>
 
 
 							<div class="col-md-6">
-								<img class="img-responsive showPic" src="">
+								<label style="margin-left:5%;">실제로 입은 사진</label>
+								<img class="img-responsive" src="" style="border:1px solid #FFD7B9; border-radius: 1em; height:100%; background: #FFFEEE;">
 							</div>
 						</div>
 					</div>
@@ -178,19 +180,6 @@
 
 </body>
 
-<!-- <script type="text/javascript">
-    $(document).ready(function()
-    {
-        console.log( "ready!" );
-     $('.getSrc').click(function() {
-         console.log("hello");
-       	 var src =$(this).attr('src');
-       	 console.log(src);
-
-     $('.showPic').attr('src', src);
-     });
-    });
-</script> -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		console.log("ready!");
@@ -202,12 +191,5 @@
 		});
 	});
 </script>
-<!-- <script type="text/javascript">
-alert('before');
-$(document).ready(function () {
-    alert('after');
-	$('#modal').modal("show");
-	
-});
-</script> -->
+
 </html>
