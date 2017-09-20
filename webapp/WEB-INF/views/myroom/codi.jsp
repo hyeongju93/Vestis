@@ -118,6 +118,26 @@ div:focus {
 	width: 100%; 
 	height: 100%;
 }
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    0px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow:         0px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.btn-default:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-info:active,
+.btn-warning:active,
+.btn-danger:active {
+    margin-top: 3px;
+    margin-bottom: -3px;
+}
 </style>
 </head>
 <body>
@@ -160,13 +180,12 @@ div:focus {
 				</div>
 			</div>
 
-			<div style="margin-top: 30px;">
-				<input type="button" id="reset" style="margin-left: 37%;"
-					value="Reset">
+			<div class="bts" style="margin-top: 27px; margin-bottom:5px;">
+				<button id="reset" class="btn btn-default" style="margin-left: 37%;">Reset</button>
 				<form action="${pageContext.request.contextPath}/myroom/save"
 					method="post" style="margin: 0px; display: inline">
-					<input type="submit" id="save" value="Save"> <input
-						id="data" name="data" type="hidden">
+					<Button id="save" class="btn btn-default">Save</Button> 
+					<input id="data" name="data" type="hidden">
 				</form>
 
 			</div>
@@ -200,7 +219,7 @@ div:focus {
 								class="badge pull-right">16</span>기타
 						</a></li>
 					</ul>
-					<div style="overflow: auto; width: 100%; height: 85.6%;">
+					<div style="overflow:auto; width: 100%; height: 85.6%;">
 						<ul
 							style="list-style: none; padding-left: 0px; text-align: center; display: block;">
 							<li class="col-sm-3" style="padding-left: 0px;">
@@ -434,8 +453,8 @@ div:focus {
 
 					success : function(result) {
 						console.log(result);
-						//alert("저장됐습니다.");
-						//window.location.replace("${pageContext.request.contextPath}/myroom/codi");
+						alert("저장됐습니다.");
+						window.location.replace("${pageContext.request.contextPath}/myroom/codibook");
 					},
 
 					error : function(XHR, status, error) {
