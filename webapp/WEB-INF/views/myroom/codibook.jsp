@@ -57,7 +57,21 @@
 	width: 100%;
 }
 
+.btn-hover {
+	font-weight: normal;
+	color: #333333;
+	cursor: pointer;
+	background-color: inherit;
+	border-color: transparent;
+}
 
+.btn-hover-alt {
+	font-weight: normal;
+	color: #ffffff;
+	cursor: pointer;
+	background-color: inherit;
+	border-color: transparent;
+}
 </style>
 
 </head>
@@ -72,25 +86,26 @@
 				<div class="modal-header">
 					코디해준 사람의 닉네임과 프사
 					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close" aria-hidden="true">&times;
-					</button>
+						aria-label="Close" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid bts">
 
 						<div class="row">
 							<div class="col-md-6">
-								<label style="margin-left:5%;">추천한 코디</label>
-								<img class="img-responsive showPic" src="" style="border:1px solid #FFD7B9; border-radius: 1em;">
+								<label style="margin-left: 5%;">추천한 코디</label> <img
+									class="img-responsive showPic" src=""
+									style="border: 1px solid #FFD7B9; border-radius: 1em;">
 							</div>
 
 
 							<div class="col-md-6">
-								<label style="margin-left:5%;">실제로 입은 사진</label>
-								<img class="img-responsive" src="" style="border:1px solid #FFD7B9; border-radius: 1em; height:93.4%; background: #FFFEEE;">
+								<label style="margin-left: 5%;">실제로 입은 사진</label> <img
+									class="img-responsive" src=""
+									style="border: 1px solid #FFD7B9; border-radius: 1em; height: 93.4%; background: #FFFEEE;">
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<h1>댓글란</h1>
 						</div>
@@ -104,7 +119,8 @@
 
 
 	<div class="container">
-		<<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
+		<
+		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 
 		<div class="top center">
 			<fieldset class="list">
@@ -120,45 +136,50 @@
 		<div class="bts row">
 			<div class='list-group gallery'>
 				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-					<a class="thumbnail" href="#"
+					<div class="thumbnail">
+						<div
 						data-image="${pageContext.request.contextPath}/assets/img/test.png"
-						data-toggle="modal" data-target="#modal" data-keyboard="true" data-backdrop="false">
-						<img class="img-responsive getSrc" alt=""
-						src="${pageContext.request.contextPath}/assets/img/test.png" />
-						<p class="text-left" style="margin:2%; display:inline;">좌측정렬된 텍스트.</p>
-						<div style="float:right">굿,채택</div>
-					</a>
-				</div>
-				<!-- col-6 / end -->
-				<!-- col-6 / end -->
-				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-					<a class="thumbnail" href="#" data-toggle="modal"
-						data-target="#modal"> <img class="img-responsive getSrc"
-						alt=""
-						src="${pageContext.request.contextPath}/assets/img/test.png" />
-						<div class="text-left">
-							<small class='text-muted'>Image Title</small>
-						</div> <!-- text-right / end -->
-					</a>
-				</div>
-				<!-- col-6 / end -->
-				<!-- col-6 / end -->
-				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-					<div class="thumbnail" href="#modal" name="test"
-						data-toggle="modal">
+						data-toggle="modal" data-target="#modal" data-keyboard="true"
+						data-backdrop="false">
 						<img class="img-responsive getSrc" alt=""
 							src="${pageContext.request.contextPath}/assets/img/test.png" />
-						<div class="text-left">
-							<small class='text-muted'>Image Title</small>
+						<p class="text-left" style="margin: 2%;">좌측정렬된
+							텍스트.</p>
 						</div>
-						<!-- text-right / end -->
+						<div style="margin: 2%; display: inline;" align="right">
+							<a href="#" class="btn btn-sm btn-hover btn-success" ><span class="glyphicon glyphicon-check"></span></a>
+							<a href="#" class="btn btn-sm btn-hover btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span></a> 
+						</div>
 					</div>
+						
 				</div>
-				<!-- col-6 / end -->
+			<!-- col-6 / end -->
+			<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+				<a class="thumbnail" href="#" data-toggle="modal"
+					data-target="#modal"> <img class="img-responsive getSrc" alt=""
+					src="${pageContext.request.contextPath}/assets/img/test.png" />
+					<div class="text-left">
+						<small class='text-muted'>Image Title</small>
+					</div> <!-- text-right / end -->
+				</a>
 			</div>
-			<!-- list-group / end -->
+			<!-- col-6 / end -->
+			<!-- col-6 / end -->
+			<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+				<div class="thumbnail" href="#modal" name="test" data-toggle="modal">
+					<img class="img-responsive getSrc" alt=""
+						src="${pageContext.request.contextPath}/assets/img/test.png" />
+					<div class="text-left">
+						<small class='text-muted'>Image Title</small>
+					</div>
+					<!-- text-right / end -->
+				</div>
+			</div>
+			<!-- col-6 / end -->
 		</div>
-		<!-- row / end -->
+		<!-- list-group / end -->
+	</div>
+	<!-- row / end -->
 	</div>
 
 
