@@ -72,10 +72,15 @@
 	background-color: inherit;
 	border-color: transparent;
 }
-
+.prifile_photo {
+	border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
 .comments-list .comment .avatar {
-	width: 35px;
-	height: 35px;
+	border-radius: 50%;
+    width: 50px;
+    height: 50px;
 }
 
 .comments-list .comment .comment-heading {
@@ -99,7 +104,7 @@
 }
 
 .comments-list .comment .comment-body {
-	margin-left: 50px;
+	margin-left: 60px;
 }
 
 .comments-list .comment>.comments-list {
@@ -110,6 +115,9 @@
 	color: #454545;
 }
 
+ul li {
+	border-bottom: 1px dashed black;
+}
 
 </style>
 
@@ -153,7 +161,7 @@
 									href="#"><i class="glyphicon glyphicon-edit"></i></a>
 								</span>
 							</div>
-							<ul class="comments-list">
+							<ul class="comments-list" style="padding-left:2%; padding-right:2%; list-style:none; width:100%;">
 								<li class="comment">
 									<a class="pull-left" href="#">
 										<img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
@@ -178,7 +186,6 @@
 
 
 	<div class="container">
-		<
 		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 
 		<div class="top center">
@@ -199,20 +206,25 @@
 						<div
 							data-image="${pageContext.request.contextPath}/assets/img/test.png"
 							data-toggle="modal" data-target="#modal" data-keyboard="true"
-							data-backdrop="false">
+							data-backdrop="false">					
 							<img class="img-responsive getSrc" alt=""
-								src="${pageContext.request.contextPath}/assets/img/test.png" />
-							<p class="text-left" style="margin: 2%;">좌측정렬된 텍스트.</p>
+								src="${pageContext.request.contextPath}/assets/img/test.png" style="cursor:pointer"/>
 						</div>
-						<div style="margin: 2%;">
+						<div class="row">
+						<div class="col-md-8">					
+							<p class="text-left" style="margin: 2%;"><img class="prifile_photo" src="http://bootdey.com/img/Content/user_1.jpg" alt="프로필사진" style="margin-right:10px;">A씨</p>
+							
+						</div>
+						<div class="col-md-4" style="padding-top:2%; padding-left:auto;">
 							<button class="btn btn-sm btn-hover chsbtn"
-								style="border: 1px solid #000000">
+								style="border: 1px solid black; float:right;">
 								<span class="glyphicon glyphicon-check"></span>
 							</button>
 							<button class="btn btn-sm btn-hover btn-primary likebtn"
-								style="display: inline;" id="like4">
+								style="display: inline; float:right; margin-top:5%" id="like4">
 								<span class="glyphicon glyphicon-thumbs-up"><div id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
 							</button>
+						</div>
 						</div>
 					</div>
 
@@ -237,12 +249,7 @@
 								<span class="glyphicon glyphicon-thumbs-up"><div
 										id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
 							</button>
-
 						</div>
-						<!-- <span class="pull-right">
-                        <i id="like4" class="glyphicon glyphicon-thumbs-up"></i> <div id="like4-bs3"></div>
-                        <i id="dislike4" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike4-bs3"></div>
-                    	</span> -->
 					</div>
 
 				</div>
@@ -272,6 +279,30 @@
                         <i id="like4" class="glyphicon glyphicon-thumbs-up"></i> <div id="like4-bs3"></div>
                         <i id="dislike4" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike4-bs3"></div>
                     	</span> -->
+					</div>
+
+				</div>
+				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+					<div class="thumbnail">
+						<div
+							data-image="${pageContext.request.contextPath}/assets/img/test2.png"
+							data-toggle="modal" data-target="#modal" data-keyboard="true"
+							data-backdrop="false">
+							<img class="img-responsive getSrc" alt=""
+								src="${pageContext.request.contextPath}/assets/img/test2.png" />
+							<p class="text-left" style="margin: 2%;">좌측정렬된 텍스트.</p>
+						</div>
+						<div style="margin: 2%;">
+							<button class="btn btn-sm btn-hover chsbtn"
+								style="border: 1px solid #000000">
+								<span class="glyphicon glyphicon-check"></span>
+							</button>
+							<button class="btn btn-sm btn-hover btn-primary likebtn"
+								style="display: inline;" id="like4">
+								<span class="glyphicon glyphicon-thumbs-up"><div
+										id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
+							</button>
+						</div>
 					</div>
 
 				</div>
