@@ -110,7 +110,7 @@
               	<a class="nav-link text-uppercase text-expanded" href="blog.html">market</a>
             </li>
             <li class="nav-item px-lg-4">
-              	<a class="nav-link text-uppercase text-expanded" href="contact.html">service center</a>
+              	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/center/list">service center</a>
             </li>
         </ul>
         </div>
