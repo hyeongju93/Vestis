@@ -399,13 +399,13 @@ div:focus {
 	$("#save").click(function() {
 		event.preventDefault();
 
-		var choice = new Array();
+		var chsitems = new Array();
 		$.each($("[name=img]"), function(index, item) {
 			console.log(index + "번째 요소 : " + item.src);
-			choice.push(item.src);
+			chsitems.push(item.src);
 		});
 
-		console.log(choice)
+		console.log(chsitems)
 		//이미지 만들기
 		html2canvas($(".left-box"), {
 			onrendered : function(canvas) {
@@ -420,7 +420,7 @@ div:focus {
 				jQuery.ajaxSettings.traditional = true;
 				var allData = {
 					"data" : $("#canvas").serialize(),
-					"choice" : JSON.stringify(choice)
+					"choice" : JSON.stringify(chsitems)
 				};
 				jb.ajax({
 					url : "${pageContext.request.contextPath}/myroom/save",
