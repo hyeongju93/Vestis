@@ -15,14 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.vestis.repository.MyRoomService;
-
 @Controller
 @RequestMapping("/myroom")
 public class MyRoomController {
-	@Autowired
-	private MyRoomService myRoomService;
-
 	@RequestMapping(value = "/main")
 	public String main() {
 		return "/myroom/main";
