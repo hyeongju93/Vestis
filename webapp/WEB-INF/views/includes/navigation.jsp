@@ -31,7 +31,6 @@
       <p>point:100</p>
       <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</p>
       
-   	
    	</div> 
    	
    	<div style="text-align:center">
