@@ -28,11 +28,6 @@
 	rel="stylesheet">
 
 <style>
-.sub-menu {
-	width: 120px;
-	height: 800px;
-	float: left;
-}
 
 .tb {
 	margin-top: 20px;
@@ -120,30 +115,7 @@
 
 	<div class="container">
 		<!-- 서브메뉴 -->
-		<div class="sub-menu bg-faded">
-			<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-
-			<div style="text-align: center">
-				<img src="${pageContext.request.contextPath }/assets/img/f.jpg"
-					class="image-circle top" />
-				<p>jisoo</p>
-				<p>point:100</p>
-				<p>
-					<a href="${pageContext.request.contextPath }/myroom/clothes">옷장
-				</p>
-			</div>
-
-			<div style="text-align: center">
-				<p>
-					<a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a>
-				</p>
-				<p>
-					<a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a>
-				</p>
-			</div>
-
-		</div>
-		<!-- 서브메뉴 -->
+		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 
 
 		<div class="container">

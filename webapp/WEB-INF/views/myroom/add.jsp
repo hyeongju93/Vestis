@@ -4,14 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <title>add</title>
-
 	<!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
@@ -23,11 +21,7 @@
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
 
 <style>
-.sub-menu {
-	width:120px;
-	height:800px;
-	float:left;
-} 
+
 .co{
 	display:flex;
 	width:80%;
@@ -43,9 +37,65 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+
+.tb {
+	margin-top: 20px;
+}
+
+/*  #formdiv {
+  text-align: center;
+}
+#file {
+  color: green;
+  padding: 5px;
+  border: 1px dashed #123456;
+  background-color: #f9ffe5;
+}
+#img {
+  width: 17px;
+  border: none;
+  height: 17px;
+  margin-left: -20px;
+  margin-bottom: 191px;
+}
+.upload {
+  width: 100%;
+  height: 30px;
+}
+.previewBox {
+  text-align: center;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  float: left;
+}
+.previewBox img {
+  height: 150px;
+  width: 150px;
+  padding: 5px;
+  border: 1px solid rgb(232, 222, 189);
+}
+.delete {
+  color: red;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  width: 20px;
+  height:  20px;
+  border-radius: 50%;
+  background: #ccc;
+}  */
+
+
 </style>
 
-
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
 <script>
 function preview_images() 
 {
@@ -63,14 +113,7 @@ function preview_images()
 
 	<div class="container" >
 		<!-- 서브메뉴 -->
-		<div class="sub-menu bg-faded">
-			<img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" ></img>
-			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle "/>
-		      <p>jisoo</p>
-		      <p>point:100</p>
-		      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</p>
-	    	</div> 
-	  	</div>
+		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 	  	
 	  	 <div class=" co bg-faded p-4 my-4 ro">
         
@@ -83,7 +126,7 @@ function preview_images()
 			
 			
 			
-		
+		<div class="row tb">
 		 <form action="multiupload.php" method="post" enctype="multipart/form-data">
 		  <div class="col-md-6">
 		      <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();" multiple/>
@@ -98,41 +141,9 @@ function preview_images()
  
      	
          </div>
-
-<%-- <div class="container">
-
-	
-      <div class="bg-faded p-4 my-4">
-        
-      <table class="table table-strip" id="tb">
-         <tr>
-            <th style="text-align: center">번호</th>
-            <th style="text-align: center">제목</th>
-            <th style="text-align: center">작성자</th>
-            <th style="text-align: center">작성일</th>
-            <th style="text-align: center">&nbsp;</th>
-         </tr>
-         <c:forEach items="${list }" var="vo">
-            <tr>
-               <td style="text-align: center">${vo.no }</td>
-               <td style="text-align: center"><a
-                  href="${pageContext.request.contextPath }/center/read/${vo.no }">${vo.title }</a></td>
-               <td style="text-align: center">관리자</td>
-               <td style="text-align: center">${vo.regDate }</td>
-               <td></td>
-            </tr>
-         </c:forEach>
- 
-
-    </div> --%>
-
-
-
-		
-		
 	</div>
 
-<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
  	
 
 </body>

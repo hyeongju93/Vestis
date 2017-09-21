@@ -13,7 +13,7 @@
 
 <title>My room</title>
 
-<!-- Bootstrap core CSS -->
+	<!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	
 	
@@ -25,11 +25,7 @@
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
 
 <style>
-.sub-menu {
-	width:120px;
-	height:800px;
-	float:left;
-} 
+
 .photo {
 	float:right;
 	width:40%;
@@ -55,6 +51,8 @@
 	
 }
  */
+ 
+
 
 </style>
 
@@ -67,26 +65,10 @@
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<div class="container" >
-		<!-- 서브메뉴 -->
-		<div class="sub-menu bg-faded">
-			<img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" />
-			<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle "/>
-			
-		      <p>jisoo</p>
-		      <p>point:100</p>
-		      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</p>
-		      
-	    	
-	    	</div> 
-	    	
-	    	<div style="text-align:center">
+	
+	<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 		
-		      <p><a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a></p>
-		      <p><a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a></p>
-		      
-	    	</div> 
-	    
-		</div>
+		
 					
 					
 		<!-- 사진 전체틀1 -->
