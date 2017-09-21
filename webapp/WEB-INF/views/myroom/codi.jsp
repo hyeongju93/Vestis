@@ -13,15 +13,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script
-	src="https://github.com/niklasvh/html2canvas/releases/download/v0.5.0-beta4/html2canvas.min.js"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+		
 <link rel="stylesheet" type="text/css"
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" />
 
@@ -144,31 +136,8 @@ div:focus {
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<div class="container">
-		<div class="sub-menu bg-faded none ">
-
-			<div style="text-align: center">
-				<img src="${pageContext.request.contextPath }/assets/img/f.jpg"
-					class="image-circle top" />
-
-				<p>jisoo</p>
-				<p>point:100</p>
-				<p>옷장</p>
-
-
-			</div>
-
-			<div style="text-align: center">
-
-				<p>
-					<a href="${pageContext.request.contextPath }/myroom/codibook">코디북</a>
-				</p>
-				<p>
-					<a href="${pageContext.request.contextPath }/myroom/codi">코디하기</a>
-				</p>
-
-			</div>
-
-		</div>
+		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
+		
 		<div class="codi-space">
 			<div id="row">
 				<div class="col-md-12">
@@ -178,7 +147,7 @@ div:focus {
 
 			<div class="bts" style="margin-top: 27px; margin-bottom:5px;">
 				<button id="reset" class="btn btn-default" style="margin-left: 37%;">Reset</button>
-				<form action="${pageContext.request.contextPath}/myroom/save"
+				<form id="canvas" action="${pageContext.request.contextPath}/myroom/save"
 					method="post" style="margin: 0px; display: inline">
 					<Button id="save" class="btn btn-default">Save</Button> 
 					<input id="data" name="data" type="hidden">
@@ -285,6 +254,14 @@ div:focus {
 	});
 </script>
 
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	
 <!-- 옷 이미지에 대한 자바스크립트 -->
 <script type="text/javascript">
 	//옷 이미지 드래그
@@ -414,6 +391,9 @@ div:focus {
 	});
 </script>
 
+<script
+	src="https://github.com/niklasvh/html2canvas/releases/download/v0.5.0-beta4/html2canvas.min.js"></script>
+	
 <!-- 왼쪽 공간에 넣은 이미지를 저장하기 위한 자바스크립트 -->
 <script type="text/javascript">
 	$("#save").click(function() {
@@ -439,7 +419,7 @@ div:focus {
 				var jb = jQuery.noConflict();
 				jQuery.ajaxSettings.traditional = true;
 				var allData = {
-					"data" : $("form").serialize(),
+					"data" : $("#canvas").serialize(),
 					"choice" : JSON.stringify(choice)
 				};
 				jb.ajax({
