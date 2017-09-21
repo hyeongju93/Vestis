@@ -6,7 +6,7 @@
 
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  background: url('../img/bg10.jpg') no-repeat center center fixed;
+  background: url('../img/bg10.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -22,13 +22,16 @@ h1 {
   
 }
 
-
-
 .tagline-upper {
   font-size: 5rem;
   font-weight: 700;
   line-height: 1;
   
+}
+
+.login_menu {
+	height:30px;
+	font-size:18px;
 }
 
 .tagline-lower {
@@ -67,4 +70,16 @@ hr.divider {
 
 .map-container iframe.clicked {
   pointer-events: auto;
+}
+
+
+.image-circle{
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+}
+
+.clear{
+	clear:both;
 }
