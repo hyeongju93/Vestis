@@ -3,7 +3,6 @@
 <configuration>
 	<typeAliases>
 	</typeAliases>
-
 	<mappers>
 	<mapper resource="mybatis/mappers/center.xml" />
 	<mapper resource="mybatis/mappers/qa.xml" />
