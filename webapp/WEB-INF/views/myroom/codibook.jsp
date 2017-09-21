@@ -115,8 +115,8 @@
 	color: #454545;
 }
 
-ul li {
-	border-bottom: 1px dashed black;
+.comment {
+	border-bottom: 1px dashed gray;
 }
 
 </style>
@@ -131,7 +131,7 @@ ul li {
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					코디해준 사람의 닉네임과 프사
+					<p class="text-left" style="margin-bottom:0;"><img class="prifile_photo" src="http://bootdey.com/img/Content/user_1.jpg" alt="프로필사진" style="margin-right:10px;">A씨</p>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close" aria-hidden="true">&times;</button>
 				</div>
@@ -209,7 +209,7 @@ ul li {
 							data-backdrop="false">					
 							<img class="img-responsive getSrc" alt=""
 								src="${pageContext.request.contextPath}/assets/img/test.png" style="cursor:pointer"/>
-						</div>
+						</div> 
 						<div class="row">
 						<div class="col-md-8">					
 							<p class="text-left" style="margin: 2%;"><img class="prifile_photo" src="http://bootdey.com/img/Content/user_1.jpg" alt="프로필사진" style="margin-right:10px;">A씨</p>
@@ -324,6 +324,11 @@ ul li {
 			console.log("hello");
 			var src = $(this).attr('src');
 
+			//프로필 사진과 닉네임을 가져와야한다
+			//db를 통해서 할것이므로 눌렀을 때 코디번호를 모달창에 전해야한다.
+			
+			
+			
 			$('.showPic').attr('src', src);
 		});
 
