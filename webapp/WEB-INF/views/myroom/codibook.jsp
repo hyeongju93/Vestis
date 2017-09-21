@@ -161,7 +161,7 @@ ul li {
 									href="#"><i class="glyphicon glyphicon-edit"></i></a>
 								</span>
 							</div>
-							<ul class="comments-list" style="padding-left:2%; padding-right:2%; list-style:none; width:100%;">
+							<ul class="comments-list" style="padding-left:3.2%; padding-right:3.2%; list-style:none; width:100%;">
 								<li class="comment">
 									<a class="pull-left" href="#">
 										<img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
