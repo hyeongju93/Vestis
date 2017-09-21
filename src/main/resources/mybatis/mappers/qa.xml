@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qa">
+	
+ 	<select id="getlist" parameterType="map"  resultType="com.vestis.vo.QaVo">
+	<![CDATA[
+		select *
+from (select rownum rn,no,nicname,regDate,title,personNO
+from (select b.no no,nicname,reg_date regDate,title,person_NO personNO 
+from center b,person r 
+where b.person_NO=r.no and flag=1
+order by b.no))
+where rn<=#{endNum} and rn>#{startNum}
+order by rn desc
+	]]>
+	</select>
+	
+	<select id="getlist2" parameterType="map"  resultType="com.vestis.vo.QaVo">
+	<![CDATA[
+		select *
+from (select rownum rn,no,nicname,regDate,title,personNO
+from (select b.no no,nicname,reg_date regDate,title,person_NO personNO 
+from center b,person r 
+where b.person_NO=r.no and flag=2
+order by b.no))
+where rn<=#{endNum} and rn>#{startNum}
+order by rn desc
+	]]>
+	</select>
+
+	
+	
+	
+	<select id="gettotalcount0"  resultType="int">
+		<![CDATA[
+			select count(*) from center
+			where flag=0
+		]]>
+	</select>
+	
+	<select id="gettotalcount1"  resultType="int">
+		<![CDATA[
+			select count(*) from center
+			where flag=1
+		]]>
+	</select>
+	
+	<select id="gettotalcount2"  resultType="int">
+		<![CDATA[
+			select count(*) from center
+			where flag=2
+		]]>
+	</select>
+	
+	<select id="getqa" parameterType="com.vestis.vo.QaVo" resultType="com.vestis.vo.QaVo">
+		<![CDATA[
+			select title,content,person_NO personNO,no
+			from center
+			where no=#{no}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="com.vestis.vo.QaVo">
+		insert into center
+		values(seq_center_no.nextval,#{title},#{content},sysdate,#{personNO})
+	</insert>
+	
+	<update id="update" parameterType="com.vestis.vo.QaVo">
+		update center
+		set title=#{title}, content=#{content}
+		where no=#{no}
+	</update>
+	
+	
+	<delete id="delete" parameterType="int">
+		delete from center
+		where no=#{no}
+	</delete>
+	
+	<!-- <update id="count" parameterType="com.mysite.vo.QaVo">
+		update center
+		set hit=hit+1
+		where no=#{no}
+	</update> -->
+	
+	<select id="searchcount"  parameterType="map" resultType="int">
+		<![CDATA[
+			select count(*)
+from (select *
+        from center b, person r
+        where b.person_NO=r.no)
+where title like #{nicname} or nicname like  #{nicname}
+		]]>
+	</select>
+
+	<select id="search"  parameterType="map" resultType="com.vestis.vo.QaVo">
+	<![CDATA[
+		select *
+from (select rownum rn,no,nicname,regDate,title,personNO
+from (select b.no no,nicname,reg_date regDate,title,person_NO personNO 
+from center b,person r 
+where b.person_NO = r.no
+order by b.no)
+where title like #{nicname} or nicname like #{nicname})
+where rn<=#{endNum} and rn>#{startNum}
+order by rn desc
+	]]>
+	</select>
+ 
+</mapper>
