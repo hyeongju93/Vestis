@@ -88,6 +88,7 @@ public class MyRoomController {
 	         System.out.println(weather[indexNo]);
 	         model.addAttribute("temp", temp);
 	         model.addAttribute("weather", weather[indexNo]);
+	         model.addAttribute("weatherNo", indexNo);
 	      } catch(Exception e) {
 	      
 	      }
@@ -107,6 +108,7 @@ public class MyRoomController {
 	
 			model.addAttribute("temp", temperature);
 			model.addAttribute("weather", weather[ran]);
+			model.addAttribute("weatherNo", ran);
 		}
 		return "/myroom/codi";
 	}

@@ -1,5 +1,8 @@
 package com.vestis.vo;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class CodiWeatherVo {
 	private int no;
 	private int weatherNo;

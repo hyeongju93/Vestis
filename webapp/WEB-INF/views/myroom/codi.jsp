@@ -151,7 +151,7 @@ div:focus {
 					method="post" style="margin: 0px; display: inline">
 					<Button id="save" class="btn btn-default">Save</Button> 
 					<input id="data" name="data" type="hidden">
-					<input id="info_weather" name="weather" type="hidden" value="${weather }">
+					<input id="info_weather" name="weather" type="hidden" value="${weatherNo }">
 					<input id="info_temp" name="temp" type="hidden" value="${temp }">
 				</form>
 
