@@ -64,6 +64,7 @@
 					</div>
 					<div class="col-md-1">
 						<a data-role="button" class="loginhead" id="logout" href="${pageContext.request.contextPath }/user/logout">로그아웃</a>
+					</div>
 					</c:otherwise>
 			</c:choose>
 		
