@@ -35,8 +35,8 @@
    	
    	<div style="text-align:center">
 
-      <p><a href="${pageContext.request.contextPath }/myroom/codibook/${authUser.no}">코디북</a></p>
-      <p><a href="${pageContext.request.contextPath }/myroom/codi/${authUser.no}">코디하기</a></p>
+      <p><a href="${pageContext.request.contextPath }/myroom/codibook/${userNo}">코디북</a></p>
+      <p><a href="${pageContext.request.contextPath }/myroom/codi/${userNo}">코디하기</a></p>
       
    	</div> 
    

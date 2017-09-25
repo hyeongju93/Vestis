@@ -141,7 +141,7 @@ div:focus {
 		<div class="codi-space">
 			<div id="row">
 				<div class="col-md-12">
-					<h10 class="text-left" style="color:white;">메인>My Room>코디북>코디하기</h10>
+					<h10 class="text-left" style="color:white;">>>메인>My Room>코디북>코디하기</h10>
 				</div>
 			</div>
 
@@ -432,7 +432,7 @@ div:focus {
 				
 				console.log(allData);
 				jb.ajax({
-					url : "${pageContext.request.contextPath}/myroom/save",
+					url : "${pageContext.request.contextPath}/myroom/save/${userNo}",
 					type : "POST",
 					
 					data : allData,

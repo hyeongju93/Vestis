@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myroom">
+	<insert id="insertWeather" parameterType="com.vestis.vo.ClothWeatherVo">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_guestbook_no.nextval from dual 
+		</selectKey>
+		<![CDATA[
+			insert into cloth_weather
+			values(#{no}, #{weather}, #{temp})			
+		]]>
+	</insert>
+</mapper>

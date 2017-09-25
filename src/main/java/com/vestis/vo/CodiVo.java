@@ -2,11 +2,10 @@ package com.vestis.vo;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
 public class CodiVo {
 	private int no;
-	private int userNo;
-	private int otherNo;
+	private int userNo;				//로그인한 유저
+	private int otherNo;			//코디 추천받은 유저
 	private int codiPhotoNo;		//실제 입은 사진 
 	private int codiNo;				//코디한 사진
 	private int choose;

@@ -15,6 +15,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +24,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.vestis.service.MyRoomService;
 import com.vestis.vo.UserVo;
 
 @Controller
 @RequestMapping("/myroom")
 public class MyRoomController {
+	@Autowired
+	MyRoomService myRoomService;
+	
 	@RequestMapping(value = "/{userNo}")
 	public String main(@PathVariable("userNo") int userNo, Model model) {
 		model.addAttribute("userNo", userNo);
@@ -90,6 +95,7 @@ public class MyRoomController {
 	         model.addAttribute("temp", temp);
 	         model.addAttribute("weather", weather[indexNo]);
 	         model.addAttribute("weatherNo", indexNo);
+	         model.addAttribute("userNo", userNo);
 	      } catch(Exception e) {
 	      
 	      }
@@ -110,16 +116,22 @@ public class MyRoomController {
 			model.addAttribute("temp", temperature);
 			model.addAttribute("weather", weather[ran]);
 			model.addAttribute("weatherNo", ran);
+			model.addAttribute("userNo", userNo);
 		}
 		return "/myroom/codi";
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@RequestParam("data") String binaryData, @RequestParam("choice") String[] choice, @RequestParam("weather") String weather, @RequestParam("temp") String temp)
+	@RequestMapping(value = "/save/{userNo}", method = RequestMethod.POST)
+	public String save(@RequestParam("data") String binaryData, @RequestParam("choice") String[] choice, 
+					   @RequestParam("weather") String weather, @RequestParam("temp") String temper, 
+					   @PathVariable("userNo") int userNo, Model model, HttpSession session)
 			throws Exception {
-		System.out.println(weather + temp);
-		
+		System.out.println(weather + temper);
+		System.out.println(userNo);
+		int temp = Integer.parseInt(temper);
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int authNo = authUser.getNo();
 		
 		binaryData = URLDecoder.decode(binaryData, "UTF-8");
 
@@ -148,11 +160,14 @@ public class MyRoomController {
 		} finally {
 			stream.close();
 		}
+		
+		model.addAttribute("userNo", userNo);
 		return "success";
 	}
 
 	@RequestMapping(value = "/codibook/{userNo}")
-	public String codibook() {
+	public String codibook(@PathVariable("userNo") int userNo, Model model) {
+		model.addAttribute("userNo", userNo);
 		return "/myroom/codibook";
 	}
 	
