@@ -99,7 +99,7 @@
         
         <ul class="navbar-nav mx-auto">
         	<li class="nav-item active px-lg-4">
-            	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom/main">my room
+            	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom/${authUser.no}">my room
                 <span class="sr-only">(current)</span>
               	</a>
             </li>
