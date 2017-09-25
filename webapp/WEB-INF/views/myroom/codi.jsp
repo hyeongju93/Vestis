@@ -151,6 +151,8 @@ div:focus {
 					method="post" style="margin: 0px; display: inline">
 					<Button id="save" class="btn btn-default">Save</Button> 
 					<input id="data" name="data" type="hidden">
+					<input id="info_weather" name="weather" type="hidden" value="${weather }">
+					<input id="info_temp" name="temp" type="hidden" value="${temp }">
 				</form>
 
 			</div>
@@ -159,7 +161,7 @@ div:focus {
 					<div style="float: left;">
 						<img alt="날씨"
 							src="${pageContext.request.contextPath}/assets/img/${weather}.png"
-							style="width: 30%; height: auto;">${temp }
+							style="width: 30%; height: auto;">${temp}
 					</div>
 
 				</div>
@@ -404,7 +406,10 @@ div:focus {
 			console.log(index + "번째 요소 : " + item.src);
 			chsitems.push(item.src);
 		});
-
+		
+		var weather = $("#info_weather");
+		var temp = $("#info_temp");
+		
 		console.log(chsitems)
 		//이미지 만들기
 		html2canvas($(".left-box"), {
@@ -420,17 +425,22 @@ div:focus {
 				jQuery.ajaxSettings.traditional = true;
 				var allData = {
 					"data" : $("#canvas").serialize(),
-					"choice" : JSON.stringify(chsitems)
+					"choice" : JSON.stringify(chsitems),
+					"weather" : $("#info_weather").val(),
+					"temp" : $("#info_temp").val()
 				};
+				
+				console.log(allData);
 				jb.ajax({
 					url : "${pageContext.request.contextPath}/myroom/save",
 					type : "POST",
+					
 					data : allData,
-
+					
 					success : function(result) {
 						console.log(result);
 						alert("저장됐습니다.");
-						window.location.replace("${pageContext.request.contextPath}/myroom/codibook");
+						//window.location.replace("${pageContext.request.contextPath}/myroom/codibook");
 					},
 
 					error : function(XHR, status, error) {
