@@ -37,8 +37,9 @@ public class MyRoomController {
 		//String weather;
 		String[] weather = {"sunny", "cloudy", "rainy", "snow"};
 		
-		
-		int authNo = (session.getAttribute("no")==null)? -1 : (int)session.getAttribute("no");
+		System.out.println(session.getAttribute("authUser.no"));
+		System.out.println(session.getAttributeNames());
+		int authNo = (session.getAttribute("authUser.no")==null)? -1 : (int)session.getAttribute("no");
 		
 		System.out.println(authNo);
 		

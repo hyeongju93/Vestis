@@ -86,7 +86,7 @@
 	</div>
     	
     </div>
-    <a href="${pageContext.request.contextPath }/main/test" class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></a>
+    <a href="${pageContext.request.contextPath }/main" class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></a>
     
     
     <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
