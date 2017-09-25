@@ -134,7 +134,7 @@ div:focus {
 </head>
 <body>
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-
+	
 	<div class="container">
 		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 		
@@ -152,13 +152,13 @@ div:focus {
 					<Button id="save" class="btn btn-default">Save</Button> 
 					<input id="data" name="data" type="hidden">
 					<input id="info_weather" name="weather" type="hidden" value="${weatherNo }">
-					<input id="info_temp" name="temp" type="hidden" value="${temp }">
+					<input id="info_temp" name="temp" type="hidden" value="${temp }">	
 				</form>
 
 			</div>
 			<div id="space">
 				<div class="left-box" style="border-radius: 1em;">
-					<div style="float: left;">
+					<div style="float:left;">
 						<img alt="날씨"
 							src="${pageContext.request.contextPath}/assets/img/${weather}.png"
 							style="width: 30%; height: auto;">${temp}

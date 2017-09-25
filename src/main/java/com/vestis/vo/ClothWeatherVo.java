@@ -3,19 +3,19 @@ package com.vestis.vo;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CodiWeatherVo {
+public class ClothWeatherVo {
 	private int no;
 	private int weatherNo;
 	private int temp;
 	
-	public CodiWeatherVo() {}
+	public ClothWeatherVo() {}
 
-	public CodiWeatherVo(int weatherNo, int temp) {
+	public ClothWeatherVo(int weatherNo, int temp) {
 		this.weatherNo = weatherNo;
 		this.temp = temp;
 	}
 
-	public CodiWeatherVo(int no, int weatherNo, int temp) {
+	public ClothWeatherVo(int no, int weatherNo, int temp) {
 		this.no = no;
 		this.weatherNo = weatherNo;
 		this.temp = temp;

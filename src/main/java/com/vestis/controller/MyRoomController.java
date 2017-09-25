@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.vestis.vo.UserVo;
+
 @Controller
 @RequestMapping("/myroom")
 public class MyRoomController {
@@ -37,15 +39,13 @@ public class MyRoomController {
 		//String weather;
 		String[] weather = {"sunny", "cloudy", "rainy", "snow"};
 		
-		System.out.println(session.getAttribute("authUser.no"));
-		System.out.println(session.getAttributeNames());
-		int authNo = (session.getAttribute("authUser.no")==null)? -1 : (int)session.getAttribute("no");
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		int authNo = authUser.getNo();
 		
 		System.out.println(authNo);
 		
 		//자신의 페이지에서 코디할 경우 지금의 날씨를 알려줌
 		if(userNo == authNo) {
-		//섹션 아이디를 가져와서 자신일 때 현재 날씨로 코디하도록 할 예정
 		 try {
 	         String address="http://apis.skplanetx.com/weather/current/hourly?version=1&city=서울&county=강남구&village=도곡동&appKey=41e1162f-7a4b-3add-8f1b-0a60e13c0a98";
 	         BufferedReader br;
@@ -151,7 +151,7 @@ public class MyRoomController {
 		return "success";
 	}
 
-	@RequestMapping(value = "/codibook")
+	@RequestMapping(value = "/codibook/{userNo}")
 	public String codibook() {
 		return "/myroom/codibook";
 	}
