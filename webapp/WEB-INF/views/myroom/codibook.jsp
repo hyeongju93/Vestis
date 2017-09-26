@@ -348,7 +348,7 @@ position:absolute;
 		<!-- row / end -->
 	</div>
 
-
+<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
 
