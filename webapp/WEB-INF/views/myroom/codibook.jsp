@@ -168,20 +168,20 @@ position:absolute;
 
 						<div class="row" style="height:71%">
 							<div class="col-md-6" >
-								<label style="margin-left: 5%;">추천한 코디</label> <img
+								<label style="margin-left:5%; margin-bottom:3%; margin-top:3%;">추천한 코디</label> <img
 									class="img-responsive showPic" src=""
 									style="border: 1px solid #FFD7B9; border-radius: 1em;">
 							</div>
 
 
-							<div class="col-md-6">
+							<div class="col-md-6 bts">
 								<label style="margin-left:5%; display:inline;">실제로 입은 사진</label> 
 								<form action="" method="post" enctype="multipart/form-data" style="display:inline;">
 									<input type="file" id="fileopen" name="file" accept="image/*" style="display:none;">
-									<button id="inputfilebtn" type="button" style="margin-left:20%;">사진선택</button>
+									<button id="inputfilebtn" class="btn btn-default" type="button" style="margin-left:17%; margin-bottom:3%;">사진선택</button>
 								</form>
-								<button id="saveimgbtn">저장</button>
-								<div style="border: 1px solid #FFD7B9; border-radius: 1em; overflow:hidden; height:93.7%; position:relative;">
+								<button id="saveimgbtn" class="btn btn-default" style="margin-bottom:3%;">저장</button>
+								<div style="border: 1px solid #FFD7B9; border-radius: 1em; overflow:hidden; height:91%; position:relative;">
 									<img
 										id="wearclothimg" class="img-responsive" src="${pageContext.request.contextPath}/assets/img/base_img.png" alt="">
 								</div>
@@ -410,7 +410,6 @@ position:absolute;
 	
 	
 	 $('#fileopen').on('change', function() {
-	        
 	        var ext = $(this).val().split('.').pop().toLowerCase(); //확장자
 	        
 	        //배열에 추출한 확장자가 존재하는지 체크
@@ -424,7 +423,9 @@ position:absolute;
 	            //$('#wearclothimg').slideDown(); //업로드한 이미지 미리보기 
 	            //$(this).slideUp(); //파일 양식 감춤
 	        }
-	    });
+	 });
+	 
+	 $("#saveimgbtn")
 
 </script>
 
