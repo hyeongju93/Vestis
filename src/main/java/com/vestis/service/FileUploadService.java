@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class FileUploadService {
 		System.out.println("filePath: "+filePath);
 		imgVo.setAddress(filePath);
 		
-		uploadDao.upload(imgVo);
+		String imgNo=uploadDao.upload(imgVo);
 		
 		//파일복사 파일패스에 실체가 저장되어 있어야지
 		try {
@@ -69,6 +70,15 @@ public class FileUploadService {
 			e.printStackTrace();
 		}
 		
-		return saveName;
+		return imgNo;
+		
+	}
+	
+	public void add(int valh,int huserNo,int imgNo) {
+		uploadDao.add(valh,huserNo, imgNo);
+	}
+	
+	public List<ImgVo> list() {//보내줄 조건 없고 리스트로 받아
+		return uploadDao.getImglist();
 	}
 }

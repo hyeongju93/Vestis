@@ -17,10 +17,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
+
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
     
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+   <!--  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://www.expertphp.in/js/jquery.form.js"></script>
@@ -95,18 +96,19 @@
   background: #ccc;
 } 
 
+.imgSize{
+	width:400px;
+	height:400px;
+}
+
+.bts .img-responsive {
+  display: block;
+  max-width: 50%;!important;
+  height: auto;
+}
 </style>
 
-<script>
-function preview_images() 
-{
- var total_file=document.getElementById("images").files.length;
- for(var i=0;i<total_file;i++)
- {
-  $('#image_preview').append("<div class='col-md-3'><img class='img-responsive' src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
- }
-}
-</script>
+
 </head>
 <body>
 
@@ -118,23 +120,45 @@ function preview_images()
 	  	
 		<div class=" co bg-faded p-4 my-4 ro">
 		    <div class="lo">
-			<select type="text"	class="form-control left" role="multiselect">
-				<option value="0"   selected="selected">최신순</option>
-				<option value="1" >채택순</option>
-				<option value="2" >좋아요순</option>
-				<option value="http://www.naver.com" >Cart</option>
-			</select> 
+			<select type="text" id="clothNum"	class="form-control left" role="multiselect">
+				<option value="0"   selected="selected">옷 분류</option>
+				<option value="1" >외투</option>
+				<option value="2" >상의</option>
+				<option value="3" >하의</option>
+				<option value="4" >신발</option>
+				<option value="5" >악세사리</option>
+			</select>
 			</div>
 		
-			 <form action="multiupload.php" method="post" enctype="multipart/form-data" >
+			 <form action="${pageContext.request.contextPath }/myroom/upload" method="post" enctype="multipart/form-data" >
 			  <div class="lo">
-			      <input type="file" class="form-control" id="images" name="images[]" onchange="preview_images();" multiple/>
+			      <input type="file" class="form-control" id="images" name="file" onchange="preview_images();" multiple/>
+			      <input id="valh" name="valh" type="hidden"></input>   <!-- 옷종류번호 -->
+			      <input type="hidden" name="huserNo" value="${sessionScope.authUser.no}"></input>
 			  </div>
 			  <div class="lo">
-			      <input type="submit" class="btn btn-primary" name='submit_image' value="Upload Multiple Image"/>
+			      <input type="submit" class="btn btn-primary" name='submit_image' value="submit"/>
 			  </div>
+			  
+			  <script>
+function preview_images() 
+{
+ var total_file=document.getElementById("images").files.length;
+ for(var i=0;i<total_file;i++)
+ {
+  $('#image_preview').append("<div class='col-md-3'><img class='imgSize' src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
+ }
+}
+</script>
 			 </form>
-		
+			 
+			<script type="text/javascript">
+			$('#clothNum').blur(function() {
+				   var val=$('#clothNum').val();
+				   console.log(val);
+				   $('#valh').val(val);
+				   });
+			</script>
 		 	<div class="row" id="image_preview"></div>
          
 		</div>

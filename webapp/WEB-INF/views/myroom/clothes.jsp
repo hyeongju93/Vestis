@@ -14,6 +14,15 @@
 	rel="stylesheet">
 
 
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
 <!-- Custom fonts for this template -->
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
@@ -106,6 +115,51 @@
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+/*** PANEL DEFAULT ***/
+.with-nav-tabs.panel-default .nav-tabs > li > a,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+}
+.with-nav-tabs.panel-default .nav-tabs > .open > a,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > .open > a:focus,
+.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
+    color: #777;
+	background-color: #ddd;
+	border-color: transparent;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.active > a,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.active > a:focus {
+	color: #555;
+	background-color: #fff;
+	border-color: #ddd;
+	border-bottom-color: transparent;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu {
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a {
+    color: #777;   
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+    background-color: #ddd;
+}
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+.with-nav-tabs.panel-default .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+    color: #fff;
+    background-color: #555;
+}
+
+#to {
+	width:40px;
+	height:40px;
+}
 </style>
 </head>
 <body>
@@ -121,54 +175,77 @@
 		<div class="container">
 			<div class="row">
 
-				<select type="text"	class="form-control   tb left" role="multiselect">
+
+
+
+
+<div class="col-md-6">
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1default" data-toggle="tab">Default 1</a></li>
+                            <li><a href="#tab2default" data-toggle="tab">Default 2</a></li>
+                            <li><a href="#tab3default" data-toggle="tab">Default 3</a></li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#tab4default" data-toggle="tab">Default 4</a></li>
+                                    <li><a href="#tab5default" data-toggle="tab">Default 5</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="to" class="tab-pane fade in active" id="tab1default">Default 1</div>
+                        <div id="to" class="tab-pane fade" id="tab2default">Default 2</div>
+                        <div id="to" class="tab-pane fade" id="tab3default">Default 3</div>
+                        <div id="to" class="tab-pane fade" id="tab4default">Default 4</div>
+                        <div id="to" class="tab-pane fade" id="tab5default">Default 5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+				<!--<select type="text"	class="form-control   tb left" role="multiselect">
 					<option value="0"   selected="selected">최신순</option>
 					<option value="1" >채택순</option>
 					<option value="2" >좋아요순</option>
-					<option value="3" >Cart</option>
-				</select> 
+				</select> -->
+				
 				<select type="text" class="form-control multiselect multiselect-icon tb left" role="multiselect">
-					<option value="0" data-icon="glyphicon-picture" selected="selected">최신순</option>
-					<option value="1" data-icon="glyphicon-link">채택순</option>
-					<option value="2" data-icon="glyphicon-pencil">좋아요순</option>
-					<option value="3" data-icon="glyphicon-shopping-cart">Cart</option>
+					<option value="0" data-icon="glyphicon-picture" selected="selected">ALL</option>
+					<option value="1" data-icon="glyphicon-link">OUTER</option>
+					<option value="2" data-icon="glyphicon-pencil">TOP</option>
+					<option value="3" data-icon="glyphicon-shopping-cart">BOTTOMS</option>
+					<option value="3" data-icon="glyphicon-shopping-cart">SHOES</option>
+					<option value="3" data-icon="glyphicon-shopping-cart">ACCESSORY</option>
 				</select>
+				
+				
 				<button type="button" onclick="location.href='add'"
 					style="margin-left: 35%;" class="tb">등록</button>
 			</div>
-
+			
+		
+		<c:forEach items="${list}" var="vo">
 			<div class="row">
-				<span class="col-lg-3 col-sm-12 picture tb"> <img
-					class="img-thumbnail"
-					src="${pageContext.request.contextPath}/assets/img/j.jpg"">
-				</span> <span class="col-lg-3 col-sm-12 tb "> <img
-					class="img-thumbnail"
-					src="${pageContext.request.contextPath}/assets/img/j.jpg"">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail"
-					src="${pageContext.request.contextPath}/assets/img/j.jpg"">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail"
-					src="${pageContext.request.contextPath}/assets/img/j.jpg">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span> <span class="col-lg-3 col-sm-12 tb "> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span> <span class="col-lg-3 col-sm-12 tb"> <img
-					class="img-thumbnail" src="//placehold.it/200x200">
-				</span>
+		
+				<span class="col-lg-3 col-sm-12 tb "> 
+				<img class="img-thumbnail" src="${pageContext.request.contextPath }/upload/${vo.dbName}">
+				</span> 
 			</div>
-		</div>
+		</c:forEach>
+	</div>
 
 	</div>
 

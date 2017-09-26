@@ -9,5 +9,26 @@
 			values(seq_img_no.nextval,#{address},#{name},#{type},#{sizes},#{dbName})
 		]]>
 	</insert>
+										<!-- 보내는거	 받는거 -->
+	 <select id="selectByImg" parameterType="int" resultType="String">
+		<![CDATA[
+			select no
+			from img
+			where db_name=#{dbName}
+		]]>
+	</select>
 	
+	<insert id="add" parameterType="map">
+		<![CDATA[
+			insert into cloth
+			values(seq_img_no.nextval,#{personNo},#{typeNo},#{imgNo},0)
+		]]>
+	</insert>
+	
+	<select id="getList" resultType="com.vestis.vo.ImgVo">
+	<![CDATA[
+		select address, type, db_name dbName
+		from img
+	]]>
+	</select> 
 </mapper>

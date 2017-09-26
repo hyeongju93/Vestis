@@ -2,6 +2,7 @@ package com.vestis.controller;
 
 import java.io.FileOutputStream;
 import java.net.URLDecoder;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -14,10 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.vestis.service.FileUploadService;
+import com.vestis.vo.ImgVo;
 
 @Controller
 @RequestMapping("/myroom")
 public class MyRoomController {
+	
+	@Autowired
+	private FileUploadService fileUploadService;
+	
 	@RequestMapping(value = "/main")
 	public String main() {
 		return "/myroom/main";
@@ -121,10 +130,34 @@ public class MyRoomController {
 	}
 	
 	@RequestMapping(value="/clothes")
-	public String clothes() {
+	public String clothes(Model model) {
+		List<ImgVo> list1= fileUploadService.list();
+		System.out.println(list1.toString());
+		System.out.println(list1);
+		model.addAttribute("list",list1);
+		
 		return "/myroom/clothes";
 	}
 
+	@RequestMapping(value="/upload")
+	public String upload(@RequestParam("file") MultipartFile file, Model model, @RequestParam("valh") int valh, @RequestParam("huserNo") int huserNo) {
+		
+		System.out.println(valh);	//옷 타입 번호
+		String imgNo=fileUploadService.restore(file);
+		
+		System.out.println(huserNo);	//올린 사람 번호
+		
+		System.out.println(imgNo);	//이미지 번호 
+		
+		int no=Integer.parseInt(imgNo);
+		fileUploadService.add(valh, huserNo, no);
+		
+		List<ImgVo> list1= fileUploadService.list();
+		model.addAttribute("list",list1);
+		
+		return "myroom/clothes";
+	}
+	
 
 	@RequestMapping(value="/add")
 	public String add() {
