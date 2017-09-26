@@ -143,7 +143,7 @@ div:focus {
 				<div class="col-md-12">
 					<h10 class="text-left" style="color:white;">>>메인>My Room>코디북>코디하기</h10>
 				</div>
-			</div>
+			</div>  
 
 			<div class="bts" style="margin-top: 27px; margin-bottom:5px;">
 				<button id="reset" class="btn btn-default" style="margin-left: 37%;">Reset</button>

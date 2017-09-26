@@ -119,6 +119,34 @@
 	border-bottom: 1px dashed gray;
 }
 
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    0px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow:         0px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+.btn-default:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-info:active,
+.btn-warning:active,
+.btn-danger:active {
+    margin-top: 3px;
+    margin-bottom: -3px;
+}
+
+#wearclothimg {
+position:absolute;
+            max-width:100%; max-height:100%;
+            width:auto; height:auto;
+            margin:auto;
+            top:0; bottom:0; left:0; right:0;
+}
 </style>
 
 </head>
@@ -138,8 +166,8 @@
 				<div class="modal-body">
 					<div class="container-fluid bts">
 
-						<div class="row">
-							<div class="col-md-6">
+						<div class="row" style="height:71%">
+							<div class="col-md-6" >
 								<label style="margin-left: 5%;">추천한 코디</label> <img
 									class="img-responsive showPic" src=""
 									style="border: 1px solid #FFD7B9; border-radius: 1em;">
@@ -147,9 +175,16 @@
 
 
 							<div class="col-md-6">
-								<label style="margin-left: 5%;">실제로 입은 사진</label> <img
-									class="img-responsive" src="" alt=" "
-									style="border: 1px solid #FFD7B9; border-radius: 1em; height: 94%; background: #FFFEEE;">
+								<label style="margin-left:5%; display:inline;">실제로 입은 사진</label> 
+								<form action="" method="post" enctype="multipart/form-data" style="display:inline;">
+									<input type="file" id="fileopen" name="file" accept="image/*" style="display:none;">
+									<button id="inputfilebtn" type="button" style="margin-left:20%;">사진선택</button>
+								</form>
+								<button id="saveimgbtn">저장</button>
+								<div style="border: 1px solid #FFD7B9; border-radius: 1em; overflow:hidden; height:93.7%; position:relative;">
+									<img
+										id="wearclothimg" class="img-responsive" src="${pageContext.request.contextPath}/assets/img/base_img.png" alt="">
+								</div>
 							</div>
 						</div>
 
@@ -326,9 +361,6 @@
 
 			//프로필 사진과 닉네임을 가져와야한다
 			//db를 통해서 할것이므로 눌렀을 때 코디번호를 모달창에 전해야한다.
-			
-			
-			
 			$('.showPic').attr('src', src);
 		});
 
@@ -348,6 +380,52 @@
 
 		});
 	});
+</script>
+
+<script type="text/javascript">
+	//이벤트 발생시 첨부파일 열기버튼이 눌리도록
+	function eventOccur(evEle, evType){
+		 if (evEle.fireEvent) {
+		 	evEle.fireEvent('on' + evType);
+		 } else {
+			 //MouseEvents가 포인트 그냥 Events는 안됨~ ??
+			 var mouseEvent = document.createEvent('MouseEvents');
+			 /* API문서 initEvent(type,bubbles,cancelable) */
+			 mouseEvent.initEvent(evType, true, false);
+			 var transCheck = evEle.dispatchEvent(mouseEvent);
+			 if (!transCheck) {
+			 //만약 이벤트에 실패했다면
+			 	console.log("클릭 이벤트 발생 실패!");
+		 	}
+	 	}
+	}
+	
+	$("#inputfilebtn").on("click", function() {	
+		//e.preventDefault();    
+		//eventOccur(document.getElementById('orgFile'),'click');
+		console.log("click");
+		//eventOccur($("#fileopen"), 'click');
+		$("#fileopen").click();		
+	});
+	
+	
+	 $('#fileopen').on('change', function() {
+	        
+	        var ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+	        
+	        //배열에 추출한 확장자가 존재하는지 체크
+	        if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+	            resetFormElement($(this)); //폼 초기화
+	            window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+	        } else {
+	            file = $('#fileopen').prop("files")[0];
+	            blobURL = window.URL.createObjectURL(file);
+	            $('#wearclothimg').attr('src', blobURL);
+	            //$('#wearclothimg').slideDown(); //업로드한 이미지 미리보기 
+	            //$(this).slideUp(); //파일 양식 감춤
+	        }
+	    });
+
 </script>
 
 </html>

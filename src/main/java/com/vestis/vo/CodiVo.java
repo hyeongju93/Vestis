@@ -1,7 +1,5 @@
 package com.vestis.vo;
 
-import org.springframework.stereotype.Repository;
-
 public class CodiVo {
 	private int no;
 	private int userNo;				//로그인한 유저

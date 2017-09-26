@@ -1,6 +1,9 @@
 package com.vestis.controller;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -9,6 +12,7 @@ import java.net.URLDecoder;
 import java.util.Random;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -23,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.vestis.service.MyRoomService;
 import com.vestis.vo.UserVo;
@@ -129,10 +134,16 @@ public class MyRoomController {
 			throws Exception {
 		System.out.println(weather + temper);
 		System.out.println(userNo);
+
+		temper = temper.substring(0,temper.length()-2);
+
 		int temp = Integer.parseInt(temper);
+		System.out.println(temp);
+		int weatherNo = Integer.parseInt(weather);
+		System.out.println(weatherNo);
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		int authNo = authUser.getNo();
-		
+		System.out.println(authNo);
 		binaryData = URLDecoder.decode(binaryData, "UTF-8");
 
 		FileOutputStream stream = null;
@@ -155,6 +166,13 @@ public class MyRoomController {
 			stream.write(file);
 			stream.close();
 			System.out.println(fileName + ".png 파일 작성 완료");
+/*			
+			//Image saveImage = ImageIO.read(new File("D:\\javastudy\\file\\" + fileName + ".png"));
+			
+			File oFile = new File("D:\\javastudy\\file\\" + fileName + ".png");
+			System.out.println(oFile.length());*/
+			
+			//myRoomService.Save(temp, weatherNo, userNo, authNo, fileName, file.length);
 		} catch (Exception e) {
 			System.out.println("파일이 정상적으로 넘어오지 않았습니다");
 		} finally {
