@@ -176,7 +176,7 @@ position:absolute;
 
 							<div class="col-md-6 bts">
 								<label style="margin-left:5%; display:inline;">실제로 입은 사진</label> 
-								<form action="" method="post" enctype="multipart/form-data" style="display:inline;">
+								<form id="sendimgfile" action="" method="post" enctype="multipart/form-data" style="display:inline;">
 									<input type="file" id="fileopen" name="file" accept="image/*" style="display:none;">
 									<button id="inputfilebtn" class="btn btn-default" type="button" style="margin-left:17%; margin-bottom:3%;">사진선택</button>
 								</form>
@@ -251,8 +251,8 @@ position:absolute;
 							
 						</div>
 						<div class="col-md-4" style="padding-top:2%; padding-left:auto;">
-							<button class="btn btn-sm btn-hover chsbtn"
-								style="border: 1px solid black; float:right;">
+							<button class="btn btn-sm btn-hover btn-default chsbtn"
+								style="float:right;">
 								<span class="glyphicon glyphicon-check"></span>
 							</button>
 							<button class="btn btn-sm btn-hover btn-primary likebtn"
@@ -305,8 +305,8 @@ position:absolute;
 							</button>
 							<button class="btn btn-sm btn-hover btn-primary likebtn"
 								style="display: inline;" id="like4">
-								<span class="glyphicon glyphicon-thumbs-up"><div
-										id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
+								<span class="glyphicon glyphicon-thumbs-up">
+								<div id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
 							</button>
 
 						</div>
@@ -425,8 +425,26 @@ position:absolute;
 	        }
 	 });
 	 
-	 $("#saveimgbtn")
+	 $("#saveimgbtn").on("click", function() {
+		 var form = $('#sendimgfile')[0];
+		 var formData = new FormData(form);
+		 formData.append("wearImg", $("#fileopen")[0].files[0]); 
 
+		 $.ajax({
+				url : "${pageContext.request.contextPath}/myroom/codibookSave",
+				type : "POST",
+				processData: false,
+                contentType: false,
+				data : formData,	
+				success : function(result) {
+					alert("저장됐습니다.");
+				},
+
+				error : function(XHR, status, error) {
+					console.log("실패");
+				}
+			});
+	 });
 </script>
 
 </html>

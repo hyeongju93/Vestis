@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -187,6 +188,14 @@ public class MyRoomController {
 	public String codibook(@PathVariable("userNo") int userNo, Model model) {
 		model.addAttribute("userNo", userNo);
 		return "/myroom/codibook";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/codibookSave", method=RequestMethod.POST)
+	public String codibookSave(@RequestBody MultipartFile file) {
+		System.out.println(file);
+		System.out.println(file.getOriginalFilename());
+		return "success";
 	}
 	
 	@RequestMapping(value="/clothes")

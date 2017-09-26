@@ -26,6 +26,7 @@ public class MyRoomService {
 		int weatherchsNo = myRoomDao.setWeather(clothWeatherVo);
 		
 		ImgVo imgVo = new ImgVo("D:\\javastudy\\file\\", filename, ".png", fileSize, filename);
+				
 		
 		CodiVo codiVo = new CodiVo(authNo, userNo, 2, 1, 0, date, weatherSaveNo, date, weatherchsNo);
 	}
