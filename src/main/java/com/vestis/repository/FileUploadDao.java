@@ -24,7 +24,8 @@ public class FileUploadDao {
 		System.out.println(imgVo);
 		sqlSession.insert("img.upload", imgVo);
 		String dbName=imgVo.getDbName();
-		String imgNo=sqlSession.selectOne("img.selectByImg",dbName );
+		int imgNu=sqlSession.selectOne("img.selectByImg",dbName );
+		String imgNo=String.valueOf(imgNu);
 		System.out.println(imgNo);
 		return imgNo;
 	}
@@ -41,7 +42,18 @@ public class FileUploadDao {
 	}
 	
 	public List<ImgVo> getImglist() {
-		System.out.println("이미지 들어옴");
+		/*System.out.println("이미지 들어옴");*/
 		return sqlSession.selectList("img.getList");
+	}
+	
+	public List<ImgVo> send(int clothNo) {
+		/*System.out.println("이미지 들어옴");*/
+		int typeNo=clothNo;
+		if(clothNo==0) {
+			return sqlSession.selectList("img.getList");
+		} else {
+			
+		return sqlSession.selectList("img.getList2",typeNo);
+		}
 	}
 }

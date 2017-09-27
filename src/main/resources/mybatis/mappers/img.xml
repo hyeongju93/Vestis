@@ -10,7 +10,7 @@
 		]]>
 	</insert>
 										<!-- 보내는거	 받는거 -->
-	 <select id="selectByImg" parameterType="int" resultType="String">
+	 <select id="selectByImg" parameterType="int" resultType="int">
 		<![CDATA[
 			select no
 			from img
@@ -27,8 +27,20 @@
 	
 	<select id="getList" resultType="com.vestis.vo.ImgVo">
 	<![CDATA[
-		select address, type, db_name dbName
-		from img
+		select c.img_no imgNo,i.db_name dbName
+		from cloth c,img i
+		where c.img_no=i.no
+		order by c.img_no desc
+	]]>
+	</select> 
+	
+	<select id="getList2" parameterType="int" resultType="com.vestis.vo.ImgVo">
+	<![CDATA[
+		select dbName
+		from (select c.img_no imgNo,i.db_name dbName
+		from cloth c,img i
+		where c.img_no=i.no and c.type_no=#{typeNo}
+		order by c.img_no desc)
 	]]>
 	</select> 
 </mapper>

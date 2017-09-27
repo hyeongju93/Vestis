@@ -81,4 +81,8 @@ public class FileUploadService {
 	public List<ImgVo> list() {//보내줄 조건 없고 리스트로 받아
 		return uploadDao.getImglist();
 	}
+	
+	public List<ImgVo> send(int clothNo) {//보내주고 리스트로 받아
+		return uploadDao.send(clothNo);
+	}
 }

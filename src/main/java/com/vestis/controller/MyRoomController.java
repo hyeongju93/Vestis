@@ -139,18 +139,24 @@ public class MyRoomController {
 		return "/myroom/clothes";
 	}
 
+	
+	@RequestMapping(value="/form")
+	public String form() {
+		return "myroom/form";
+	}
+	
 	@RequestMapping(value="/upload")
-	public String upload(@RequestParam("file") MultipartFile file, Model model, @RequestParam("valh") int valh, @RequestParam("huserNo") int huserNo) {
+	public String upload(@RequestParam("file") MultipartFile file, Model model, @RequestParam("valh") String valh, @RequestParam("huserNo") int huserNo) {
 		
 		System.out.println(valh);	//옷 타입 번호
 		String imgNo=fileUploadService.restore(file);
 		
 		System.out.println(huserNo);	//올린 사람 번호
-		
+		int val=Integer.valueOf(valh);
 		System.out.println(imgNo);	//이미지 번호 
 		
 		int no=Integer.parseInt(imgNo);
-		fileUploadService.add(valh, huserNo, no);
+		fileUploadService.add(val, huserNo, no);
 		
 		List<ImgVo> list1= fileUploadService.list();
 		model.addAttribute("list",list1);
@@ -158,7 +164,23 @@ public class MyRoomController {
 		return "myroom/clothes";
 	}
 	
-
+	@ResponseBody
+	@RequestMapping(value="/get")
+	public List<ImgVo> get() {
+		List<ImgVo> list= fileUploadService.list();
+		System.out.println(list);
+		return list;
+	}
+	
+	@ResponseBody//리턴값을 컨트롤러로보냄
+	@RequestMapping(value="/send")
+	public List<ImgVo> send(@RequestParam ("clothNo") int clothNo) {
+		/*System.out.println(clothNo);*/
+		List<ImgVo> list=fileUploadService.send(clothNo);
+		/*System.out.println(list);*/
+		return list;
+	}
+	
 	@RequestMapping(value="/add")
 	public String add() {
 		return "/myroom/add";

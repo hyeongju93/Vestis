@@ -101,11 +101,7 @@
 	height:400px;
 }
 
-.bts .img-responsive {
-  display: block;
-  max-width: 50%;!important;
-  height: auto;
-}
+
 </style>
 
 
@@ -132,25 +128,25 @@
 		
 			 <form action="${pageContext.request.contextPath }/myroom/upload" method="post" enctype="multipart/form-data" >
 			  <div class="lo">
-			      <input type="file" class="form-control" id="images" name="file" onchange="preview_images();" multiple/>
-			      <input id="valh" name="valh" type="hidden"></input>   <!-- 옷종류번호 -->
-			      <input type="hidden" name="huserNo" value="${sessionScope.authUser.no}"></input>
+			      <input type="file" class="form-control" id="images" name="file" onchange="preview_images();"/>
+			      <input id="valh" name="valh" type="text" ></input>   <!-- 옷종류번호 -->
+			      <input type="text" name="huserNo" value="${sessionScope.authUser.no}"></input>
 			  </div>
 			  <div class="lo">
 			      <input type="submit" class="btn btn-primary" name='submit_image' value="submit"/>
 			  </div>
 			  
-			  <script>
-function preview_images() 
-{
- var total_file=document.getElementById("images").files.length;
- for(var i=0;i<total_file;i++)
- {
-  $('#image_preview').append("<div class='col-md-3'><img class='imgSize' src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
- }
-}
-</script>
-			 </form>
+			
+				<script type="text/javascript">
+					function preview_images() 
+					{
+				 		var total_file=document.getElementById("images").files.length;
+				 		for(var i=0;i<total_file;i++){
+				  			$('#image_preview').append("<div class='col-md-3'><img class='imgSize' src='"+URL.createObjectURL(event.target.files[i])+"'></div>");
+				 		}
+					}
+				</script>
+    		 </form>
 			 
 			<script type="text/javascript">
 			$('#clothNum').blur(function() {
