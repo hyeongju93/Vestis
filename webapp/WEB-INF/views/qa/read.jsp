@@ -41,27 +41,40 @@
       text-align: center;
     }
     
+    #qaii {
+ 
+	width: 1100px;
+	position:relative;
+	left: 50px;
+    }
     
+	#textist{
+	width: 900px;
+	position:relative;
+	left: 0px;
+    }
     
-
+    #buttt{
+    position:relative;
+    hight:200px;
+	left: 930px;
+    top:-60px;
+    }
+    
+    #container{
+    overflow:auto;
+    }
+    
   </style>
     
 </head>
 <body>
 	
-	<div class="center-faded mt-4"></div>
-	
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
-    
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
-    
   <div id="container">
 		
-		 
-
-		<br><br><br><br>
-		<div class="bg-faded p-4 my-4">
+		<div id="qaii" class="bg-faded p-4 my-4">
 		
 		<div id="content">
 			<div id="center" class="center-form">
@@ -79,6 +92,8 @@
 								${vo.content }
 							</td>
 						</tr>
+						
+						
 					</table>
 				
 					<div class="bottom" style="text-align: right">
@@ -94,9 +109,121 @@
 					<c:if test="${sessionScope.authUser.no==vo.personNO }">	
 						<a href="${pageContext.request.contextPath }/qa/modifyform?no=${vo.no}&currNo=${param.currNo}&kwd=${param.kwd}">글수정</a>				
 					</c:if>
+					
+					
 				</div>
 			</div>
 		</div>
+		</div>
 	</div>
+		
+		<div id="container">
+			<div id="qaii" class="bg-faded p-4 my-4">
+					<h5>*댓글*</h5>
+					<textarea class="form-control" rows="3" id="textist"></textarea>
+					<button type="button" class="btn btn-success" id="buttt">댓글등록</button>
+					<div id="comment_view" class="bg-faded p-4 my-4"></div>
+		</div>
+		
+			</div>
+			 
+			 
+			 <footer class="bg-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">Copyright &copy; Your Website 2017</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+				
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	  $.ajax({
+	      
+	      url : "${pageContext.request.contextPath }/qa/comment_view"+"?no="+${param.no},  
+	      type : "post",
+	      /* contentType : "application/json",   이 방식은 json으로 보낸다는 뜻
+	      data : {name: ”홍길동"}, */
+
+	       dataType : "json",
+	      success : function(guestbookList){   //list-ajax에서 보낸 것을 guestbook으로 받음
+	          
+	    	  for(var i=0;i<guestbookList.length;i++){
+	            	console.log(guestbookList[i]);
+	        	   render(guestbookList[i],"down"); 
+	         }  
+	         console.log(guestbookList);
+	          /*성공시 처리해야될 코드 작성*/
+	          
+	      },
+	      error : function(XHR, status, error) {
+	         console.error(status + " : " + error);
+	      }
+	  });
+});
+ 
+	$("#buttt").on("click",function(){
+	event.preventDefault(); 
+    var text=$('#textist').val();
+    console.log(text);
+    var result;
+    $("#comment_view").empty(); 
+    $.ajax({   
+          url : "${pageContext.request.contextPath }/qa/comment"+"?no="+${param.no},    
+          type : "post",
+          data : {text: text},  
+           dataType : "json",  
+          success : function(guestbookList){   //list-ajax에서 보낸 것을 guestbook으로 받음
+        	  for(var i=0;i<guestbookList.length;i++){
+        		  
+	            	console.log(guestbookList[i]);
+	        	   render(guestbookList[i],"down"); 
+	         }  
+	         console.log(guestbookList);
+	         $('#textist').val(" ");
+          },
+          error : function(XHR, status, error) {
+             console.error(status + " : " + error);
+          }
+       });
+ }); 
+	
+ 	function render(CommentVo,updown){
+		   var str ="";
+		   
+		   str+="   <table>";
+		   str+="      <tr>";
+		   str+="         <td>["+CommentVo.rn+"]</td>";
+		   str+="         <td>["+CommentVo.nicname+"]</td>";
+		   str+="         <td>["+CommentVo.regDate+"]</td>";
+		   str+="         <td><a id='deletej' href='${pageContext.request.contextPath }/qa/codelete?commentNo="+CommentVo.no+"&centerNo="+CommentVo.centerNo+"'>삭제<a/></td>";
+		   str+="			<input id='hidno' type='hidden' value='"+CommentVo.no+"'></input>"	
+		   str+="			<input id='hidno' type='hidden' value='"+CommentVo.centerNo+"'></input>"		
+		   str+="      </tr>";
+		   str+="      <tr>";
+		   str+="         <td colspan=4>["+CommentVo.content+"]</td>";
+		   str+="      </tr>";
+		   str+="      </tr>";
+		   str+="   </table>";
+		   str+="   <br/>";   
+		   str+="</li>";
+		   
+		   if(updown == "up"){
+		      $("#comment_view").prepend(str);   
+		   }else if(updown=="down"){
+		      $("#comment_view").append(str);   
+		   } else{
+			   
+		   } 
+ 	}
+		      
+		   
+</script>
+
+
 </html>

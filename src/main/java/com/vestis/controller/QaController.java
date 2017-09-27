@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vestis.service.QaService;
+import com.vestis.vo.CommentVo;
 import com.vestis.vo.PageVo;
 import com.vestis.vo.QaVo;
+import com.vestis.vo.UserVo;
 
 @Controller
 @RequestMapping("/qa")
@@ -46,9 +50,49 @@ public class QaController {
 		return "qa/list";
 	}
 	
+	/*여기가 댓글*/ 
+	@ResponseBody
+	@RequestMapping(value="/comment",method=RequestMethod.POST)
+	public List<CommentVo> comment(@RequestParam("text") String text,
+						@RequestParam("no") int no,
+							HttpSession session) {
+		UserVo userVo=(UserVo) session.getAttribute("authUser");
+		System.out.println(userVo);
+		System.out.println("center번호: "+no);
+		CommentVo commentVo=new CommentVo();
+		commentVo.setPersonNo(userVo.getNo());
+		commentVo.setCenterNo(no);
+		commentVo.setContent(text);
+		
+		
+		System.out.println(text);
+		
+		qaService.commentlist(commentVo);
+		
+		QaVo qaVo=new QaVo();
+		qaVo.setNo(no);
+		List<CommentVo> cvo= qaService.commentlist2(qaVo);
+		return cvo;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/comment_view",method=RequestMethod.POST)
+	public List<CommentVo> comment_view(QaVo QaVo,Model model) {
+		System.out.println("나 정상");
+		System.out.println(QaVo);
+		List<CommentVo> cvo= qaService.commentlist2(QaVo);
+		
+		System.out.println(cvo);
+		return cvo;
+	}
+	
+	
+	
+	
 	@RequestMapping(value="/read",method=RequestMethod.GET)
 	public String read(QaVo qavo,Model model,@RequestParam("flag") int flag) {
 		QaVo vo=qaService.getqa(qavo,flag);
+		System.out.println(vo);
 		model.addAttribute("vo", vo);
 		
 		return "qa/read";
@@ -82,8 +126,20 @@ public class QaController {
 	
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public String delete(@RequestParam("no") int no ) {
-		qaService.delete(no);
+		
 		return "redirect:/qa/list?currNo=1";
+	}
+	
+	@RequestMapping(value="/codelete",method=RequestMethod.GET)
+	public String codelete(@RequestParam("commentNo") int no, @RequestParam("centerNo") int centerNo, String currNo)  {
+		qaService.codelete(no);
+		QaVo qaVo=new QaVo();
+		qaVo.setNo(no);
+		System.out.println("들어옴");
+		System.out.println(no);
+		
+		return "redirect:/qa/read?flag=1&currNo="+currNo+"&no="+centerNo;
+	
 	}
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)

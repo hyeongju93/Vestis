@@ -57,8 +57,6 @@
   <div id="container">
 		
 		 
-
-		<br><br><br><br>
 		<div class="bg-faded p-4 my-4">
 		
 		<div id="content">
@@ -91,6 +89,18 @@
 	</div>
 		
 	</div><!-- /container -->
+	
+	 <footer class="bg-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">Copyright &copy; Your Website 2017</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    
 </body>
 </html>		
 		

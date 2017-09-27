@@ -21,11 +21,25 @@
 
 </head>
 
-
+ <style>
+ 
+ .pager { float: left; width: 100%;
+ 			 padding-right: 20px;
+ 			 padding-left: 25px;
+ 			 margin: 0 auto;
+ 			 text-align: center; }
+  
+ .pager ul { list-style: none; }
+ 
+ .pager ul li { color: #808080;
+  				 padding-bottom: 3px;
+  				  display:inline-block; padding-right: 10px; }
+ 
+ </style>
 
  <body>
 	
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
+    
     
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
@@ -85,21 +99,6 @@
 					</tr>
 					</c:forEach>
 			
- <style>
- 
- .pager { float: left; width: 100%;
- 			 padding-right: 20px;
- 			 padding-left: 25px;
- 			 margin: 0 auto;
- 			 text-align: center; }
-  
- .pager ul { list-style: none; }
- 
- .pager ul li { color: #808080;
-  				 padding-bottom: 3px;
-  				  display:inline-block; padding-right: 10px; }
- 
- </style>
  
 </table>
 				<div class="pager">
@@ -155,11 +154,9 @@
 
       </div>
 	
-	</div>
-	
 
    
-    <!-- /.container -->
+
 
     <footer class="bg-faded text-center py-5">
       <div class="container">
