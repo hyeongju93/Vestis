@@ -16,19 +16,24 @@ public class MyRoomService {
 	@Autowired
 	MyRoomDao myRoomDao;
 	
-	public void Save(int temp, int weatherNo, int userNo, int authNo, String filename, long fileSize) {
+	public void SaveCodi(int temp, int weatherNo, int userNo, int authNo, String filename, long fileSize) {
+		System.out.println("서비스 들어옴");
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date = sdf.format(cal.getTime());
-		
+		System.out.println("시간저장");
 		ClothWeatherVo clothWeatherVo = new ClothWeatherVo(weatherNo, temp);
-		int weatherSaveNo = myRoomDao.setWeather(clothWeatherVo);
-		int weatherchsNo = myRoomDao.setWeather(clothWeatherVo);
-		
-		ImgVo imgVo = new ImgVo("D:\\javastudy\\file\\", filename, ".png", fileSize, filename);
-				
-		
-		CodiVo codiVo = new CodiVo(authNo, userNo, 2, 1, 0, date, weatherSaveNo, date, weatherchsNo);
+		int weatherSaveNo = myRoomDao.addWeather(clothWeatherVo);
+		System.out.println("지금 날씨 저장");
+		int weatherchsNo = myRoomDao.addWeather(clothWeatherVo);
+		System.out.println("지금 날씨 저장2");
+		ImgVo imgVo = new ImgVo("D:\\javastudy\\file\\", filename, ".png", fileSize, filename+".png");
+		int imgNo = myRoomDao.addImg(imgVo);		
+		System.out.println("이미지 저장");
+		CodiVo codiVo = new CodiVo(authNo, userNo, 1, imgNo, 0, date, weatherSaveNo, date, weatherchsNo);
+		System.out.println(codiVo.toString());
+		myRoomDao.addCodi(codiVo);
+		System.out.println("코디 저장완료");
 	}
 
 }

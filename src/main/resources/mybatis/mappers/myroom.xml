@@ -4,11 +4,28 @@
 <mapper namespace="myroom">
 	<insert id="insertWeather" parameterType="com.vestis.vo.ClothWeatherVo">
 		<selectKey keyProperty="no" resultType="int" order="BEFORE">
-			select seq_guestbook_no.nextval from dual 
+			select seq_cloth_weather_no.nextval from dual 
 		</selectKey>
 		<![CDATA[
 			insert into cloth_weather
-			values(#{no}, #{weather}, #{temp})			
+			values(#{no}, #{weatherNo}, #{temp})			
+		]]>
+	</insert>
+	
+	<insert id="insertImg" parameterType="com.vestis.vo.ImgVo">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_img_no.nextval from dual 
+		</selectKey>
+		<![CDATA[
+			insert into img
+			values(#{no}, #{address}, #{name}, #{type}, #{sizes}, #{dbName})			
+		]]>
+	</insert>
+	
+	<insert id="insertCodi" parameterType="com.vestis.vo.CodiVo">
+		<![CDATA[
+			insert into codi
+			values(seq_codi_no.nextval, #{userNo}, #{otherNo}, #{codiPhotoNo}, #{codiNo}, #{choose}, TO_DATE(#{codiDate},'YYYY-MM-DD hh24:mi:ss'), #{codiWeather}, TO_DATE(#{choiceDate},'YYYY-MM-DD hh24:mi:ss'), #{choiceWeather})			
 		]]>
 	</insert>
 </mapper>

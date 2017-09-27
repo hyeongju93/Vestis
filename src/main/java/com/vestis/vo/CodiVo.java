@@ -8,27 +8,27 @@ public class CodiVo {
 	private int codiNo;				//코디한 사진
 	private int choose;
 	private String codiDate; 		//코디한 날짜
-	private int codi_weather;		//코디한 날짜 번호
-	private String choice_date;		//채택 날짜
-	private int choice_weather;		//채택한 날짜 번호
+	private int codiWeather;		//코디한 날짜 번호
+	private String choiceDate;		//채택 날짜
+	private int choiceWeather;		//채택한 날짜 번호
 	
 	public CodiVo() {}
 
-	public CodiVo(int userNo, int otherNo, int codiPhotoNo, int codiNo, int choose, String codiDate, int codi_weather,
-			String choice_date, int choice_weather) {
+	public CodiVo(int userNo, int otherNo, int codiPhotoNo, int codiNo, int choose, String codiDate, int codiWeather,
+			String choiceDate, int choiceWeather) {
 		this.userNo = userNo;
 		this.otherNo = otherNo;
 		this.codiPhotoNo = codiPhotoNo;
 		this.codiNo = codiNo;
 		this.choose = choose;
 		this.codiDate = codiDate;
-		this.codi_weather = codi_weather;
-		this.choice_date = choice_date;
-		this.choice_weather = choice_weather;
+		this.codiWeather = codiWeather;
+		this.choiceDate = choiceDate;
+		this.choiceWeather = choiceWeather;
 	}
 
 	public CodiVo(int no, int userNo, int otherNo, int codiPhotoNo, int codiNo, int choose, String codiDate,
-			int codi_weather, String choice_date, int choice_weather) {
+			int codiWeather, String choiceDate, int choiceWeather) {
 		this.no = no;
 		this.userNo = userNo;
 		this.otherNo = otherNo;
@@ -36,9 +36,9 @@ public class CodiVo {
 		this.codiNo = codiNo;
 		this.choose = choose;
 		this.codiDate = codiDate;
-		this.codi_weather = codi_weather;
-		this.choice_date = choice_date;
-		this.choice_weather = choice_weather;
+		this.codiWeather = codiWeather;
+		this.choiceDate = choiceDate;
+		this.choiceWeather = choiceWeather;
 	}
 
 	public int getNo() {
@@ -97,34 +97,35 @@ public class CodiVo {
 		this.codiDate = codiDate;
 	}
 
-	public int getCodi_weather() {
-		return codi_weather;
+	public int getCodiWeather() {
+		return codiWeather;
 	}
 
-	public void setCodi_weather(int codi_weather) {
-		this.codi_weather = codi_weather;
+	public void setCodiWeather(int codiWeather) {
+		this.codiWeather = codiWeather;
 	}
 
-	public String getChoice_date() {
-		return choice_date;
+	public String getChoiceDate() {
+		return choiceDate;
 	}
 
-	public void setChoice_date(String choice_date) {
-		this.choice_date = choice_date;
+	public void setChoiceDate(String choiceDate) {
+		this.choiceDate = choiceDate;
 	}
 
-	public int getChoice_weather() {
-		return choice_weather;
+	public int getChoiceWeather() {
+		return choiceWeather;
 	}
 
-	public void setChoice_weather(int choice_weather) {
-		this.choice_weather = choice_weather;
+	public void setChoiceWeather(int choiceWeather) {
+		this.choiceWeather = choiceWeather;
 	}
 
 	@Override
 	public String toString() {
 		return "CodiVo [no=" + no + ", userNo=" + userNo + ", otherNo=" + otherNo + ", codiPhotoNo=" + codiPhotoNo
-				+ ", codiNo=" + codiNo + ", choose=" + choose + ", codiDate=" + codiDate + ", codi_weather="
-				+ codi_weather + ", choice_date=" + choice_date + ", choice_weather=" + choice_weather + "]";
+				+ ", codiNo=" + codiNo + ", choose=" + choose + ", codiDate=" + codiDate + ", codiWeather="
+				+ codiWeather + ", choiceDate=" + choiceDate + ", choiceWeather=" + choiceWeather + "]";
 	}
+	
 }

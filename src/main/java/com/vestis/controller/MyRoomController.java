@@ -1,9 +1,6 @@
 package com.vestis.controller;
 
-import java.awt.Graphics;
-import java.awt.Image;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -12,7 +9,6 @@ import java.net.URLDecoder;
 import java.util.Random;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -137,7 +133,6 @@ public class MyRoomController {
 		System.out.println(userNo);
 
 		temper = temper.substring(0,temper.length()-2);
-
 		int temp = Integer.parseInt(temper);
 		System.out.println(temp);
 		int weatherNo = Integer.parseInt(weather);
@@ -167,13 +162,8 @@ public class MyRoomController {
 			stream.write(file);
 			stream.close();
 			System.out.println(fileName + ".png 파일 작성 완료");
-/*			
-			//Image saveImage = ImageIO.read(new File("D:\\javastudy\\file\\" + fileName + ".png"));
 			
-			File oFile = new File("D:\\javastudy\\file\\" + fileName + ".png");
-			System.out.println(oFile.length());*/
-			
-			//myRoomService.Save(temp, weatherNo, userNo, authNo, fileName, file.length);
+			myRoomService.SaveCodi(temp, weatherNo, userNo, authNo, fileName, file.length);
 		} catch (Exception e) {
 			System.out.println("파일이 정상적으로 넘어오지 않았습니다");
 		} finally {
