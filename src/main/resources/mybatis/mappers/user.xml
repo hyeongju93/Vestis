@@ -18,7 +18,7 @@
 	
 	<select id="check" parameterType="map" resultType="com.vestis.vo.UserVo">
 		<![CDATA[
-			select no,nicname
+			select no,nicname, lat, lon
 			from person
 			where email=#{email} 
 			and password=#{password}
