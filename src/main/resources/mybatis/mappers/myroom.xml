@@ -28,4 +28,23 @@
 			values(seq_codi_no.nextval, #{userNo}, #{otherNo}, #{codiPhotoNo}, #{codiNo}, #{choose}, TO_DATE(#{codiDate},'YYYY-MM-DD hh24:mi:ss'), #{codiWeather}, TO_DATE(#{choiceDate},'YYYY-MM-DD hh24:mi:ss'), #{choiceWeather})			
 		]]>
 	</insert>
+	
+	<select id="getCodiBookList" resultType="com.vestis.vo.CodibookVo">
+		<![CDATA[
+			select codi.no no, person.no otherNo, person.nicname otherNicname, 
+			pro_img.db_name profile,
+			codiimg.db_name codi,
+			wear.db_name wear,
+			choose, likes
+			from codi, person, img wear, img codiimg, img pro_img,
+			    (select count(like_person.person_no) likes
+			     from like_person, codi clike
+			     where clike.no = like_person.codi_no)
+			where other_no=person.no 
+			    and codi_no = codiimg.no
+			    and codi_photo_no = wear.no
+			    and profile_no = pro_img.no
+			order by codi.no desc
+		]]>
+	</select>
 </mapper>

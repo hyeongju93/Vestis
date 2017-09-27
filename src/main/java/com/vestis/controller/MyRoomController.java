@@ -2,6 +2,7 @@ package com.vestis.controller;
 
 import java.io.FileOutputStream;
 import java.net.URLDecoder;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.vestis.service.MyRoomService;
 import com.vestis.vo.ClothWeatherVo;
+import com.vestis.vo.CodibookVo;
 import com.vestis.vo.UserVo;
 
 @Controller
@@ -131,7 +133,9 @@ public class MyRoomController {
 
 	@RequestMapping(value = "/codibook/{userNo}")
 	public String codibook(@PathVariable("userNo") int userNo, Model model) {
+		List<CodibookVo> list = myRoomService.getList();
 		model.addAttribute("userNo", userNo);
+		model.addAttribute("list", list);
 		return "/myroom/codibook";
 	}
 

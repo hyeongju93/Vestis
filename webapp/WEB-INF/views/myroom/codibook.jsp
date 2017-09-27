@@ -72,15 +72,17 @@
 	background-color: inherit;
 	border-color: transparent;
 }
+
 .prifile_photo {
 	border-radius: 50%;
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
+
 .comments-list .comment .avatar {
 	border-radius: 50%;
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
 
 .comments-list .comment .comment-heading {
@@ -119,33 +121,30 @@
 	border-bottom: 1px dashed gray;
 }
 
-.btn-default,
-.btn-primary,
-.btn-success,
-.btn-info,
-.btn-warning,
-.btn-danger {
-    -webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow:    0px 3px 0px rgba(0, 0, 0, 0.3);
-    box-shadow:         0px 3px 0px rgba(0, 0, 0, 0.3);
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning,
+	.btn-danger {
+	-webkit-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
-.btn-default:active,
-.btn-primary:active,
-.btn-success:active,
-.btn-info:active,
-.btn-warning:active,
-.btn-danger:active {
-    margin-top: 3px;
-    margin-bottom: -3px;
+.btn-default:active, .btn-primary:active, .btn-success:active, .btn-info:active,
+	.btn-warning:active, .btn-danger:active {
+	margin-top: 3px;
+	margin-bottom: -3px;
 }
 
 #wearclothimg {
-position:absolute;
-            max-width:100%; max-height:100%;
-            width:auto; height:auto;
-            margin:auto;
-            top:0; bottom:0; left:0; right:0;
+	position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 </style>
 
@@ -159,56 +158,69 @@ position:absolute;
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<p class="text-left" style="margin-bottom:0;"><img class="prifile_photo" src="http://bootdey.com/img/Content/user_1.jpg" alt="프로필사진" style="margin-right:10px;">A씨</p>
+					<p class="text-left" style="margin-bottom: 0;">
+						<img class="prifile_photo"
+							src="http://bootdey.com/img/Content/user_1.jpg" alt="프로필사진"
+							style="margin-right: 10px;">A씨
+					</p>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid bts">
 
-						<div class="row" style="height:71%">
-							<div class="col-md-6" >
-								<label style="margin-left:5%; margin-bottom:3%; margin-top:3%;">추천한 코디</label> <img
-									class="img-responsive showPic" src=""
+						<div class="row" style="height: 71%">
+							<div class="col-md-6">
+								<label
+									style="margin-left: 5%; margin-bottom: 3%; margin-top: 3%;">추천한
+									코디</label> <img class="img-responsive showPic" src=""
 									style="border: 1px solid #FFD7B9; border-radius: 1em;">
 							</div>
 
 
 							<div class="col-md-6 bts">
-								<label style="margin-left:5%; display:inline;">실제로 입은 사진</label> 
-								<form id="sendimgfile" action="" method="post" enctype="multipart/form-data" style="display:inline;">
-									<input type="file" id="fileopen" name="file" accept="image/*" style="display:none;">
-									<button id="inputfilebtn" class="btn btn-default" type="button" style="margin-left:17%; margin-bottom:3%;">사진선택</button>
+								<label style="margin-left: 5%; display: inline;">실제로 입은
+									사진</label>
+								<form id="sendimgfile" action="" method="post"
+									enctype="multipart/form-data" style="display: inline;">
+									<input type="file" id="fileopen" name="file" accept="image/*"
+										style="display: none;">
+									<button id="inputfilebtn" class="btn btn-default" type="button"
+										style="margin-left: 17%; margin-bottom: 3%;">사진선택</button>
 								</form>
-								<button id="saveimgbtn" class="btn btn-default" style="margin-bottom:3%;">저장</button>
-								<div style="border: 1px solid #FFD7B9; border-radius: 1em; overflow:hidden; height:91%; position:relative;">
-									<img
-										id="wearclothimg" class="img-responsive" src="${pageContext.request.contextPath}/assets/img/base_img.png" alt="">
+								<button id="saveimgbtn" class="btn btn-default"
+									style="margin-bottom: 3%;">저장</button>
+								<div
+									style="border: 1px solid #FFD7B9; border-radius: 1em; overflow: hidden; height: 91%; position: relative;">
+									<img id="wearclothimg" class="img-responsive"
+										src="${pageContext.request.contextPath}/assets/img/base_img.png"
+										alt="">
 								</div>
 							</div>
 						</div>
 
 						<hr>
 						<div class="row">
-							<div class="input-group" style="padding-left:2%; padding-right:2%; margin-bottom:2%;">
+							<div class="input-group"
+								style="padding-left: 2%; padding-right: 2%; margin-bottom: 2%;">
 								<input class="form-control" placeholder="Add a comment"
 									type="text"> <span class="input-group-addon"> <a
 									href="#"><i class="glyphicon glyphicon-edit"></i></a>
 								</span>
 							</div>
-							<ul class="comments-list" style="padding-left:3.2%; padding-right:3.2%; list-style:none; width:100%;">
-								<li class="comment">
-									<a class="pull-left" href="#">
-										<img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
-									</a>
+							<ul class="comments-list"
+								style="padding-left: 3.2%; padding-right: 3.2%; list-style: none; width: 100%;">
+								<li class="comment"><a class="pull-left" href="#"> <img
+										class="avatar" src="http://bootdey.com/img/Content/user_1.jpg"
+										alt="avatar">
+								</a>
 									<div class="comment-body">
 										<div class="comment-heading">
 											<h4 class="user">Gavino Free</h4>
 											<h5 class="time">5 minutes ago</h5>
 										</div>
 										<p>Sure, oooooooooooooooohhhhhhhhhhhhhhhh</p>
-									</div>
-								</li>
+									</div></li>
 							</ul>
 						</div>
 					</div>
@@ -234,126 +246,62 @@ position:absolute;
 		</div>
 
 		<!-- 여기서부터 건들기 -->
-		<div class="bts row">
-			<div class='list-group gallery'>
-				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-					<div class="thumbnail">
-						<div
-							data-image="${pageContext.request.contextPath}/assets/img/test.png"
-							data-toggle="modal" data-target="#modal" data-keyboard="true"
-							data-backdrop="false">					
-							<img class="img-responsive getSrc" alt=""
-								src="${pageContext.request.contextPath}/assets/img/test.png" style="cursor:pointer"/>
-						</div> 
-						<div class="row">
-						<div class="col-md-8">					
-							<p class="text-left" style="margin: 2%;"><img class="prifile_photo" src="http://bootdey.com/img/Content/user_1.jpg" alt="프로필사진" style="margin-right:10px;">A씨</p>
-							
+		<div
+			style="overflow: auto; width: 87%; height: 37vw; padding: 2%; padding-bottom: 0; background-color: rgba(255, 255, 255, 0.9); border-radius: 1em; float: right;">
+			<div class="bts row">
+				<div class='list-group gallery' id="codibookItemList">
+					<c:forEach items="${list }" var="vo">
+						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+							<div class="thumbnail">
+								<div data-image="${pageContext.request.contextPath}/upload/${vo.codi }" data-toggle="modal"
+									data-target="#modal" data-keyboard="true" data-backdrop="false">
+									<img class="img-responsive getSrc" alt="" src="${pageContext.request.contextPath}/upload/${vo.codi }"
+										style="cursor: pointer" />
+								</div>
+								<div class="row">
+									<div class="col-md-8">
+										<p class="text-left" style="margin: 2%;">
+											<img class="prifile_photo" src="${pageContext.request.contextPath}/upload/${vo.profile}" alt="프로필사진"
+												style="margin-right: 10px;">${vo.otherNicname }</p>
+									</div>
+									<div class="col-md-4"
+										style="padding-top: 2%; padding-left: auto;">
+										<c:if test="${userNo == authUser.no }">
+											<button class="btn btn-sm btn-hover btn-default chsbtn"
+												style="float: right;">
+												<c:if test="${vo.choose != 0 }">
+													<span class="glyphicon glyphicon-check btn-success"> </span>
+												</c:if>
+												<c:if test="${vo.choose == 0 }">
+													<span class="glyphicon glyphicon-check"> </span>
+												</c:if>
+											</button>
+										</c:if>
+										<button class="btn btn-sm btn-hover btn-primary likebtn" style="display: inline; float: right; margin-top:5%;" id="like${vo.no }">
+											<span class="glyphicon glyphicon-thumbs-up"><div id="like${vo.no }-bs" style="display: inline; margin-left: 2px;">${vo.likes }</div></span>
+										</button>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="col-md-4" style="padding-top:2%; padding-left:auto;">
-							<button class="btn btn-sm btn-hover btn-default chsbtn"
-								style="float:right;">
-								<span class="glyphicon glyphicon-check"></span>
-							</button>
-							<button class="btn btn-sm btn-hover btn-primary likebtn"
-								style="display: inline; float:right; margin-top:5%" id="like4">
-								<span class="glyphicon glyphicon-thumbs-up"><div id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
-							</button>
-						</div>
-						</div>
-					</div>
-
+				</c:forEach>
+					
+					<!-- col-6 / end -->
 				</div>
-				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-					<div class="thumbnail">
-						<div
-							data-image="${pageContext.request.contextPath}/assets/img/test2.png"
-							data-toggle="modal" data-target="#modal" data-keyboard="true"
-							data-backdrop="false">
-							<img class="img-responsive getSrc" alt=""
-								src="${pageContext.request.contextPath}/assets/img/test2.png" />
-							<p class="text-left" style="margin: 2%;">좌측정렬된 텍스트.</p>
-						</div>
-						<div style="margin: 2%;">
-							<button class="btn btn-sm btn-hover chsbtn"
-								style="border: 1px solid #000000">
-								<span class="glyphicon glyphicon-check"></span>
-							</button>
-							<button class="btn btn-sm btn-hover btn-primary likebtn"
-								style="display: inline;" id="like4">
-								<span class="glyphicon glyphicon-thumbs-up"><div
-										id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
-							</button>
-						</div>
-					</div>
-
-				</div>
-				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-					<div class="thumbnail">
-						<div
-							data-image="${pageContext.request.contextPath}/assets/img/test.png"
-							data-toggle="modal" data-target="#modal" data-keyboard="true"
-							data-backdrop="false">
-							<img class="img-responsive getSrc" alt=""
-								src="${pageContext.request.contextPath}/assets/img/test.png" />
-							<p class="text-left" style="margin: 2%;">좌측정렬된 텍스트.</p>
-						</div>
-						<div style="margin: 2%;">
-							<button class="btn btn-sm btn-hover chsbtn"
-								style="border: 1px solid #000000">
-								<span class="glyphicon glyphicon-check"></span>
-							</button>
-							<button class="btn btn-sm btn-hover btn-primary likebtn"
-								style="display: inline;" id="like4">
-								<span class="glyphicon glyphicon-thumbs-up">
-								<div id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
-							</button>
-
-						</div>
-						<!-- <span class="pull-right">
-                        <i id="like4" class="glyphicon glyphicon-thumbs-up"></i> <div id="like4-bs3"></div>
-                        <i id="dislike4" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike4-bs3"></div>
-                    	</span> -->
-					</div>
-
-				</div>
-				<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-					<div class="thumbnail">
-						<div
-							data-image="${pageContext.request.contextPath}/assets/img/test2.png"
-							data-toggle="modal" data-target="#modal" data-keyboard="true"
-							data-backdrop="false">
-							<img class="img-responsive getSrc" alt=""
-								src="${pageContext.request.contextPath}/assets/img/test2.png" />
-							<p class="text-left" style="margin: 2%;">좌측정렬된 텍스트.</p>
-						</div>
-						<div style="margin: 2%;">
-							<button class="btn btn-sm btn-hover chsbtn"
-								style="border: 1px solid #000000">
-								<span class="glyphicon glyphicon-check"></span>
-							</button>
-							<button class="btn btn-sm btn-hover btn-primary likebtn"
-								style="display: inline;" id="like4">
-								<span class="glyphicon glyphicon-thumbs-up"><div
-										id="like4-bs3" style="display: inline; margin-left: 2px;"></div></span>
-							</button>
-						</div>
-					</div>
-
-				</div>
-				<!-- col-6 / end -->
+				<!-- list-group / end -->
 			</div>
-			<!-- list-group / end -->
+			<!-- row / end -->
 		</div>
-		<!-- row / end -->
 	</div>
 
-<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
 
+<!-- 코디북 리스트 뿌리기 -->
 <script type="text/javascript">
 	$(document).ready(function() {
+
 		console.log("ready!");
 		$('.getSrc').click(function() {
 			console.log("hello");
@@ -364,87 +312,156 @@ position:absolute;
 			$('.showPic').attr('src', src);
 		});
 
-		$('.likebtn').click(function() {
-			var $this = $(this), c = $this.data('count');
-			if (!c)
-				c = 0;
-			c++;
-			$this.data('count', c);
-			$('#' + this.id + '-bs3').html(c);
-		});
+	});
 
-		$('.chsbtn').click(function() {
-			var $this = $(this);
+/* 	function fetchBook() {
+		$.ajax({
+					url : "${pageContext.request.contextPath }/Vestis/myroom/codibook/${userNo}",
+					dataType : "json",
+					success : function(codibookList) {
+						console.log("성공");
+						for (var i = 0; i < codibookList.length; i++) {
+							render(codibookList[i]);
+						}
+					},
+					error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
+						console.error(status + " : " + error);
+					}
+				});
+	}
+	function render(CodibookVo) {
+		var str = "";
 
-			$($this).addClass("btn-success");
+		str += "<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>";
+		str += "<div class=\"thumbnail\">";
+		str += "	<div";
+		str += "	 	data-image="+CodibookVo.codi;
+		str += "		data-toggle=\"modal\" data-target=\"#modal\" data-keyboard=\"true\"";
+		str += "		data-backdrop=\"false\">";
+		str += "		<img class=\"img-responsive getSrc\" alt=\"\"";
+		str += "			src="+CodibookVo.codi+" style=\"cursor:pointer\"/>";
+		str += "	</div> ";
+		str += "	<div class=\"row\">";
+		str += "	<div class=\"col-md-8\">";
+		str += "		<p class=\"text-left\" style=\"margin: 2%;\">";
+		str += "			<img class=\"prifile_photo\" src="+CodibookVo.profile+" alt=\"프로필사진\" style=\"margin-right:10px;\">"
+				+ CodibookVo.otherNicname + "</p>";
+		str += " 	</div>";
+		str += " 	<div class=\"col-md-4\" style=\"padding-top:2%; padding-left:auto;\">";
+		if (true) {
+			console.log("자신의 페이지로 들어옴");
+			str += "<button class=\"btn btn-sm btn-hover btn-default chsbtn\" style=\"float:right;\">";
+			if (CodibookVo.choose != 0) {
+				str += "<span class=\"glyphicon glyphicon-check btn-success\"></span>";
+			} else {
+				str += "<span class=\"glyphicon glyphicon-check\"></span>";
+			}
+			str += "</button>";
+		}
+		str += "		<button class=\"btn btn-sm btn-hover btn-primary likebtn\"";
+		str += "			style=\"display: inline; float:right; margin-top:5%\" id=\"like"
+				+ CodibookVo.no + ">";
+		str += "			<span class=\"glyphicon glyphicon-thumbs-up\"><div id=\"like"+CodibookVo.no+"-bs3\" style=\"display: inline; margin-left: 2px;\">"
+				+ CodibookVo.likes + "</div></span>";
+		str += "		</button>";
+		str += "	</div>";
+		str += "	</div>";
+		str += "</div>";
 
-		});
+		str += "</div>";
+
+		$("#codibookItemList").append(str);
+	} */
+</script>
+
+
+
+
+
+
+
+
+<!-- 채택 버튼과 추천 버튼 -->
+<script type="text/javascript">
+	$('.likebtn').click(function() {
+		var $this = $(this), c = $this.data('count');
+		if (!c)
+			c = 0;
+		c++;
+		$this.data('count', c);
+		$('#' + this.id + '-bs').html(c);
+	});
+
+	$('.chsbtn').click(function() {
+		var $this = $(this);
+
+		$($this).addClass("btn-success");
+
 	});
 </script>
 
 <script type="text/javascript">
 	//이벤트 발생시 첨부파일 열기버튼이 눌리도록
-	function eventOccur(evEle, evType){
-		 if (evEle.fireEvent) {
-		 	evEle.fireEvent('on' + evType);
-		 } else {
-			 //MouseEvents가 포인트 그냥 Events는 안됨~ ??
-			 var mouseEvent = document.createEvent('MouseEvents');
-			 /* API문서 initEvent(type,bubbles,cancelable) */
-			 mouseEvent.initEvent(evType, true, false);
-			 var transCheck = evEle.dispatchEvent(mouseEvent);
-			 if (!transCheck) {
-			 //만약 이벤트에 실패했다면
-			 	console.log("클릭 이벤트 발생 실패!");
-		 	}
-	 	}
+	function eventOccur(evEle, evType) {
+		if (evEle.fireEvent) {
+			evEle.fireEvent('on' + evType);
+		} else {
+			//MouseEvents가 포인트 그냥 Events는 안됨~ ??
+			var mouseEvent = document.createEvent('MouseEvents');
+			/* API문서 initEvent(type,bubbles,cancelable) */
+			mouseEvent.initEvent(evType, true, false);
+			var transCheck = evEle.dispatchEvent(mouseEvent);
+			if (!transCheck) {
+				//만약 이벤트에 실패했다면
+				console.log("클릭 이벤트 발생 실패!");
+			}
+		}
 	}
-	
-	$("#inputfilebtn").on("click", function() {	
+
+	$("#inputfilebtn").on("click", function() {
 		//e.preventDefault();    
 		//eventOccur(document.getElementById('orgFile'),'click');
 		console.log("click");
 		//eventOccur($("#fileopen"), 'click');
-		$("#fileopen").click();		
+		$("#fileopen").click();
 	});
-	
-	
-	 $('#fileopen').on('change', function() {
-	        var ext = $(this).val().split('.').pop().toLowerCase(); //확장자
-	        
-	        //배열에 추출한 확장자가 존재하는지 체크
-	        if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-	            resetFormElement($(this)); //폼 초기화
-	            window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-	        } else {
-	            file = $('#fileopen').prop("files")[0];
-	            blobURL = window.URL.createObjectURL(file);
-	            $('#wearclothimg').attr('src', blobURL);
-	            //$('#wearclothimg').slideDown(); //업로드한 이미지 미리보기 
-	            //$(this).slideUp(); //파일 양식 감춤
-	        }
-	 });
-	 
-	 $("#saveimgbtn").on("click", function() {
-		 var form = $('#sendimgfile')[0];
-		 var formData = new FormData(form);
-		 formData.append("wearImg", $("#fileopen")[0].files[0]); 
 
-		 $.ajax({
-				url : "${pageContext.request.contextPath}/myroom/codibookSave",
-				type : "POST",
-				processData: false,
-                contentType: false,
-				data : formData,	
-				success : function(result) {
-					alert("저장됐습니다.");
-				},
+	$('#fileopen').on('change', function() {
+		var ext = $(this).val().split('.').pop().toLowerCase(); //확장자
 
-				error : function(XHR, status, error) {
-					console.log("실패");
-				}
-			});
-	 });
+		//배열에 추출한 확장자가 존재하는지 체크
+		if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
+			resetFormElement($(this)); //폼 초기화
+			window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+		} else {
+			file = $('#fileopen').prop("files")[0];
+			blobURL = window.URL.createObjectURL(file);
+			$('#wearclothimg').attr('src', blobURL);
+			//$('#wearclothimg').slideDown(); //업로드한 이미지 미리보기 
+			//$(this).slideUp(); //파일 양식 감춤
+		}
+	});
+
+	$("#saveimgbtn").on("click", function() {
+		var form = $('#sendimgfile')[0];
+		var formData = new FormData(form);
+		formData.append("wearImg", $("#fileopen")[0].files[0]);
+
+		$.ajax({
+			url : "${pageContext.request.contextPath}/myroom/codibookSave",
+			type : "POST",
+			processData : false,
+			contentType : false,
+			data : formData,
+			success : function(result) {
+				alert("저장됐습니다.");
+			},
+
+			error : function(XHR, status, error) {
+				console.log("실패");
+			}
+		});
+	});
 </script>
 
 </html>
