@@ -39,4 +39,8 @@ public class MyRoomDao {
 		map.put("num", num);
 		return sqlSession.selectList("myroom.getCodiBookList", map);
 	}
+	
+	public void chooseClick(int no) {
+		sqlSession.update("chooseClick", no);
+	}
 }

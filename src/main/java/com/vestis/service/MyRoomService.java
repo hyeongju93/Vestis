@@ -65,5 +65,9 @@ public class MyRoomService {
 	public List<CodibookVo> getList(String purpose, int num) {
 		return myRoomDao.getList(purpose, num);
 	}
+	
+	public void chooseClick(int no) {
+		myRoomDao.chooseClick(no);
+	}
 
 }

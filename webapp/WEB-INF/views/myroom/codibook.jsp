@@ -249,43 +249,6 @@
 			style="overflow: auto; width: 87%; height: 37vw; padding: 2%; padding-bottom: 0; background-color: rgba(255, 255, 255, 0.9); border-radius: 1em; float: right;">
 			<div class="bts row">
 				<div class='list-group gallery' id="codibookItemList">
-					<%-- <c:forEach items="${list }" var="vo">
-						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-							<div class="thumbnail">
-								<div data-image="${pageContext.request.contextPath}/upload/${vo.codi }" data-toggle="modal"
-									data-target="#modal" data-keyboard="true" data-backdrop="false">
-									<img class="img-responsive getSrc" alt="" src="${pageContext.request.contextPath}/upload/${vo.codi }"
-										style="cursor: pointer" />
-								</div>
-								<div class="row">
-									<div class="col-md-8">
-										<p class="text-left" style="margin: 2%;">
-											<img class="prifile_photo" src="${pageContext.request.contextPath}/upload/${vo.profile}" alt="프로필사진"
-												style="margin-right: 10px;">${vo.otherNicname }</p>
-									</div>
-									<div class="col-md-4"
-										style="padding-top: 2%; padding-left: auto;">
-										<c:if test="${userNo == authUser.no }">
-											<button class="btn btn-sm btn-hover btn-default chsbtn"
-												style="float: right;">
-												<c:if test="${vo.choose != 0 }">
-													<span class="glyphicon glyphicon-check btn-success"> </span>
-												</c:if>
-												<c:if test="${vo.choose == 0 }">
-													<span class="glyphicon glyphicon-check"> </span>
-												</c:if>
-											</button>
-										</c:if>
-										<button class="btn btn-sm btn-hover btn-primary likebtn" style="display: inline; float: right; margin-top:5%;" id="like${vo.no }">
-											<span class="glyphicon glyphicon-thumbs-up"><div id="like${vo.no }-bs" style="display: inline; margin-left: 2px;">${vo.likes }</div></span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-				</c:forEach> --%>
-					
-					<!-- col-6 / end -->
 				</div>
 				<!-- list-group / end -->
 			</div>
@@ -330,7 +293,7 @@
 						
 						$('.chsbtn').click(function() {
 							var $this = $(this);
-
+							choosebtnClick($this.val());
 							$($this).addClass("btn-success");
 
 						});
@@ -350,6 +313,7 @@
 					}
 				});
 	}
+	
 	function render(CodibookVo) {
 		var userNo = ${userNo};
 		//var authNo = ${authUser.no};
@@ -373,13 +337,16 @@
 		str += " 	<div class=\"col-md-4\" style=\"padding-top:2%; padding-left:auto;\">";
 		//if (userNo == authNo) {
 		if(true){
-			str += "<button class=\"btn btn-sm btn-hover btn-default chsbtn\" style=\"float:right;\">";
 			if (CodibookVo.choose != 0) {
-				str += "<span class=\"glyphicon glyphicon-check btn-success\"></span>";
-			} else {
+				str += "<button class=\"btn btn-sm btn-hover btn-default chsbtn btn-success\" value="+CodibookVo.no+" style=\"float:right;\">";
 				str += "<span class=\"glyphicon glyphicon-check\"></span>";
+				str += "</button>";
+			} else {
+				str += "<button class=\"btn btn-sm btn-hover btn-default chsbtn\" value="+CodibookVo.no+" style=\"float:right;\">";
+				str += "<span class=\"glyphicon glyphicon-check\" ></span>";
+				str += "</button>";
 			}
-			str += "</button>";
+			
 		}
 		str += "		<button class=\"btn btn-sm btn-hover btn-primary likebtn\"";
 		str += "			style=\"display: inline; float:right; margin-top:5%\" id=\"like"
@@ -395,6 +362,22 @@
 
 		$("#codibookItemList").append(str);
 	}
+		
+	function choosebtnClick(no) {
+		$.ajax({
+			url : "${pageContext.request.contextPath }/myroom/chooseClick",
+			type : "post",
+			dataType : "json",
+			data : {"no":no},
+			success :function() {
+				console.log("성공");
+			},
+			error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
+				console.error(status + " : " + error);
+			}
+		});
+		
+	}
 </script>
 
 <script type="text/javascript">
@@ -406,7 +389,6 @@
 		$("#codibookItemList").empty();
 		fetchBook(listType, userNo);
 	});
-	
 </script>
 
 <script type="text/javascript">

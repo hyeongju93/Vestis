@@ -55,4 +55,12 @@
 			order by codi.no desc
 		]]>
 	</select>
+	
+	<update id="chooseClick" parameterType="int">
+		<![CDATA[
+			update codi
+			set choose = 1
+			where no = #{no}	
+		]]>
+	</update>
 </mapper>
