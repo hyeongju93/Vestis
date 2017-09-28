@@ -285,17 +285,21 @@
 						}
 						$('.likebtn').click(function() {
 							var $this = $(this);
-							var authNo = ${authUser.no};
-							console.log($($this).val());
-							likebtnClick($this.val(), authNo);
-							var c = $this.data('count');
-							if (!c)
-								c = 0;
-							c++;
-							$this.data('count', c);							
-							$('#' + this.id + '-bs').html(c);
-							$($this).addClass("btn-primary");
-							$this.removeClass("likebtn");
+							if ($this.hasClass('likebtn')){
+								console.log("종아요 버튼");
+
+								var authNo = ${authUser.no};
+								console.log($($this).val());
+								likebtnClick($this.val(), authNo);
+								var c = $this.data('count');
+								if (!c)
+									c = 0;
+								c++;
+								$this.data('count', c);							
+								$('#' + this.id + '-bs').html(c);
+								$($this).addClass("btn-primary");
+								$this.removeClass("likebtn");
+							}
 						});
 						
 						$('.chsbtn').click(function() {
