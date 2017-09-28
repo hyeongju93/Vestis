@@ -33,14 +33,22 @@ public class MyRoomDao {
 		sqlSession.insert("myroom.insertCodi", codiVo);
 	}
 	
-	public List<CodibookVo> getList(String purpose, int num) {
+	public List<CodibookVo> getList(String purpose, int num, int no) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("purpose", purpose);	
 		map.put("num", num);
+		map.put("authNo", no);
 		return sqlSession.selectList("myroom.getCodiBookList", map);
 	}
 	
 	public void chooseClick(int no) {
-		sqlSession.update("chooseClick", no);
+		sqlSession.update("myroom.chooseClick", no);
+	}
+	
+	public void likebtnClick(int voNo, int authNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("voNo", voNo);
+		map.put("authNo", authNo);
+		sqlSession.insert("myroom.likebtnClick", map);
 	}
 }

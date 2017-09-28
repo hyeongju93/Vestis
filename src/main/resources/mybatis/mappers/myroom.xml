@@ -35,11 +35,11 @@
 			pro_img.db_name profile,
 			codiimg.db_name codi,
 			wear.db_name wear,
-			choose, likes
+			choose, NVL(likes, 0) likes
 			from codi, person, img wear, img codiimg, img pro_img,
-			    (select count(like_person.person_no) likes
-			     from like_person, codi clike
-			     where clike.no = like_person.codi_no)
+			     (select codi_no like_codi_no, count(like_person.person_no) likes 
+                 from like_person
+                 group by like_person.person_no, codi_no)
 			where other_no = #{num}
 		]]>
 			<if test="purpose.equals('own')">
@@ -52,6 +52,7 @@
 			    and codi_no = codiimg.no
 			    and codi_photo_no = wear.no
 			    and profile_no = pro_img.no
+			    and codi.no = like_codi_no(+)
 			order by codi.no desc
 		]]>
 	</select>
@@ -63,4 +64,11 @@
 			where no = #{no}	
 		]]>
 	</update>
+	
+	<insert id="likebtnClick" parameterType="map">
+		<![CDATA[
+			insert into like_person
+			values(#{voNo}, #{authNo})			
+		]]>
+	</insert>
 </mapper>

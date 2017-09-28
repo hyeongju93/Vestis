@@ -263,19 +263,20 @@
 <!-- 코디북 리스트 뿌리기 -->
 <script type="text/javascript">
 	$(document).ready(function() {
-		var userNo = ${userNo};
-		fetchBook("all", userNo);
+		fetchBook("all");
 		console.log("ready!");
 			
 	});
 
-	function fetchBook(purpose, num) {
+	function fetchBook(purpose) {
+		var num = ${userNo};
+		var authNo = ${authUser.no};
 		console.log(purpose+num);
 		$.ajax({
 					url : "${pageContext.request.contextPath }/myroom/codibookList",
 					dataType : "json",
 					type : "post",
-					data : {"purpose":purpose, "num":num},
+					data : {"purpose":purpose, "num":num, "no":authNo},
 					success : function(codibookList) {
 						console.log("성공");
 						for (var i = 0; i < codibookList.length; i++) {
@@ -283,12 +284,18 @@
 							
 						}
 						$('.likebtn').click(function() {
-							var $this = $(this), c = $this.data('count');
+							var $this = $(this);
+							var authNo = ${authUser.no};
+							console.log($($this).val());
+							likebtnClick($this.val(), authNo);
+							var c = $this.data('count');
 							if (!c)
 								c = 0;
 							c++;
-							$this.data('count', c);
+							$this.data('count', c);							
 							$('#' + this.id + '-bs').html(c);
+							$($this).addClass("btn-primary");
+							$this.removeClass("likebtn");
 						});
 						
 						$('.chsbtn').click(function() {
@@ -316,7 +323,7 @@
 	
 	function render(CodibookVo) {
 		var userNo = ${userNo};
-		//var authNo = ${authUser.no};
+		var authNo = ${authUser.no};
 		
 		var str = "";
 		str += "<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>";
@@ -335,10 +342,10 @@
 				+ CodibookVo.otherNicname + "</p>";
 		str += " 	</div>";
 		str += " 	<div class=\"col-md-4\" style=\"padding-top:2%; padding-left:auto;\">";
-		//if (userNo == authNo) {
-		if(true){
+		if (userNo == authNo) {
+		//if(true){
 			if (CodibookVo.choose != 0) {
-				str += "<button class=\"btn btn-sm btn-hover btn-default chsbtn btn-success\" value="+CodibookVo.no+" style=\"float:right;\">";
+				str += "<button class=\"btn btn-sm btn-hover btn-default btn-success\" value="+CodibookVo.no+" style=\"float:right;\">";
 				str += "<span class=\"glyphicon glyphicon-check\"></span>";
 				str += "</button>";
 			} else {
@@ -348,12 +355,21 @@
 			}
 			
 		}
-		str += "		<button class=\"btn btn-sm btn-hover btn-primary likebtn\"";
-		str += "			style=\"display: inline; float:right; margin-top:5%\" id=\"like"
-				+ CodibookVo.no + "\">";
-		str += "			<span class=\"glyphicon glyphicon-thumbs-up\"><div id=\"like"+CodibookVo.no+"-bs\" style=\"display: inline; margin-left: 2px;\">"
-				+ CodibookVo.likes + "</div></span>";
-		str += "		</button>";
+		if(CodibookVo.likeflag != 0){
+			str += "		<button class=\"btn btn-sm btn-hover btn-primary\"";
+			str += "			style=\"display: inline; float:right; margin-top:5%\" data="+CodibookVo.likes+" value="+CodibookVo.no+" id=\"like"
+					+ CodibookVo.no + "\">";
+			str += "			<span class=\"glyphicon glyphicon-thumbs-up\"><div id=\"like"+CodibookVo.no+"-bs\" style=\"display: inline; margin-left: 2px;\">"
+					+ CodibookVo.likes + "</div></span>";
+			str += "		</button>";
+		} else {
+			str += "		<button class=\"btn btn-sm btn-default btn-hover likebtn\"";
+			str += "			style=\"display: inline; float:right; margin-top:5%\" data="+CodibookVo.likes+" value="+CodibookVo.no+"	 id=\"like"
+					+ CodibookVo.no + "\">";
+			str += "			<span class=\"glyphicon glyphicon-thumbs-up\"><div id=\"like"+CodibookVo.no+"-bs\" style=\"display: inline; margin-left: 2px;\">"
+					+ CodibookVo.likes + "</div></span>";
+			str += "		</button>";
+		}
 		str += "	</div>";
 		str += "	</div>";
 		str += "</div>";
@@ -370,24 +386,38 @@
 			dataType : "json",
 			data : {"no":no},
 			success :function() {
-				console.log("성공");
+				console.log("채택 성공");
 			},
 			error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
 				console.error(status + " : " + error);
 			}
 		});
-		
 	}
+	function likebtnClick(voNo, authNo) {
+		console.log(voNo+authNo);
+		$.ajax({
+			url : "${pageContext.request.contextPath }/myroom/likeClick",
+			type : "post",
+			dataType : "json",
+			data : {"voNo":voNo, "authNo":authNo},
+			success :function() {
+				console.log("좋아요 성공");
+			},
+			error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
+				console.error(status + " : " + error);
+			}
+		});
+	}
+
 </script>
 
 <script type="text/javascript">
 	$("[name=clothlistchoice]").on('click', function() {
 		console.log("분류 클릭");
-		var userNo = ${userNo};
 		var listType = $(this).val();
 		console.log(listType);
 		$("#codibookItemList").empty();
-		fetchBook(listType, userNo);
+		fetchBook(listType);
 	});
 </script>
 

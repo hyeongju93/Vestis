@@ -62,12 +62,16 @@ public class MyRoomService {
 		return clothWeatherVo;
 	}
 	
-	public List<CodibookVo> getList(String purpose, int num) {
-		return myRoomDao.getList(purpose, num);
+	public List<CodibookVo> getList(String purpose, int num, int no) {
+		return myRoomDao.getList(purpose, num, no);
 	}
 	
 	public void chooseClick(int no) {
 		myRoomDao.chooseClick(no);
+	}
+	
+	public void likebtnClick(int voNo, int authNo) {
+		myRoomDao.likebtnClick(voNo, authNo);
 	}
 
 }

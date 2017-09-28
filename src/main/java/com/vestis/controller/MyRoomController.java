@@ -139,19 +139,25 @@ public class MyRoomController {
 	
 	@ResponseBody
 	@RequestMapping(value ="/codibookList", method=RequestMethod.POST)
-	public List<CodibookVo> getCodibookList(@RequestParam("purpose") String purpose, @RequestParam("num") int num) {
-		List<CodibookVo> list = myRoomService.getList(purpose, num);
+	public List<CodibookVo> getCodibookList(@RequestParam("purpose") String purpose, @RequestParam("num") int num, @RequestParam("no") int no) {
+		List<CodibookVo> list = myRoomService.getList(purpose, num, no);
 		return list;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value ="/chooseClick", method=RequestMethod.POST)
 	public String chooseClick(@RequestParam("no") int no) {
-		System.out.println(no+"들어옴");
 		myRoomService.chooseClick(no);		
 		return "success";
 	}
 
+	@ResponseBody
+	@RequestMapping(value ="/likeClick", method=RequestMethod.POST)
+	public String likebtnClick(@RequestParam("voNo") int voNo, @RequestParam("authNo") int authNo) {
+		myRoomService.likebtnClick(voNo, authNo);
+		return "success";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/codibookSave", method = RequestMethod.POST)
 	public String codibookSave(@RequestBody MultipartFile file) {

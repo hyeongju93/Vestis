@@ -8,12 +8,13 @@ public class CodibookVo {
 	private String codi;		//코디사진
 	private String wear;		//입은 사진
 	private int choose;			//채택
-	private int likes;			//좋아요 수
+	private Integer likes;			//좋아요 수
+	private int likeflag;		//좋아요 플래그
 	
 	public CodibookVo() {}
 
 	public CodibookVo(int no, int otherNo, String otherNicname, String profile, String codi, String wear, int choose,
-			int likes) {
+			int likes, int likeflag) {
 		super();
 		this.no = no;
 		this.otherNo = otherNo;
@@ -23,6 +24,7 @@ public class CodibookVo {
 		this.wear = wear;
 		this.choose = choose;
 		this.likes = likes;
+		this.likeflag = likeflag;
 	}
 
 	public int getNo() {
@@ -81,11 +83,19 @@ public class CodibookVo {
 		this.choose = choose;
 	}
 
-	public int getLikes() {
+	public Integer getLikes() {
 		return likes;
 	}
 
-	public void setLikes(int likes) {
+	public void setLikes(Integer likes) {
 		this.likes = likes;
+	}
+
+	public int getLikeflag() {
+		return likeflag;
+	}
+
+	public void setLikeflag(int likeflag) {
+		this.likeflag = likeflag;
 	}
 }
