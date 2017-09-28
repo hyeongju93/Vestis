@@ -304,8 +304,11 @@
 						
 						$('.chsbtn').click(function() {
 							var $this = $(this);
-							choosebtnClick($this.val());
-							$($this).addClass("btn-success");
+							if ($this.hasClass('chsbtn')){
+								choosebtnClick($this.val());
+								$($this).addClass("btn-success");
+								$this.removeClass("chsbtn")
+							}
 
 						});
 						
