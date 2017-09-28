@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.vestis.service.MyRoomService;
+import com.vestis.vo.ClothListVo;
 import com.vestis.vo.ClothWeatherVo;
 import com.vestis.vo.CodibookVo;
 import com.vestis.vo.UserVo;
@@ -82,6 +83,15 @@ public class MyRoomController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value = "/clothList", method = RequestMethod.POST)
+	public List<ClothListVo> clothList(@RequestParam("type") int type, @RequestParam("userNo") int userNo) {
+		System.out.println(type+""+userNo);
+		List<ClothListVo> list = myRoomService.getClothList(type, userNo);
+		return list;
+	}
+	
+	
+	@ResponseBody
 	@RequestMapping(value = "/save/{userNo}", method = RequestMethod.POST)
 	public String save(@RequestParam("data") String binaryData, @RequestParam("choice") String[] choice,
 			@RequestParam("weather") String weather, @RequestParam("temp") String temper,
@@ -120,7 +130,7 @@ public class MyRoomController {
 			stream.close();
 			System.out.println(fileName + ".png 파일 작성 완료");
 
-			myRoomService.SaveCodi(temp, weatherNo, userNo, authNo, fileName, file.length);
+			myRoomService.SaveCodi(choice, temp, weatherNo, userNo, authNo, fileName, file.length);
 		} catch (Exception e) {
 			System.out.println("파일이 정상적으로 넘어오지 않았습니다");
 		} finally {

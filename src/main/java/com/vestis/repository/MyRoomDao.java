@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.vestis.vo.ClothListVo;
 import com.vestis.vo.ClothWeatherVo;
 import com.vestis.vo.CodiVo;
 import com.vestis.vo.CodibookVo;
@@ -17,6 +18,13 @@ import com.vestis.vo.ImgVo;
 public class MyRoomDao {
 	@Autowired
 	SqlSession sqlSession;
+	
+	public void addCodiCloth(int codiNo, int no) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("codiNo", codiNo);
+		map.put("no", no);
+		sqlSession.insert("myroom.insertCodiCloth", map);
+	}
 	
 	public int addWeather(ClothWeatherVo clothWeatherVo) {
 		sqlSession.insert("myroom.insertWeather", clothWeatherVo);
@@ -29,8 +37,10 @@ public class MyRoomDao {
 		return imgVo.getNo();
 	}
 	
-	public void addCodi(CodiVo codiVo) {
+	public int addCodi(CodiVo codiVo) {
 		sqlSession.insert("myroom.insertCodi", codiVo);
+		
+		return codiVo.getNo();
 	}
 	
 	public List<CodibookVo> getList(String purpose, int num, int no) {
@@ -50,5 +60,13 @@ public class MyRoomDao {
 		map.put("voNo", voNo);
 		map.put("authNo", authNo);
 		sqlSession.insert("myroom.likebtnClick", map);
+	}
+	
+	public List<ClothListVo> getClothList(int type, int userNo){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
+		map.put("userNo", userNo);
+		
+		return sqlSession.selectList("myroom.getClothList", map);
 	}
 }

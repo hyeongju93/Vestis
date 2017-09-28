@@ -4,12 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthSplitPaneUI;
+
+import org.apache.ibatis.type.IntegerTypeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vestis.repository.MyRoomDao;
 import com.vestis.util.WeatherInfo;
 import com.vestis.util.WeatherVo;
+import com.vestis.vo.ClothListVo;
 import com.vestis.vo.ClothWeatherVo;
 import com.vestis.vo.CodiVo;
 import com.vestis.vo.CodibookVo;
@@ -21,7 +25,7 @@ public class MyRoomService {
 	@Autowired
 	MyRoomDao myRoomDao;
 	
-	public void SaveCodi(int temp, int weatherNo, int userNo, int authNo, String filename, long fileSize) {
+	public void SaveCodi(String[] choice, int temp, int weatherNo, int userNo, int authNo, String filename, long fileSize) {
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date = sdf.format(cal.getTime());
@@ -34,7 +38,13 @@ public class MyRoomService {
 		int imgNo = myRoomDao.addImg(imgVo);		
 
 		CodiVo codiVo = new CodiVo(authNo, userNo, 1, imgNo, 0, date, weatherSaveNo, date, weatherchsNo);
-		myRoomDao.addCodi(codiVo);
+		int codiNo = myRoomDao.addCodi(codiVo);
+		
+		for(int i=0; i<choice.length; i++) {
+			int no = Integer.parseInt(choice[i]);
+			myRoomDao.addCodiCloth(codiNo, no);
+		}
+
 	}
 	
 	public ClothWeatherVo getWeather(UserVo authUser) {
@@ -72,6 +82,11 @@ public class MyRoomService {
 	
 	public void likebtnClick(int voNo, int authNo) {
 		myRoomDao.likebtnClick(voNo, authNo);
+	}
+	
+	public List<ClothListVo> getClothList(int type, int userNo) {
+		System.out.println("옷 들어옴");
+		return myRoomDao.getClothList(type, userNo);
 	}
 
 }

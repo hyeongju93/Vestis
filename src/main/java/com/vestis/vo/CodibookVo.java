@@ -8,7 +8,7 @@ public class CodibookVo {
 	private String codi;		//코디사진
 	private String wear;		//입은 사진
 	private int choose;			//채택
-	private Integer likes;			//좋아요 수
+	private int likes;			//좋아요 수
 	private int likeflag;		//좋아요 플래그
 	
 	public CodibookVo() {}
@@ -83,11 +83,11 @@ public class CodibookVo {
 		this.choose = choose;
 	}
 
-	public Integer getLikes() {
+	public int getLikes() {
 		return likes;
 	}
 
-	public void setLikes(Integer likes) {
+	public void setLikes(int likes) {
 		this.likes = likes;
 	}
 

@@ -23,9 +23,19 @@
 	</insert>
 	
 	<insert id="insertCodi" parameterType="com.vestis.vo.CodiVo">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select seq_codi_no.nextval from dual 
+		</selectKey>
 		<![CDATA[
 			insert into codi
-			values(seq_codi_no.nextval, #{userNo}, #{otherNo}, #{codiPhotoNo}, #{codiNo}, #{choose}, TO_DATE(#{codiDate},'YYYY-MM-DD hh24:mi:ss'), #{codiWeather}, TO_DATE(#{choiceDate},'YYYY-MM-DD hh24:mi:ss'), #{choiceWeather})			
+			values(#{no}, #{userNo}, #{otherNo}, #{codiPhotoNo}, #{codiNo}, #{choose}, TO_DATE(#{codiDate},'YYYY-MM-DD hh24:mi:ss'), #{codiWeather}, TO_DATE(#{choiceDate},'YYYY-MM-DD hh24:mi:ss'), #{choiceWeather})			
+		]]>
+	</insert>
+	
+	<insert id="insertCodiCloth" parameterType="map">
+		<![CDATA[
+			insert into codi_cloth
+			values(#{no}, #{codiNo})			
 		]]>
 	</insert>
 	
@@ -71,4 +81,16 @@
 			values(#{voNo}, #{authNo})			
 		]]>
 	</insert>
+	
+	<select id="getClothList" resultType="com.vestis.vo.ClothListVo" parameterType="map">
+		<![CDATA[
+			select cloth.no no, db_name dbName
+			from img, cloth
+			where img.no = cloth.img_no
+			and person_no = #{userNo}
+		]]>
+		<if test="type != 0">
+			and type_no = #{type}
+		</if>
+	</select>
 </mapper>
