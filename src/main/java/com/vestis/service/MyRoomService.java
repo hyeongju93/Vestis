@@ -62,8 +62,8 @@ public class MyRoomService {
 		return clothWeatherVo;
 	}
 	
-	public List<CodibookVo> getList() {
-		return myRoomDao.getList();
+	public List<CodibookVo> getList(String purpose, int num) {
+		return myRoomDao.getList(purpose, num);
 	}
 
 }

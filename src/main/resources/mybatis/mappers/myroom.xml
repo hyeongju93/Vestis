@@ -29,7 +29,7 @@
 		]]>
 	</insert>
 	
-	<select id="getCodiBookList" resultType="com.vestis.vo.CodibookVo">
+	<select id="getCodiBookList" resultType="com.vestis.vo.CodibookVo" parameterType="map">
 		<![CDATA[
 			select codi.no no, person.no otherNo, person.nicname otherNicname, 
 			pro_img.db_name profile,
@@ -40,7 +40,15 @@
 			    (select count(like_person.person_no) likes
 			     from like_person, codi clike
 			     where clike.no = like_person.codi_no)
-			where other_no=person.no 
+			where other_no = #{num}
+		]]>
+			<if test="purpose.equals('own')">
+				and person_no = #{num}
+			</if>
+			<if test="purpose.equals('other')">
+				and person_no != #{num}
+			</if>
+		<![CDATA[
 			    and codi_no = codiimg.no
 			    and codi_photo_no = wear.no
 			    and profile_no = pro_img.no

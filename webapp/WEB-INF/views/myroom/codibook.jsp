@@ -237,11 +237,10 @@
 
 		<div class="top center">
 			<fieldset class="list">
-				<input type="radio" style="margin-left: 5%;" value="HTML"
-					checked="checked">All <input type="radio"
-					style="margin-left: 5%;" value="HTML">My Codi <input
-					type="radio" style="margin-left: 5%;" value="HTML">Other
-				Codi <input type="radio" style="margin-left: 5%;" value="male">System
+				<label for="allbtn" style="margin-left: 5%;"><input type="radio" id="allbtn" name="clothlistchoice" value="all" checked="checked">All</label> 
+				<label for="mycodibtn" style="margin-left: 5%;"><input type="radio" id="mycodibtn" name="clothlistchoice" value="own">My Codi </label>
+				<label for="othercodibtn" style="margin-left: 5%;"><input type="radio" id="othercodibtn" name="clothlistchoice" value="other">Other Codi </label>
+				<label for="systembtn" style="margin-left: 5%;"><input type="radio" id="systembtn" name="clothlistchoice" value="system">System</label>
 			</fieldset>
 		</div>
 
@@ -250,7 +249,7 @@
 			style="overflow: auto; width: 87%; height: 37vw; padding: 2%; padding-bottom: 0; background-color: rgba(255, 255, 255, 0.9); border-radius: 1em; float: right;">
 			<div class="bts row">
 				<div class='list-group gallery' id="codibookItemList">
-					<c:forEach items="${list }" var="vo">
+					<%-- <c:forEach items="${list }" var="vo">
 						<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
 							<div class="thumbnail">
 								<div data-image="${pageContext.request.contextPath}/upload/${vo.codi }" data-toggle="modal"
@@ -284,7 +283,7 @@
 								</div>
 							</div>
 						</div>
-				</c:forEach>
+				</c:forEach> --%>
 					
 					<!-- col-6 / end -->
 				</div>
@@ -301,28 +300,50 @@
 <!-- 코디북 리스트 뿌리기 -->
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		var userNo = ${userNo};
+		fetchBook("all", userNo);
 		console.log("ready!");
-		$('.getSrc').click(function() {
-			console.log("hello");
-			var src = $(this).attr('src');
-
-			//프로필 사진과 닉네임을 가져와야한다
-			//db를 통해서 할것이므로 눌렀을 때 코디번호를 모달창에 전해야한다.
-			$('.showPic').attr('src', src);
-		});
-
+			
 	});
 
-/* 	function fetchBook() {
+	function fetchBook(purpose, num) {
+		console.log(purpose+num);
 		$.ajax({
-					url : "${pageContext.request.contextPath }/Vestis/myroom/codibook/${userNo}",
+					url : "${pageContext.request.contextPath }/myroom/codibookList",
 					dataType : "json",
+					type : "post",
+					data : {"purpose":purpose, "num":num},
 					success : function(codibookList) {
 						console.log("성공");
 						for (var i = 0; i < codibookList.length; i++) {
 							render(codibookList[i]);
+							
 						}
+						$('.likebtn').click(function() {
+							var $this = $(this), c = $this.data('count');
+							if (!c)
+								c = 0;
+							c++;
+							$this.data('count', c);
+							$('#' + this.id + '-bs').html(c);
+						});
+						
+						$('.chsbtn').click(function() {
+							var $this = $(this);
+
+							$($this).addClass("btn-success");
+
+						});
+						
+						$('.getSrc').click(function() {
+							console.log("hello");
+							var src = $(this).attr('src');
+
+							//프로필 사진과 닉네임을 가져와야한다
+							//db를 통해서 할것이므로 눌렀을 때 코디번호를 모달창에 전해야한다.
+							$('.showPic').attr('src', src);
+						});	
+
 					},
 					error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
 						console.error(status + " : " + error);
@@ -330,26 +351,28 @@
 				});
 	}
 	function render(CodibookVo) {
+		var userNo = ${userNo};
+		//var authNo = ${authUser.no};
+		
 		var str = "";
-
 		str += "<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>";
 		str += "<div class=\"thumbnail\">";
 		str += "	<div";
-		str += "	 	data-image="+CodibookVo.codi;
+		str += "	 	data-image=${pageContext.request.contextPath}/upload/"+CodibookVo.codi;
 		str += "		data-toggle=\"modal\" data-target=\"#modal\" data-keyboard=\"true\"";
 		str += "		data-backdrop=\"false\">";
 		str += "		<img class=\"img-responsive getSrc\" alt=\"\"";
-		str += "			src="+CodibookVo.codi+" style=\"cursor:pointer\"/>";
+		str += "			src=${pageContext.request.contextPath}/upload/"+CodibookVo.codi+" style=\"cursor:pointer\"/>";
 		str += "	</div> ";
 		str += "	<div class=\"row\">";
 		str += "	<div class=\"col-md-8\">";
 		str += "		<p class=\"text-left\" style=\"margin: 2%;\">";
-		str += "			<img class=\"prifile_photo\" src="+CodibookVo.profile+" alt=\"프로필사진\" style=\"margin-right:10px;\">"
+		str += "			<img class=\"prifile_photo\" src=${pageContext.request.contextPath}/upload/"+CodibookVo.profile+" alt=\"프로필사진\" style=\"margin-right:10px;\">"
 				+ CodibookVo.otherNicname + "</p>";
 		str += " 	</div>";
 		str += " 	<div class=\"col-md-4\" style=\"padding-top:2%; padding-left:auto;\">";
-		if (true) {
-			console.log("자신의 페이지로 들어옴");
+		//if (userNo == authNo) {
+		if(true){
 			str += "<button class=\"btn btn-sm btn-hover btn-default chsbtn\" style=\"float:right;\">";
 			if (CodibookVo.choose != 0) {
 				str += "<span class=\"glyphicon glyphicon-check btn-success\"></span>";
@@ -360,8 +383,8 @@
 		}
 		str += "		<button class=\"btn btn-sm btn-hover btn-primary likebtn\"";
 		str += "			style=\"display: inline; float:right; margin-top:5%\" id=\"like"
-				+ CodibookVo.no + ">";
-		str += "			<span class=\"glyphicon glyphicon-thumbs-up\"><div id=\"like"+CodibookVo.no+"-bs3\" style=\"display: inline; margin-left: 2px;\">"
+				+ CodibookVo.no + "\">";
+		str += "			<span class=\"glyphicon glyphicon-thumbs-up\"><div id=\"like"+CodibookVo.no+"-bs\" style=\"display: inline; margin-left: 2px;\">"
 				+ CodibookVo.likes + "</div></span>";
 		str += "		</button>";
 		str += "	</div>";
@@ -371,33 +394,19 @@
 		str += "</div>";
 
 		$("#codibookItemList").append(str);
-	} */
+	}
 </script>
 
-
-
-
-
-
-
-
-<!-- 채택 버튼과 추천 버튼 -->
 <script type="text/javascript">
-	$('.likebtn').click(function() {
-		var $this = $(this), c = $this.data('count');
-		if (!c)
-			c = 0;
-		c++;
-		$this.data('count', c);
-		$('#' + this.id + '-bs').html(c);
+	$("[name=clothlistchoice]").on('click', function() {
+		console.log("분류 클릭");
+		var userNo = ${userNo};
+		var listType = $(this).val();
+		console.log(listType);
+		$("#codibookItemList").empty();
+		fetchBook(listType, userNo);
 	});
-
-	$('.chsbtn').click(function() {
-		var $this = $(this);
-
-		$($this).addClass("btn-success");
-
-	});
+	
 </script>
 
 <script type="text/javascript">

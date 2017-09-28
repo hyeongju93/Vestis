@@ -1,6 +1,8 @@
 package com.vestis.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,10 @@ public class MyRoomDao {
 		sqlSession.insert("myroom.insertCodi", codiVo);
 	}
 	
-	public List<CodibookVo> getList() {
-		return sqlSession.selectList("myroom.getCodiBookList");
+	public List<CodibookVo> getList(String purpose, int num) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("purpose", purpose);	
+		map.put("num", num);
+		return sqlSession.selectList("myroom.getCodiBookList", map);
 	}
 }

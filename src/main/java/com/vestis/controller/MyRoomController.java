@@ -133,10 +133,19 @@ public class MyRoomController {
 
 	@RequestMapping(value = "/codibook/{userNo}")
 	public String codibook(@PathVariable("userNo") int userNo, Model model) {
-		List<CodibookVo> list = myRoomService.getList();
+		//List<CodibookVo> list = myRoomService.getList();
 		model.addAttribute("userNo", userNo);
-		model.addAttribute("list", list);
+		//model.addAttribute("list", list);
 		return "/myroom/codibook";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value ="/codibookList", method=RequestMethod.POST)
+	public List<CodibookVo> getCodibookList(@RequestParam("purpose") String purpose, @RequestParam("num") int num) {
+		System.out.println(purpose+num);
+		
+		List<CodibookVo> list = myRoomService.getList(purpose, num);
+		return list;
 	}
 
 	@ResponseBody
