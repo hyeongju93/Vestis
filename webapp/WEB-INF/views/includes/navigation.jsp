@@ -26,15 +26,20 @@
 </style>
 
 <!-- 서브메뉴 -->
+
 <div class="sub-menu bg-faded">
 	<a href="${pageContext.request.contextPath }/user/modifyform"><img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" /></a>
 	<div id="hyj"></div>
 	<div>
+
 	
+
       <p>${sessionScope.authUser.nicname}</p>
       <p>point:${sessionScope.authUser.point}</p>
+
       <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</a></p>
       
+   	
    	</div> 
    	
    	<div style="text-align:center">
