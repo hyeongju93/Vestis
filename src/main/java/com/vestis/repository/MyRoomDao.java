@@ -45,9 +45,12 @@ public class MyRoomDao {
 	
 	public List<CodibookVo> getList(String purpose, int num, int no) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println(num+purpose+no);
 		map.put("purpose", purpose);	
 		map.put("num", num);
 		map.put("authNo", no);
+		List<CodibookVo> list =sqlSession.selectList("myroom.getCodiBookList", map);
+		System.out.println(list.size());
 		return sqlSession.selectList("myroom.getCodiBookList", map);
 	}
 	

@@ -41,7 +41,6 @@
    
 </div>
 
-   
 <script type="text/javascript">	
 $(document).ready(function(){
 	var mo = ${userNo};
@@ -55,7 +54,7 @@ $(document).ready(function(){
 				console.log(UserVo);
 				console.log(UserVo.profileDBName);
 				console.log(UserVo.point);
-				render(UserVo.profileDBName);
+				navigation_render(UserVo.profileDBName);
 				$("#userNicName").html(UserVo.nicname);
 				$("#userPoint").html('point:'+UserVo.point);
 				console.log("성공");
@@ -68,9 +67,7 @@ $(document).ready(function(){
 	
 });
 
-
-
-function render(result){
+function navigation_render(result){
 	var str ="";
 	str+="<div style='text-align:center'><img src='${pageContext.request.contextPath }/upload/"+result+"' class='image-circle' />";
 	str+="</div>";

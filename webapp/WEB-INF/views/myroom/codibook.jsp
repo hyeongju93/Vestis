@@ -296,8 +296,8 @@
 					data : {"purpose":purpose, "num":num, "no":authNo},
 					success : function(codibookList) {
 						console.log("성공");
+						console.log(codibookList.length);
 						for (var i = 0; i < codibookList.length; i++) {
-							console.log(codibookList.length);
 							es_render(codibookList[i]);
 							
 						}
@@ -363,9 +363,7 @@
 		var str = "";
 		str += "<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3' id=\"codibookItem"+CodibookVo.no+"\">";
 		str += "<div class=\"thumbnail bts\">";
-		if (userNo == authNo) {
-			str += "	<button class=\"btn btn-default btn-xs deleteCodiBtn\" style=\"float:right;\" value="+CodibookVo.no+">X</button>";
-		}
+		str += "	<button class=\"btn btn-default btn-xs deleteCodiBtn\" style=\"float:right;\" value="+CodibookVo.no+">X</button>";
 		str += "	<div id=\"openModal"+CodibookVo.no+"\"";
 		str += "	 	data-image=\"${pageContext.request.contextPath}/upload/"+CodibookVo.codi+"\" ";
 		str += "	 	data-wearimage=\"${pageContext.request.contextPath}/upload/"+CodibookVo.wear+"\" ";
@@ -379,7 +377,7 @@
 		str += "	<div class=\"row\">";
 		str += "	<div class=\"col-md-8\">";
 		str += "		<p class=\"text-left\" style=\"margin: 2%;\">";
-		str += "			<img class=\"prifile_photo\" src=${pageContext.request.contextPath}/upload/"+CodibookVo.profile+" alt=\"\" style=\"margin-right:10px;\">"
+		str += "			<img class=\"prifile_photo\" src=${pageContext.request.contextPath}/upload/"+CodibookVo.profile+" alt=\"프로필사진\" style=\"margin-right:10px;\">"
 				+ CodibookVo.otherNicname + "</p>";
 		str += " 	</div>";
 		str += " 	<div class=\"col-md-4\" style=\"padding-top:2%; padding-left:auto;\">";
