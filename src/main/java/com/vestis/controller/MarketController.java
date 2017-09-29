@@ -64,4 +64,10 @@ public class MarketController {
 		System.out.println(list);
 		return list;
 	}
+	
+	/*@RequestMapping(value="/delete")
+	public String delete(@RequestParam("no")int no) {
+		marketService.delete(no);
+		return "";
+	}*/
 }
