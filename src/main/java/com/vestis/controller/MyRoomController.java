@@ -161,8 +161,11 @@ public class MyRoomController {
 	
 	@ResponseBody
 	@RequestMapping(value ="/chooseClick", method=RequestMethod.POST)
-	public String chooseClick(@RequestParam("no") int no) {
-		myRoomService.chooseClick(no);		
+	public String chooseClick(@RequestParam("no") int no, HttpSession session) {
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		ClothWeatherVo clothWeatherVo = myRoomService.getWeather(authUser);
+		System.out.println("채택버튼 클릭");
+		myRoomService.chooseClick(no, clothWeatherVo.getTemp(), clothWeatherVo.getWeatherNo());		
 		return "success";
 	}
 

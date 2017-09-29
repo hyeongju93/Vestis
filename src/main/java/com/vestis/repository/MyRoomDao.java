@@ -55,6 +55,19 @@ public class MyRoomDao {
 		sqlSession.update("myroom.chooseClick", no);
 	}
 	
+	public int getWeather(int no) {
+		return sqlSession.selectOne("myroom.getWeather", no);
+	}
+	
+	public void setChoiceWeather(int choiceWeather, int temp, int weatherNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("choiceWeather", choiceWeather);	
+		map.put("temp", temp);	
+		map.put("weatherNo", weatherNo);
+		System.out.println("채택 날씨 저장 dao");
+		sqlSession.update("myroom.setChoiceWeather", map);
+	}
+	
 	public void likebtnClick(int voNo, int authNo) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("voNo", voNo);

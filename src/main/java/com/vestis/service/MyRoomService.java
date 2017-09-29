@@ -73,7 +73,11 @@ public class MyRoomService {
 		return myRoomDao.getList(purpose, num, no);
 	}
 	
-	public void chooseClick(int no) {
+	public void chooseClick(int no, int temp, int weatherNo) {
+		int choiceWeather = myRoomDao.getWeather(no);
+		System.out.println(choiceWeather);
+		myRoomDao.setChoiceWeather(choiceWeather, temp, weatherNo);
+		System.out.println("채택 날씨 저장 완료");
 		myRoomDao.chooseClick(no);
 	}
 	

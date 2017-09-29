@@ -41,7 +41,7 @@
 	
 	<select id="getCodiBookList" resultType="com.vestis.vo.CodibookVo" parameterType="map">
 		<![CDATA[
-			select no, otherNo, otherNicname, profile, codi, wear, likes,  nvl2(like_person.person_no, 1, 0 ) likeflag
+			select no, otherNo, otherNicname, profile, codi, wear, likes, choose, nvl2(like_person.person_no, 1, 0 ) likeflag
 			from like_person, (select codi.no no, person.no otherNo, person.nicname otherNicname, 
 						pro_img.db_name profile,
 						codiimg.db_name codi,
@@ -75,6 +75,23 @@
 			update codi
 			set choose = 1
 			where no = #{no}	
+		]]>
+	</update>
+	
+	<select id="getWeather" parameterType="int" resultType="int">
+		<![CDATA[
+			select choice_weather
+			from codi
+			where no = #{no}	
+		]]>
+	</select>
+	
+	<update id="setChoiceWeather" parameterType="map">
+		<![CDATA[
+			update cloth_weather
+			set temp = #{temp},
+				weather_no = #{weatherNo}
+			where no = #{choiceWeather}	
 		]]>
 	</update>
 	
