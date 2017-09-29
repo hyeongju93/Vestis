@@ -33,6 +33,15 @@
 		]]>
 	</select>
 	
+	<select id="getUserInfo" parameterType="int" resultType="com.vestis.vo.UserVo">
+		<![CDATA[
+			select db_name profileDBName, nicname, point 
+			from person, img
+			where person.no=#{no}
+				and profile_no = img.no
+		]]>
+	</select>
+	
 	<select id="image" parameterType="int" resultType="string">
 	<![CDATA[
 		select db_name

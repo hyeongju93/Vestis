@@ -15,6 +15,7 @@ public class UserVo {
 	private String gender;
 	private int point;
 	private int profile_no;
+	private String profileDBName;
 	private double lat;
 	private double lon;
 	
@@ -171,14 +172,25 @@ public class UserVo {
 	public void setLon(double lon) {
 		this.lon = lon;
 	}
+	
+	public String getProfileDBName() {
+		return profileDBName;
+	}
+
+	public void setProfileDBName(String profileDBName) {
+		this.profileDBName = profileDBName;
+	}
 
 	@Override
 	public String toString() {
 		return "UserVo [no=" + no + ", email=" + email + ", password=" + password + ", name=" + name + ", nicname="
 				+ nicname + ", phone=" + phone + ", address=" + address + ", birth=" + birth + ", birthyear="
 				+ birthyear + ", birthmonth=" + birthmonth + ", birthday=" + birthday + ", gender=" + gender
-				+ ", point=" + point + ", profile_no=" + profile_no + ", lat=" + lat + ", lon=" + lon + "]";
+				+ ", point=" + point + ", profile_no=" + profile_no + ", profileDBName=" + profileDBName + ", lat="
+				+ lat + ", lon=" + lon + "]";
 	}
+
+	
 
 	
 

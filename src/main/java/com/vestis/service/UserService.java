@@ -39,8 +39,8 @@ public class UserService {
 		return userDao.check(email,password);
 	}
 	
-	public String image(int mo ) {
-		return userDao.image(mo);
+	public UserVo getUserInfo(int mo ) {
+		return userDao.getUserInfo(mo);
 	}
 	
 	public UserVo getuser(int num ) {

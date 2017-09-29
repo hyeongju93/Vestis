@@ -385,7 +385,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 								</tr>
   		</div>     
         <button class="btn btn-lg btn-primary btn-block" id="btnb" type="button">회원가입 완료</button>
-      	<a href="${pageContext.request.contextPath }/main/test" class="btn btn-lg btn-info btn-block" id="default">메인으로</a>	
+      	<a href="${pageContext.request.contextPath }/main" class="btn btn-lg btn-info btn-block" id="default">메인으로</a>	
       </form>
       
       <!-- <form name="form" id="form" method="post">
@@ -666,10 +666,10 @@ $("#btnb").on("click",function(){
 	} else if(lat=="" || lng==""){
 		alert("주소값은 주소검색을 통해서 넣어주세요")
 	} else {
+		alert("회원가입에 성공하셨습니다.");
+		$('.form-signin').submit();
 	}
-	alert("회원가입에 성공하셨습니다.");
-	$('.form-signin').submit();
-	}
+	
 });
 </script>
 </html>

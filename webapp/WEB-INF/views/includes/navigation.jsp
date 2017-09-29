@@ -31,8 +31,8 @@
 	<a href="${pageContext.request.contextPath }/user/modifyform"><img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" /></a>
 	<div id="hyj"></div>
 	<div style="text-align:center">
-      <p>${sessionScope.authUser.nicname}</p>
-      <p>point:${sessionScope.authUser.point}</p>
+      <p id="userNicName">${sessionScope.authUser.nicname}</p>
+      <p id="userPoint">point:${sessionScope.authUser.point}</p>
       <p><a href="${pageContext.request.contextPath }/myroom/clothes/${userNo}">옷장</a></p>
       <p><a href="${pageContext.request.contextPath }/myroom/codibook/${userNo}">코디북</a></p>
       <p><a href="${pageContext.request.contextPath }/myroom/codi/${userNo}">코디하기</a></p>
@@ -40,22 +40,24 @@
    	
    
 </div>
-<form id="move" method="POST" action="#">
-   <input id="mo" type="hidden" value="${sessionScope.authUser.profile_no}">
-   </form>
+
    
 <script type="text/javascript">	
 $(document).ready(function(){
-	var mo=$('#mo').val();
+	var mo = ${userNo};
 	console.log(mo);
 	$.ajax({	
 		url : "${pageContext.request.contextPath }/user/image",		
 			type : "post",
 			data : {mo: mo},  
-		 	dataType : 'text', 
-			success : function(result){	
-				console.log(result);
-				render(result);
+		 	dataType : 'json', 
+			success : function(UserVo){	
+				console.log(UserVo);
+				console.log(UserVo.profileDBName);
+				console.log(UserVo.point);
+				render(UserVo.profileDBName);
+				$("#userNicName").html(UserVo.nicname);
+				$("#userPoint").html('point:'+UserVo.point);
 				console.log("성공");
 			},
 			error : function(XHR, status, error) {

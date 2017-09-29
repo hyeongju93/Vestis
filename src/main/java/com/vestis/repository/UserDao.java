@@ -70,6 +70,10 @@ public class UserDao {
 		return sqlSession.selectOne("user.getuser",num);
 	}
 	
+	public UserVo getUserInfo(int no) {
+		return sqlSession.selectOne("user.getUserInfo", no);
+	}
+	
 	public String image(int no) {
 		System.out.println("dao 들어옴");
 		System.out.println(no);

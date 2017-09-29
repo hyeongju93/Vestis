@@ -80,12 +80,12 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="image",method=RequestMethod.POST)
-	public String image(@RequestParam("mo") int mo) {
+	public UserVo getUserInfo(@RequestParam("mo") int mo) {
 		System.out.println(mo);
-		String saveName=userService.image(mo);
+		UserVo userVo =userService.getUserInfo(mo);
 		System.out.println("완주");
-		System.out.println(saveName);
-		return saveName;
+		System.out.println(userVo);
+		return userVo;
 	}
 	
 	@ResponseBody
