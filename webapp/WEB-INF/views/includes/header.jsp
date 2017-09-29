@@ -13,6 +13,7 @@
 	background-color: rgba(255, 255, 255, 0.9);
 }
 
+
 .text-expanded {
 	letter-spacing: 2px;
 }
@@ -70,12 +71,19 @@
 		
 		<!-- facebook 로그아웃 -->
 		<script type="text/javascript">
+		
+		
 			$("#logout").on("click", function() {
+				FB.logout(function(response) {
+		            // Person is now logged out
+		            console.log("aa")
+		         });
+				/* 이렇게 하다가 아이디 하나 날아갔음 조심할것 
 				FB.getLoginStatus(function(response) {
 					if (response.status === 'connected') {
 						FB.logout();
 					}
-				});
+				}); */
 				
 			});	
 		</script>
@@ -100,15 +108,30 @@
         
         <ul class="navbar-nav mx-auto">
         	<li class="nav-item active px-lg-4">
-            	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom/main">my room
-                <span class="sr-only">(current)</span>
-              	</a>
+            	
+        	<c:choose>
+				<c:when test="${empty sessionScope.authUser }">
+					<a id="roomheadd" class="nav-link text-uppercase text-expanded" href="#">my room
+                	<span class="sr-only">(current)</span>
+              		</a>
+              			<script type="text/javascript">
+              				$("#roomheadd").on("click",function(){
+              					alert("로그인 해주세요");
+              				});
+              			</script>
+				</c:when>
+				<c:otherwise>
+					<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom/main">my room
+                	<span class="sr-only">(current)</span>
+              		</a>
+				</c:otherwise>
+			</c:choose>	
             </li>
             <li class="nav-item px-lg-4">
               	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/cogell/list">codi gallery</a>
             </li>
             <li class="nav-item px-lg-4">
-              	<a class="nav-link text-uppercase text-expanded" href="blog.html">market</a>
+              	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/market/list">market</a>
             </li>
             <li class="nav-item px-lg-4">
               	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/center/list">service center</a>
