@@ -172,6 +172,7 @@ public class MyRoomController {
 		return list;
 	}
 	
+	
 	@ResponseBody//리턴값을 컨트롤러로보냄
 	@RequestMapping(value="/send")
 	public List<ImgVo> send(@RequestParam ("clothNo") int clothNo) {

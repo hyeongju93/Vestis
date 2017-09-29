@@ -70,12 +70,19 @@
 		
 		<!-- facebook 로그아웃 -->
 		<script type="text/javascript">
+		
+		
 			$("#logout").on("click", function() {
+				FB.logout(function(response) {
+		            // Person is now logged out
+		            console.log("aa")
+		         });
+				/* 이렇게 하다가 아이디 하나 날아갔음 조심할것 
 				FB.getLoginStatus(function(response) {
 					if (response.status === 'connected') {
 						FB.logout();
 					}
-				});
+				}); */
 				
 			});	
 		</script>
@@ -108,7 +115,7 @@
               	<a class="nav-link text-uppercase text-expanded" href="about.html">codi gallery</a>
             </li>
             <li class="nav-item px-lg-4">
-              	<a class="nav-link text-uppercase text-expanded" href="blog.html">market</a>
+              	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/market/list">market</a>
             </li>
             <li class="nav-item px-lg-4">
               	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/center/list">service center</a>

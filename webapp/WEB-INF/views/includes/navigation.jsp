@@ -23,13 +23,13 @@
 </style>
 
 <!-- 서브메뉴 -->
-<div class="sub-menu bg-faded">
+<div class="sub-menu bg-faded ">
 	<img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" />
 	<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle "/>
 	
       <p>jisoo</p>
       <p>point:100</p>
-      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</p>
+      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</a></p>
       
    	
    	</div> 

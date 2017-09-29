@@ -111,7 +111,7 @@
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
 	<div class="container" >
-		<!-- 서브메뉴 -->
+		
 		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 	  	
 		<div class=" co bg-faded p-4 my-4 ro">
