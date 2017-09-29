@@ -30,23 +30,12 @@
 <div class="sub-menu bg-faded">
 	<a href="${pageContext.request.contextPath }/user/modifyform"><img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" /></a>
 	<div id="hyj"></div>
-	<div>
-
-	
-
+	<div style="text-align:center">
       <p>${sessionScope.authUser.nicname}</p>
       <p>point:${sessionScope.authUser.point}</p>
-
       <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</a></p>
-      
-   	
-   	</div> 
-   	
-   	<div style="text-align:center">
-
       <p><a href="${pageContext.request.contextPath }/myroom/codibook/${userNo}">코디북</a></p>
       <p><a href="${pageContext.request.contextPath }/myroom/codi/${userNo}">코디하기</a></p>
-      
    	</div> 
    	
    
