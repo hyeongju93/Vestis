@@ -224,7 +224,7 @@
 	<div class="container">
 		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 
-		<div class="top center">
+		<div class="top center" style="margin-top:0;">
 			<fieldset class="list">
 				<label for="allbtn" style="margin-left: 5%;"><input type="radio" id="allbtn" name="clothlistchoice" value="all" checked="checked">All</label> 
 				<label for="mycodibtn" style="margin-left: 5%;"><input type="radio" id="mycodibtn" name="clothlistchoice" value="own">My Codi </label>
