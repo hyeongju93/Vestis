@@ -14,7 +14,16 @@
 
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
-      <style>
+      
+      
+    <style>
+    
+    @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+ 	p { font-size: 18px; }
+ 	.hn { font-family: 'Hanna'; }
+    
+    
+    
     #container {
       width: 70%;
       margin: 0 auto;     /* 가로로 중앙에 배치 */
@@ -46,11 +55,7 @@
     
 </head>
 <body>
-	
-	<div class="center-faded mt-4"></div>
-	
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
-    
+
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     
@@ -63,20 +68,20 @@
 			<div id="center" class="center-form">
 					<table class="table table-condensed">
 						<tr>
-							<th colspan="2">Vestis 공지사항</th>
+							<th colspan="2"><p class="hn">Vestis 공지사항</p></th>
 						</tr>
 						<tr>
-							<td class="label">제목</td>
-							<td>${centerVo.title }</td>
+							<td class="label"><p class="hn">제목</p></td>
+							<td><p class="hn">${centerVo.title }</p></td>
 						</tr>
 						<tr>
-							<td class="label">내용</td>
-							<td>${centerVo.content }</td>
+							<td class="label"><p class="hn">내용</p></td>
+							<td><p class="hn">${centerVo.content }</p></td>
 						</tr>
 					</table>
 				
 					<div class="bottom" style="text-align: right">
-						<a href="${pageContext.request.contextPath }/center/list">글목록</a>
+						<a href="${pageContext.request.contextPath }/center/list"><p class="hn">글목록</p></a>
 					
 					<%-- <c:if test="${authUser.no == boardVo.userNo }"> 
  						<a href="${pageContext.request.contextPath }/board/modifyform?no=${boardVo.no }">글수정</a> 
@@ -90,11 +95,7 @@
 		
 	</div><!-- /container -->
 	
-	 <footer class="bg-faded text-center py-5">
-      <div class="container">
-        <p class="m-0">Copyright &copy; Your Website 2017</p>
-      </div>
-    </footer>
+	 <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
     <!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>

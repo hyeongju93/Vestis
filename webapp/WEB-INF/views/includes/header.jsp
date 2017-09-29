@@ -105,7 +105,7 @@
               	</a>
             </li>
             <li class="nav-item px-lg-4">
-              	<a class="nav-link text-uppercase text-expanded" href="about.html">codi gallery</a>
+              	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/cogell/list">codi gallery</a>
             </li>
             <li class="nav-item px-lg-4">
               	<a class="nav-link text-uppercase text-expanded" href="blog.html">market</a>

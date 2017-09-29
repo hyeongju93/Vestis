@@ -15,6 +15,14 @@
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
       <style>
+      
+      @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+ 		p { font-size: 18px; }
+ 		.hn { font-family: 'Hanna'; }
+      @import url(//fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+      	p { font-size: 16px; }
+      	.nps { font-family: 'Nanum Pen Script'; }
+      
     #container {
       width: 70%;
       margin: 0 auto;     /* 가로로 중앙에 배치 */
@@ -65,6 +73,10 @@
     overflow:auto;
     }
     
+    #buttt{
+	width: 90px;
+	height: 35px;
+	}
   </style>
     
 </head>
@@ -80,16 +92,16 @@
 			<div id="center" class="center-form">
 					<table class="table table-condensed">
 						<tr>
-							<th colspan="2">Vestis Q&A</th>
+							<th colspan="2"><p class="hn">Vestis Q&A</p></th>
 						</tr>
 						<tr>
-							<td class="label">제목</td>
-							<td>${vo.title }</td>
+							<td class="label"><p class="hn">제목</p></td>
+							<td><p class="hn">${vo.title }</p></td>
 						</tr>
 						<tr>
-							<td class="label">내용</td>
+							<td class="label"><p class="hn">내용</p></td>
 							<td class="content">
-								${vo.content }
+								<p class="hn">${vo.content }</p>
 							</td>
 						</tr>
 						
@@ -98,16 +110,16 @@
 				
 					<div class="bottom" style="text-align: right">
 						<c:if test="${empty param.kwd }">
-						<a href="${pageContext.request.contextPath }/qa/list?currNo=${param.currNo}">글목록</a>
+						<a href="${pageContext.request.contextPath }/qa/list?currNo=${param.currNo}"><p class="hn">글목록</p></a>
 					</c:if>
 				
 					<c:if test="${!(empty param.kwd) }">
-						<a href="${pageContext.request.contextPath }/qa/search?currNo=${param.currNo}&kwd=${param.kwd}">글목록</a>
+						<a href="${pageContext.request.contextPath }/qa/search?currNo=${param.currNo}&kwd=${param.kwd}"><p class="hn">글목록</p></a>
 					</c:if>
 					
 					
 					<c:if test="${sessionScope.authUser.no==vo.personNO }">	
-						<a href="${pageContext.request.contextPath }/qa/modifyform?no=${vo.no}&currNo=${param.currNo}&kwd=${param.kwd}">글수정</a>				
+						<a href="${pageContext.request.contextPath }/qa/modifyform?no=${vo.no}&currNo=${param.currNo}&kwd=${param.kwd}"><p class="hn">글수정</p></a>				
 					</c:if>
 					
 					
@@ -119,20 +131,16 @@
 		
 		<div id="container">
 			<div id="qaii" class="bg-faded p-4 my-4">
-					<h5>*댓글*</h5>
+					<h5><p class="hn">*댓글*</p></h5>
 					<textarea class="form-control" rows="3" id="textist"></textarea>
-					<button type="button" class="btn btn-success" id="buttt">댓글등록</button>
+					<button type="button" class="btn btn-success" id="buttt"><p class="hn">댓글등록</p></button>
 					<div id="comment_view" class="bg-faded p-4 my-4"></div>
 		</div>
 		
 			</div>
 			 
 			 
-			 <footer class="bg-faded text-center py-5">
-      <div class="container">
-        <p class="m-0">Copyright &copy; Your Website 2017</p>
-      </div>
-    </footer>
+			<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
     <!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
@@ -198,15 +206,15 @@ $(document).ready(function(){
 		   
 		   str+="   <table>";
 		   str+="      <tr>";
-		   str+="         <td>["+CommentVo.rn+"]</td>";
-		   str+="         <td>["+CommentVo.nicname+"]</td>";
-		   str+="         <td>["+CommentVo.regDate+"]</td>";
-		   str+="         <td><a id='deletej' href='${pageContext.request.contextPath }/qa/codelete?commentNo="+CommentVo.no+"&centerNo="+CommentVo.centerNo+"'>삭제<a/></td>";
+		   str+="         <td><p class='nps'>["+CommentVo.rn+"]</p></td>";
+		   str+="         <td><p class='nps'>["+CommentVo.nicname+"]</p></td>";
+		   str+="         <td><p class='nps'>["+CommentVo.regDate+"]</p></td>";
+		   str+="         <td><a id='deletej' href='${pageContext.request.contextPath }/qa/codelete?commentNo="+CommentVo.no+"&centerNo="+CommentVo.centerNo+"'><p class='nps'>삭제</p><a/></td>";
 		   str+="			<input id='hidno' type='hidden' value='"+CommentVo.no+"'></input>"	
 		   str+="			<input id='hidno' type='hidden' value='"+CommentVo.centerNo+"'></input>"		
 		   str+="      </tr>";
 		   str+="      <tr>";
-		   str+="         <td colspan=4>["+CommentVo.content+"]</td>";
+		   str+="         <td colspan=4><p class='nps'>"+CommentVo.content+"</p></td>";
 		   str+="      </tr>";
 		   str+="      </tr>";
 		   str+="   </table>";
