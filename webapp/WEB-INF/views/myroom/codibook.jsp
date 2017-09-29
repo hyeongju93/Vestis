@@ -191,10 +191,11 @@
 						<div class="row">
 							<div class="input-group"
 								style="padding-left: 2%; padding-right: 2%; margin-bottom: 2%;">
+								<form action="">
 								<input class="form-control" placeholder="Add a comment"
-									type="text"> <span class="input-group-addon"> <a
-									href="#"><i class="glyphicon glyphicon-edit"></i></a>
-								</span>
+									type="text" style="width:96%;"> 
+									<button class="input-group-addon" style="height:34px; width:4%; padding:0;"><span class="glyphicon glyphicon-edit"></span></button>
+								</form>
 							</div>
 							<ul class="comments-list"
 								style="padding-left: 3.2%; padding-right: 3.2%; list-style: none; width: 100%;">
@@ -268,7 +269,7 @@
 			  console.log(nicname);
 			  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 			  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-			  var modal = $(this)
+
 			  
 			  var str = ""
 			  str += "<img class=\"prifile_photo\" src=\"\" alt=\"프로필사진\" style=\"margin-right: 10px;\">";
