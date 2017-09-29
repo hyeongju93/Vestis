@@ -42,10 +42,7 @@
 .none ul{
 	list-style-type: none;
 }
-.top{
-	margin-top:30px;
-	margin-left:5px;
-}
+
 /* .carousel-control-prev-icon{
 	background-image: url("/Vestis/assets/img/images.png") !important;
 	

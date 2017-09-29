@@ -198,8 +198,9 @@ function getUserData() {
 window.fbAsyncInit = function() {
     //SDK loaded, initialize it
     FB.init({
-        appId      : '946510852170558',
+        appId      : '/* 154264235160211 */',
         cookie     : true,  // enable cookies to allow the server to access
+        status     : false,
                 // the session
         xfbml      : true,  // parse social plugins on this page
         version    : 'v2.10' // use graph api version 2.8

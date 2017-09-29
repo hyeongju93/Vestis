@@ -42,13 +42,14 @@
 	}
 	
 	
-	.row > .col-md-7 {
+	/* .row > .col-md-7 {
 		padding-right:3px;
 	}
 	
-	.row > .col-md-5 {
+	.row > .col-md-2 {
 		padding-left:3px;
-	}
+		background:white;
+	} */
 	
 	#sns {
 		text-align:center;
@@ -121,26 +122,68 @@
 	#email {
 		color: red;
 		font-weight: bold;
+		text-align:left;
+		border:none;
+		border-right:0px;
+		border-top:0px;
+		boder-left:0px;
+		boder-bottom:0px;
+		background:white;
 	}
 	#passwords {
 		color: red;
 		font-weight: bold;
+		text-align:left;
+		border:none;
+		border-right:0px;
+		border-top:0px;
+		boder-left:0px;
+		boder-bottom:0px;
+		background:white;
 	}
 	#passwordd {
 		color: red;
 		font-weight: bold;
+		text-align:left;
+		border:none;
+		border-right:0px;
+		border-top:0px;
+		boder-left:0px;
+		boder-bottom:0px;
+		background:white;
 	}
 	#name {
 		color: red;
 		font-weight: bold;
+		text-align:left;
+		border:none;
+		border-right:0px;
+		border-top:0px;
+		boder-left:0px;
+		boder-bottom:0px;
+		background:white;
 	}
 	#nicname {
 		color: red;
 		font-weight: bold;
+		text-align:left;
+		border:none;
+		border-right:0px;
+		border-top:0px;
+		boder-left:0px;
+		boder-bottom:0px;
+		background:white;
 	}
 	#phone {
 		color: red;
 		font-weight: bold;
+		text-align:left;
+		border:none;
+		border-right:0px;
+		border-top:0px;
+		boder-left:0px;
+		boder-bottom:0px;
+		background:white;
 	}
 	</style>
 	<script language="javascript" charset="UTF-8">
@@ -215,9 +258,9 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			var faddr_lng = "";
 		}
 
-		alert('주소 : ' + faddr + '\n\n위도 : ' + lat + '\n\n경도 : ' + lng);
+		/* alert('주소 : ' + faddr + '\n\n위도 : ' + lat + '\n\n경도 : ' + lng);
 		
-		
+		 */
 	});
 	
 }
@@ -240,62 +283,62 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	 <form class="form-signin" method="get" action="${pageContext.request.contextPath }/user/join" disabled>
       	 <h4 id="joinName">회원가입</h4>
         <div class="row">
-  			<div class="col-md-7">
+  			<div class="col-md-10">
   				 <label for="inputEmail" class="sr-only">Email address</label>
    				 <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address">
  			 </div>
- 			 <div class="col-md-5">
-   				 <input id="email" type="text" class="form-control" placeholder="아이디를 입력해주세요" disabled>
+ 			 <div class="col-md-2">
+   				 <input id="email" disabled></input>
   			</div>
   		</div>
   		
   		<div class="row">
-  			<div class="col-md-7">
+  			<div class="col-md-10">
   				 <label for="inputPassword" class="sr-only">Password</label>
    				 <input type="password" id="inputPassword" value="" name="password" class="form-control" placeholder="Password">
  			 </div>
- 			 <div class="col-md-5">
-   				 <input type="text" id="passwordd" class="form-control" placeholder="비밀번호를 입력해주세요" disabled>
+ 			 <div class="col-md-2">
+   				 <input id="passwordd" disabled></input>
   			</div>
   		</div>
   		
   		<div class="row">
-  			<div class="col-md-7">
+  			<div class="col-md-10">
   				 <label for="inputPasswords" class="sr-only">Passwords</label>
    				 <input type="password" id="inputPasswords" name="passwords" value="" class="form-control" placeholder="Password확인">
  			 </div>
- 			 <div class="col-md-5">
-   				 <input type="text" id="passwords"class="form-control" placeholder="비밀번호 확인!" disabled>
+ 			 <div class="col-md-2">
+   				 <input id="passwords" disabled></input>
   			</div>
   		</div>
   		
   		<div class="row">
-  			<div class="col-md-7">
+  			<div class="col-md-10">
   				 <label for="inputName" class="sr-only">Name</label>
    				 <input type="text" id="inputName" name="name" class="form-control" placeholder="Name">
  			 </div>
- 			 <div class="col-md-5">
-   				 <input id="name" type="text" class="form-control" placeholder="이름을 입력해주세요" disabled>
+ 			 <div class="col-md-2">
+   				 <input id="name" disabled></input>
   			</div>
   		</div>
   		
   		<div class="row">
-  			<div class="col-md-7">
+  			<div class="col-md-10">
   				 <label for="inputNicname" class="sr-only">Nicname</label>
    				 <input type="text" id="inputNicname" name="nicname" class="form-control" placeholder="Nicname">
  			 </div>
- 			 <div class="col-md-5" >
-   				 <input id="nicname" type="text" class="form-control" placeholder="별명을 입력해주세요" disabled>
+ 			 <div class="col-md-2" >
+   				 <input id="nicname" disabled>
   			</div>
   		</div>
   		
   		<div class="row">
-  			<div class="col-md-7">
+  			<div class="col-md-10">
   				 <label for="inputPhone" class="sr-only">inputPhone</label>
    				 <input type="text" id="inputPhone" name="phone" class="form-control" placeholder="inputPhone">
  			 </div>
- 			 <div class="col-md-5">
-   				 <input id="phone" type="text" class="form-control" id="phone" placeholder="번호을 입력해주세요" disabled>
+ 			 <div class="col-md-2">
+   				 <input id="phone" disabled>
   			</div>
   		</div>
   		
@@ -400,7 +443,13 @@ $('#inputEmail').blur(function() {
 	var email=$('#inputEmail').val();
 	console.log(email);
 	if( email==""){
-		$('#email').val("이메일을 입력하세요");
+		$('#email').val("X");
+		var element = document.getElementById("email");
+		element.style.fontSize = "13pt";
+		/* element.style.color = "#03FA38"; */
+		element.style.color = "#ff0000";
+
+		
 		return false;
 	} else {
 		$.ajax({	
@@ -410,10 +459,14 @@ $('#inputEmail').blur(function() {
   		 	dataType : 'text', 
   			success : function(result){	//list-ajax에서 보낸 것을 guestbook으로 받음
   				if(result==1){
-  					$('#email').val("성공");
+  					$('#email').val("O");
+  					var element = document.getElementById("email");
+  					element.style.color = "#03FA38";
   					return true;
   				} else if(result==2){
-  					$('#email').val("이메일이 중복됩니다.");
+  					$('#email').val("X(중복)");
+  					var element = document.getElementById("email");
+  					element.style.color = "#ff0000";
   					return false;
   				}
   			},
@@ -430,10 +483,14 @@ $('#inputName').blur(function() {
 	var name=$('#inputName').val();
 	console.log(name);
 	if(name==""){
-		$('#name').val("이름을 입력하세요");
+		$('#name').val("X");
+		var element = document.getElementById("name");
+		element.style.color = "#ff0000";
 		return "false";
 	} else {
-		$('#name').val("성공");
+		$('#name').val("O");
+		var element = document.getElementById("name");
+		element.style.color = "#03FA38";
 		return "true";	
 	}
 	
@@ -443,10 +500,14 @@ $('#inputNicname').blur(function() {
 	var nicname=$('#inputNicname').val();
 	console.log(nicname);
 	if(nicname==""){
-		$('#nicname').val("닉네임을 입력하세요");
+		$('#nicname').val("X");
+		var element = document.getElementById("nicname");
+		element.style.color = "#ff0000";
 		return false;
 	} else {
-		$('#nicname').val("성공");
+		$('#nicname').val("O");
+		var element = document.getElementById("nicname");
+		element.style.color = "#03FA38";
 		return true;	
 	}
 	
@@ -461,20 +522,28 @@ $('#inputPasswords').blur(function() {
 	
 	if(password==passwords){
 		if(password ==""){
-			$('#passwords').val("비밀번호를 입력해주세요.");
-			$('#passwordd').val("비밀번호를 입력해주세요");	
+			
+			$('#passwordd').val("X");
+			var elements = document.getElementById("passwordd");
+			elements.style.color = "#ff0000";
 			return false;
 		} else {
 		
-			$('#passwordd').val("성공");	
-			$('#passwords').val("성공");	
+			$('#passwordd').val("O");	
+			$('#passwords').val("O");
+			var element = document.getElementById("passwords");
+			var elements = document.getElementById("passwordd");
+			element.style.color = "#03FA38";
+			elements.style.color = "#03FA38";
 			
 			return true;
 		}
 		
 	} else {
-		$('#passwords').val("비밀번호 같지 않습니다.");
-		$('#passwordd').val("비밀번호를 입력해주세요");
+	
+		$('#passwordd').val("X(같지않습니다.)");
+		var elements = document.getElementById("passwordd");
+		elements.style.color = "#ff0000";
 		return false;
 	}
 	
@@ -489,18 +558,28 @@ $('#inputPassword').blur(function() {
 	
 	if(password==passwords){
 		if(password == ""){
-			$('#passwords').val("비밀번호를 입력해주세요.");
+			$('#passwords').val("X");
+			var element = document.getElementById("passwords");
+			element.style.color = "#ff0000";
+			
 			return false;
 		} else {
 			
-			$('#passwords').val("성공");	
-			$('#passwordd').val("성공");	
+			$('#passwords').val("O");	
+			$('#passwordd').val("O");	
+			var element = document.getElementById("passwords");
+			var elements = document.getElementById("passwordd");
+			element.style.color = "#03FA38";
+			elements.style.color = "#03FA38";
 			
 			return true;
 		}
 		
 	} else {
-		$('#passwords').val("비밀번호 같지 않습니다.");
+		$('#passwords').val("X(같지 않습니다)");
+		var element = document.getElementById("passwords");
+		element.style.color = "#ff0000";
+		
 		return false;
 	}
 	
@@ -513,16 +592,24 @@ $('#inputPhone').blur(function() {
 	if($.isNumeric(phone)){
 		if(phone==""){
 			console.log("빈칸");
-			$('#phone').val("번호를 입력하세요");
+			$('#phone').val("X");
+			var element = document.getElementById("phone");
+			element.style.color = "#ff0000";
+			
 			return false;
 		} else {
 			console.log("숫자 입니다.");
-			$('#phone').val("성공");
-			return false;
+			
+			$('#phone').val("O");
+			var element = document.getElementById("phone");
+			element.style.color = "#03FA38";
+			return true;
 		}
 	} else {
 		console.log("숫자 아닙니다.");
-		$('#phone').val("숫자만 입력해주세요");
+		$('#phone').val("X(숫자만)");
+		var element = document.getElementById("phone");
+		element.style.color = "#ff0000";		
 		return false;
 	}
 });
@@ -535,14 +622,19 @@ $("#btnb").on("click",function(){
 	var nicname=$('#inputNicname').val();
 	var phone=$('#inputPhone').val();
 	var address=$('#roadFullAddr').val();
-	var birthyear=$('birthyear').val();
-	var birthmonth=$('birthmonth').val();
-	var birthday=$('birthday').val();
+	var birthyear=$('#birthyear').val();
+	var birthmonth=$('#birthmonth').val();
+	var birthday=$('#birthday').val();
+	var lat=$('#lat').val();
+	var lng=$('#lng').val();
+	
 	console.log(address);
 	console.log(birthyear);
 	console.log(birthmonth);
 	console.log(birthday);
-	
+	console.log(lat);
+	console.log(lng);
+
 	var checkpoint;
 	$.ajax({	
 			url : "${pageContext.request.contextPath }/user/idcheck",		
@@ -559,7 +651,7 @@ $("#btnb").on("click",function(){
 	
 
 	
-	if(email=="" || password=="" || passwords=="" || name=="" || nicname=="" || phone=="" || address=="" ){
+	if(email=="" || password=="" || passwords=="" || name=="" || nicname=="" || phone=="" || address=="" || birthyear=="" || birthmonth=="" || birthday==""){
 		alert("입력을 안한 값이 있습니다.");
 		return false;
 	} else if(password !=passwords) {
@@ -571,8 +663,11 @@ $("#btnb").on("click",function(){
 	} else if(checkpoint==2){
 		alert("이메일이 중복됩니다.!");
 		return false;
+	} else if(lat=="" || lng==""){
+		alert("주소값은 주소검색을 통해서 넣어주세요")
 	} else {
-	
+	}
+	alert("회원가입에 성공하셨습니다.");
 	$('.form-signin').submit();
 	}
 });
