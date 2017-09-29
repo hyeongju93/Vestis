@@ -146,10 +146,10 @@
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<p class="text-left" style="margin-bottom: 0;">
+					<p class="text-left nicname" style="margin-bottom: 0;">
 						<img class="prifile_photo"
 							src="http://bootdey.com/img/Content/user_1.jpg" alt="프로필사진"
-							style="margin-right: 10px;">A씨
+							style="margin-right: 10px;">
 					</p>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close" aria-hidden="true">&times;</button>
@@ -261,17 +261,25 @@
 			  console.log(info);
 			  var img = info[0].image; // Extract info from data-* attributes
 			  console.log(img);
+			  var wearimg = info[0].wearimage; // Extract info from data-* attributes
 			  var profile = info[0].profile;
 			  console.log(profile);
 			  var nicname = info[0].nicname;
+			  console.log(nicname);
 			  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 			  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 			  var modal = $(this)
 			  
+			  var str = ""
+			  str += "<img class=\"prifile_photo\" src=\"\" alt=\"프로필사진\" style=\"margin-right: 10px;\">";
+			  str += nicname;
 			  
 			  $('.showPic').attr('src', img);
+			  $('#wearclothimg').attr('src', wearimg);
+			  $('.nicname').html(str);
 			  $('.prifile_photo').attr('src', profile);
-			  $('.prifile_photo').html(nicname);
+			  
+
 
 			});
 	});
@@ -347,6 +355,7 @@
 		str += "<div class=\"thumbnail\">";
 		str += "	<div id=\"openModal"+CodibookVo.no+"\"";
 		str += "	 	data-image=\"${pageContext.request.contextPath}/upload/"+CodibookVo.codi+"\" ";
+		str += "	 	data-wearimage=\"${pageContext.request.contextPath}/upload/"+CodibookVo.wear+"\" ";
 		str += "	 	data-profile=\"${pageContext.request.contextPath}/upload/"+CodibookVo.profile+"\" ";
 		str += "	 	data-nicname=\""+CodibookVo.otherNicname+"\" ";
 		str += "		data-toggle=\"modal\" data-target=\'#modal\' data-keyboard=\"true\"";
