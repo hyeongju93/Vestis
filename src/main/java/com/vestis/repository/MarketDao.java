@@ -46,4 +46,8 @@ public class MarketDao {
 	    System.out.println(clothVo.getNo());
 	    return clothVo.getNo();
 	}
+	
+	/*public int delete() {
+		return sqlSession.selectList("market.delete");
+	}*/
 }

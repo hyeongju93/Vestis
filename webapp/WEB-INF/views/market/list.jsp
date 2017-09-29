@@ -41,6 +41,7 @@
 		<table class="table table-strip" id="tb">
 			<tr>
 				<th style="text-align: center">번호</th>
+				
 				<th style="text-align: center">제목</th>
 				<th style="text-align: center">작성자</th>
 				<th style="text-align: center">작성일</th>
@@ -50,13 +51,13 @@
 			<c:forEach items="${list}" var="vo">
 				<tr>
 					<td style="text-align: center">${vo.no }</td>
-					<td style="text-align: center"><a href="${pageContext.request.contextPath }/qa/read?flag=1&no=${vo.no }&currNo=${page.currNo}&kwd=${param.kwd}">${vo.title}</a></td>
+					<td style="text-align: center"><a href="${pageContext.request.contextPath }/market/read?flag=1&no=${vo.no }&currNo=${page.currNo}&kwd=${param.kwd}">${vo.title}</a></td>
 					<td style="text-align: center">${vo.person_no }</td>
 					<td style="text-align: center">${vo.regDate }</td>
 								
 					<td>
 						<c:if test="${sessionScope.authUser.no==vo.person_no }">
-						<a href="${pageContext.request.contextPath }/qa/delete?no=${vo.no }&currNo=${page.currNo}" class="del">삭제</a>
+						<a href="${pageContext.request.contextPath }/market/delete?no=${vo.no }&currNo=${page.currNo}" class="del">삭제</a>
 						</c:if>
 					</td>
 					

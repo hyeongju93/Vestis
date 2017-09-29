@@ -38,4 +38,7 @@ public class MarketService {
 		return list;
 	}
 	
+	/*public int() {
+		return marketDao.delete();
+	}*/
 }

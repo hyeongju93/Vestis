@@ -18,14 +18,54 @@
 <!-- Custom styles for this template -->
 <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
 
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+ p { font-size: 18px; }
+ .hn { font-family: 'Hanna'; }
+
+table.type09 {
+    border-collapse: collapse;
+    text-align: center;
+    line-height: 1.5;
+
+}
+table.type09 thead th {
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: center;
+    color: #369;
+    border-bottom: 3px solid #036;
+}
+table.type09 tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: center;
+    border-bottom: 7px solid #ccc;
+    background: #f3f6f7;
+}
+table.type09 td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: center;
+    border-bottom: 7px solid #ccc;
+    white-space:nowrap;
+}
+
+#butn1{
+width: 100px;
+height: 35px;
+}
+
+
+</style>
+
 
 </head>
 
-
-
  <body>
 	
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
+    
     
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
@@ -33,46 +73,28 @@
 
       <div class="bg-faded p-4 my-4">
         
-		<table class="table table-strip" id="tb">
+		<table class="type09" id="tb">
 			<tr>
-				<th style="text-align: center">번호</th>
-				<th style="text-align: center">제목</th>
-				<th style="text-align: center">작성자</th>
-				<th style="text-align: center">작성일</th>
-				<th style="text-align: center">&nbsp;</th>
+				<th style="text-align: center"><p class="hn">번호</p></th>
+				<th style="text-align: center"><p class="hn">제목</p></th>
+				<th style="text-align: center"><p class="hn">작성자</p></th>
+				<th style="text-align: center"><p class="hn">작성일</p></th>
+				<th style="text-align: center"><p class="hn">&nbsp;</p></th>
 			</tr>
 			<c:forEach items="${list }" var="vo">
 				<tr>
-					<td style="text-align: center">※공지※</td>
-					<td style="text-align: center"><a
-						href="${pageContext.request.contextPath }/center/read/${vo.no }">${vo.title }</a></td>
-					<td style="text-align: center">관리자</td>
-					<td style="text-align: center">${vo.regDate }</td>
+					<td ><p class="hn">※공지※</p></td>
+					<td ><p class="hn"><a href="${pageContext.request.contextPath }/center/read/${vo.no }">${vo.title }</a></p></td>
+					<td ><p class="hn">관리자</p></td>
+					<td ><p class="hn">${vo.regDate }</p></td>
 					<td></td>
 				</tr>
 			</c:forEach>
-			<%-- 	<tr>
-					<th style="text-align:center">번호</th>
-					<th style="text-align:center">제목</th>
-					<th style="text-align:center">작성자</th>
-					<th style="text-align:center">작성일</th>
-					<th style="text-align:center">&nbsp;</th>
-				</tr>			
-				<c:forEach items="${list }" var="vo">
-					<tr>
-						<td>${vo.no }</td>
-						<td style="text-align:center"><a href="${pageContext.request.contextPath }/center/read/${vo.no }">${vo.title }</a></td>
-						<td>관리자</td>
-						<td>${vo.regDate }</td>
-						<td>
-							
-						</td>
-					</tr>
-				</c:forEach> --%>
+			
 		</table>
  <style>
  
- .pager { float: left; width: 100%;
+ .pager { /* float: left; */ width: 100%;
  			 padding-right: 20px;
  			 padding-left: 25px;
  			 margin: 0 auto;
@@ -87,20 +109,22 @@
  </style>
  
  <!-- width: 0px; margin:0 auto; -->
+			
+			<br>
 			<div class="pager">
 			<ul>
-				<li><a href="">◀</a></li>
-				<li><a href="">1</a></li>
-				<!-- <li class="selected">1</li> -->
-				<!-- <li><a href="">2</a></li> -->
-				<li><a href="">▶</a></li>
+				<li><a href=""><p class="hn">◀</p></a></li>
+				<li><a href=""><p class="hn">1</p></a></li>
+				<li><a href=""><p class="hn">▶</p></a></li>
 			</ul>
 		</div>
-
-		<div class="bottom" style="text-align: right">
-			<a href="${pageContext.request.contextPath }/qa/list?currNo=1"
-				id="new-book">FAQ로 가기</a>
+		
+		<div class="col-sm-12" style="text-align:right;">
+		<p>
+		<button id=butn1 type="button" class="btn btn-danger btn-sm"  onClick="location.href='${pageContext.request.contextPath }/qa/list?currNo=1';"><p class="hn">FAQ로가기</p></button>
+		</p>
 		</div>
+
 
 
 
@@ -110,11 +134,7 @@
     </div>
     <!-- /.container -->
 
-    <footer class="bg-faded text-center py-5">
-      <div class="container">
-        <p class="m-0">Copyright &copy; Your Website 2017</p>
-      </div>
-    </footer>
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
     <!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
