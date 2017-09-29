@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="img">
+
+	<insert id="upload" parameterType="com.vestis.vo.ImgVo">
+		<![CDATA[
+			insert into img
+			values(seq_img_no.nextval,#{address},#{name},#{type},#{sizes},#{dbName})
+		]]>
+	</insert>
+										<!-- 보내는거	 받는거 -->
+	 <select id="selectByImg" parameterType="int" resultType="int">
+		<![CDATA[
+			select no
+			from img
+			where db_name=#{dbName}
+		]]>
+	</select>
+	
+	<insert id="add" parameterType="map">
+		<![CDATA[
+			insert into cloth
+			values(seq_img_no.nextval,#{personNo},#{typeNo},#{imgNo},0)
+		]]>
+	</insert>
+	
+	<select id="getList" resultType="com.vestis.vo.ImgVo">
+	<![CDATA[
+		select c.img_no imgNo,i.db_name dbName
+		from cloth c,img i
+		where c.img_no=i.no
+		order by c.img_no desc
+	]]>
+	</select> 
+	
+	<select id="getList2" parameterType="int" resultType="com.vestis.vo.ImgVo">
+	<![CDATA[
+		select dbName
+		from (select c.img_no imgNo,i.db_name dbName
+		from cloth c,img i
+		where c.img_no=i.no and c.type_no=#{typeNo}
+		order by c.img_no desc)
+	]]>
+	</select> 
+</mapper>
