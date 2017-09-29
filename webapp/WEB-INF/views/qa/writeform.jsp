@@ -24,12 +24,12 @@
 	width:70px;
 }
 #contents {
-	width:900px;
+	width:700px;
 	height:250px;
 	
 }
 #titles {
-	width:900px;
+	width:700px;
 }
 </style>
 
@@ -38,7 +38,7 @@
 
 
  <body>
- <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
+ 
     
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
@@ -77,11 +77,7 @@
 </body>
 </html>
 
-    <footer class="bg-faded text-center py-5">
-      <div class="container">
-        <p class="m-0">Copyright &copy; Your Website 2017</p>
-      </div>
-    </footer>
+   <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
     <!-- Bootstrap core JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>

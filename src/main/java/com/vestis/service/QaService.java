@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vestis.repository.QaDao;
+import com.vestis.vo.CommentVo;
 import com.vestis.vo.PageVo;
 import com.vestis.vo.QaVo;
 
@@ -30,6 +31,26 @@ public class QaService {
 	}
 	
 
+	/*이게 코맨트 서비스?*/
+	public void commentlist(CommentVo commentVo){
+	qadao.commetlist(commentVo);
+	}
+	
+	
+	public List<CommentVo> commentlist2(QaVo qaVo){
+
+		return qadao.commentlist2(qaVo);
+		}
+	
+	/*public List<QaVo> search(int currNo,String nicname) {
+		PageVo pageVo=new PageVo();
+		int totalCount=qadao.searchcount(nicname);
+		pageVo.setting(currNo, totalCount);
+		int endNum=pageVo.getTotalCount()-pageVo.getPageNo()*(pageVo.getCurrNo()-1);
+		int startNum=pageVo.getTotalCount()-pageVo.getPageNo()*pageVo.getCurrNo();		
+		return qadao.search(nicname,startNum,endNum);
+	}*/
+	
 	
 	public PageVo getPage0(int currNo) {
 		int totalCount=qadao.gettotalcount0();
@@ -75,6 +96,9 @@ public class QaService {
 		return qadao.delete(num);
 	}
 	
+	public int codelete(int num) {
+		return qadao.codelete(num);
+	}
 
 	
 	public List<QaVo> search(int currNo,String nicname) {

@@ -88,5 +88,4 @@ public class MyRoomService {
 		System.out.println("옷 들어옴");
 		return myRoomDao.getClothList(type, userNo);
 	}
-
 }

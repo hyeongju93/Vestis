@@ -20,18 +20,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vestis.service.FileUploadService;
 import com.vestis.service.MyRoomService;
 import com.vestis.vo.ClothListVo;
 import com.vestis.vo.ClothWeatherVo;
 import com.vestis.vo.CodibookVo;
+import com.vestis.vo.ImgVo;
 import com.vestis.vo.UserVo;
 
 @Controller
 @RequestMapping("/myroom")
 public class MyRoomController {
+
 	@Autowired
 	MyRoomService myRoomService;
-
+	@Autowired
+	private FileUploadService fileUploadService;
+	
 	@RequestMapping(value = "/{userNo}")
 	public String main(@PathVariable("userNo") int userNo, Model model) {
 		model.addAttribute("userNo", userNo);
@@ -176,14 +181,62 @@ public class MyRoomController {
 		return "success";
 	}
 
-	@RequestMapping(value = "/clothes")
-	public String clothes() {
+	@RequestMapping(value="/clothes")
+	public String clothes(Model model) {
+		List<ImgVo> list1= fileUploadService.list();
+		System.out.println(list1.toString());
+		System.out.println(list1);
+		model.addAttribute("list",list1);
+		
 		return "/myroom/clothes";
 	}
 
-	@RequestMapping(value = "/add")
+	@RequestMapping(value="/form")
+	public String form() {
+		return "myroom/form";
+	}
+	
+	@RequestMapping(value="/upload")
+	public String upload(@RequestParam("file") MultipartFile file, Model model, @RequestParam("valh") String valh, @RequestParam("huserNo") int huserNo) {
+		
+		System.out.println(valh);	//옷 타입 번호
+		String imgNo=fileUploadService.restore(file);
+		
+		System.out.println(huserNo);	//올린 사람 번호
+		int val=Integer.valueOf(valh);
+		System.out.println(imgNo);	//이미지 번호 
+		
+		int no=Integer.parseInt(imgNo);
+		fileUploadService.add(val, huserNo, no);
+		
+		List<ImgVo> list1= fileUploadService.list();
+		model.addAttribute("list",list1);
+		
+		return "myroom/clothes";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/get")
+	public List<ImgVo> get() {
+		List<ImgVo> list= fileUploadService.list();
+		System.out.println(list);
+		return list;
+	}
+	
+	
+	@ResponseBody//리턴값을 컨트롤러로보냄
+	@RequestMapping(value="/send")
+	public List<ImgVo> send(@RequestParam ("clothNo") int clothNo) {
+		/*System.out.println(clothNo);*/
+		List<ImgVo> list=fileUploadService.send(clothNo);
+		/*System.out.println(list);*/
+		return list;
+	}
+	
+	@RequestMapping(value="/add")
 	public String add() {
 		return "/myroom/add";
 	}
 
 }
+

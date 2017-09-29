@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="market">
+
+	<insert id="insert" parameterType="com.vestis.vo.MarketVo">
+		<![CDATA[
+			insert into market
+			values(seq_market_no.nextval,#{person_no},#{cloth_no},#{title},#{content},sysdate)
+		]]>
+	</insert>
+	
+	<select id="getList" resultType="com.vestis.vo.ImgVo">
+	<![CDATA[
+		select c.img_no imgNo,i.db_name dbName, c.count count
+		from cloth c,img i
+		where c.img_no=i.no
+		order by c.count asc
+	]]>
+	</select> 
+	
+	<select id="getlist2" resultType="com.vestis.vo.MarketVo">
+	<![CDATA[
+		select no,person_no,cloth_no,title,reg_date regDate from market
+	]]>
+	</select> 
+	
+	<select id="dbdb" parameterType="map" resultType="com.vestis.vo.ClothVo">
+	<![CDATA[
+		select c.no
+		from img i, cloth c 
+		where i.db_name=#{dbName}
+		and i.no=c.img_no
+	]]>
+	</select> 
+	
+</mapper>

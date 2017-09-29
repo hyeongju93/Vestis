@@ -19,18 +19,27 @@
 	clear:both;
 }
 
-
+.top{
+	margin-top:30px;
+	margin-left:5px;
+}
 </style>
 
 <!-- 서브메뉴 -->
+
 <div class="sub-menu bg-faded">
-	<img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" />
-	<div style="text-align:center"><img src="${pageContext.request.contextPath }/assets/img/f.jpg" class="image-circle "/>
+	<a href="${pageContext.request.contextPath }/user/modifyform"><img src="${pageContext.request.contextPath }/assets/img/s.png" width="20px" height="20px" class="top" /></a>
+	<div id="hyj"></div>
+	<div>
+
 	
-      <p>jisoo</p>
-      <p>point:100</p>
-      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</p>
+
+      <p>${sessionScope.authUser.nicname}</p>
+      <p>point:${sessionScope.authUser.point}</p>
+
+      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</a></p>
       
+   	
    	</div> 
    	
    	<div style="text-align:center">
@@ -39,6 +48,44 @@
       <p><a href="${pageContext.request.contextPath }/myroom/codi/${userNo}">코디하기</a></p>
       
    	</div> 
+   	
    
 </div>
+<form id="move" method="POST" action="#">
+   <input id="mo" type="hidden" value="${sessionScope.authUser.profile_no}">
+   </form>
+   
+<script type="text/javascript">	
+$(document).ready(function(){
+	var mo=$('#mo').val();
+	console.log(mo);
+	$.ajax({	
+		url : "${pageContext.request.contextPath }/user/image",		
+			type : "post",
+			data : {mo: mo},  
+		 	dataType : 'text', 
+			success : function(result){	
+				console.log(result);
+				render(result);
+				console.log("성공");
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+	});
+	
+	
+});
+
+
+
+function render(result){
+	var str ="";
+	str+="<div style='text-align:center'><img src='${pageContext.request.contextPath }/upload/"+result+"' class='image-circle' />";
+	str+="</div>";
+	$("#hyj").append(str);	
+	
+}
+</script>
+
 

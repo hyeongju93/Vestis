@@ -18,7 +18,7 @@
 	
 	<select id="check" parameterType="map" resultType="com.vestis.vo.UserVo">
 		<![CDATA[
-			select no,nicname, lat, lon
+			select no,nicname,profile_no,point,gender,lat,lon
 			from person
 			where email=#{email} 
 			and password=#{password}
@@ -32,4 +32,69 @@
 			where email=#{email}
 		]]>
 	</select>
+	
+	<select id="image" parameterType="int" resultType="string">
+	<![CDATA[
+		select db_name
+		from img
+		where no=#{no}
+	]]>
+	</select>
+	
+	<select id="getuser" parameterType="int" resultType="com.vestis.vo.UserVo">
+	<![CDATA[
+		select *
+		from person
+		where no=#{no}
+	]]>
+	</select>
+	
+	
+	<insert id="restore" parameterType="com.vestis.vo.FileVo">
+		<![CDATA[
+		insert into img
+			values(seq_img_no.nextval,#{address},#{name},#{type},#{sizes},#{db_name})	
+				]]>
+	</insert>
+	
+	<select id="getimgNo" parameterType="string" resultType="int">
+	<![CDATA[
+		select no
+		from img
+		where db_name=#{saveName}
+	]]>
+	</select>
+	
+	<update id="updateimg" parameterType="map">
+		<![CDATA[
+			update person
+			set profile_no=#{num}
+			where no=#{personNo}
+		]]>
+	</update>
+	
+	<update id="changepass" parameterType="com.vestis.vo.UserVo">
+		<![CDATA[
+			update person
+			set password=#{password}
+			where email=#{email}
+		]]>
+	</update>
+	
+	<update id="changeinfo" parameterType="com.vestis.vo.UserVo">
+		<![CDATA[
+			update person
+			set name=#{name},
+			nicname=#{nicname},
+			address=#{address},
+			phone=#{phone},
+			birth=#{birth},
+			lat=#{lat},
+			lon=#{lon},
+			gender=#{gender}
+			where email=#{email}
+		]]>
+	</update>
+	
+	
 </mapper>
