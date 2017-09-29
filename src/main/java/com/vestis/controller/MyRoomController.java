@@ -177,6 +177,14 @@ public class MyRoomController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value ="/deleteBtnClick", method=RequestMethod.POST)
+	public String deleteBtnClick(@RequestParam("no") int no) {
+		System.out.println("삭제버튼1");
+		myRoomService.deleteBtnClick(no);
+		return "seccess";
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/codibookSave", method = RequestMethod.POST)
 	public String codibookSave(@RequestBody MultipartFile file) {
 		System.out.println(file);

@@ -85,6 +85,11 @@ public class MyRoomService {
 		myRoomDao.likebtnClick(voNo, authNo);
 	}
 	
+	public void deleteBtnClick(int no) {
+		System.out.println("삭제버튼2");
+		myRoomDao.deleteBtnClick(no);
+	}
+	
 	public List<ClothListVo> getClothList(int type, int userNo) {
 		System.out.println("옷 들어옴");
 		return myRoomDao.getClothList(type, userNo);

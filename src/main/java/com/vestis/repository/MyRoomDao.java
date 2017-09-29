@@ -75,6 +75,13 @@ public class MyRoomDao {
 		sqlSession.insert("myroom.likebtnClick", map);
 	}
 	
+	public void deleteBtnClick(int no) {
+		System.out.println("삭제버튼3");
+		sqlSession.delete("myroom.codiclothDelete",	no);
+		sqlSession.delete("myroom.likepersonDelete", no);
+		sqlSession.delete("myroom.deleteBtnClick", no);
+	}
+	
 	public List<ClothListVo> getClothList(int type, int userNo){
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("type", type);

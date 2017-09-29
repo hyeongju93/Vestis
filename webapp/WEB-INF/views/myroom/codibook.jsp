@@ -330,6 +330,14 @@
 
 						});
 						
+						$('.deleteCodiBtn').click(function() {
+							var $this = $(this);
+							var no = $this.val();
+							deletebtnClick(no);
+							
+							$("#codibookItem"+no).remove();
+						});
+						
 						/* $('.getSrc').click(function() {
 							console.log("hello");
 							var src = $(this).attr('src');
@@ -353,8 +361,9 @@
 		var authNo = ${authUser.no};
 		
 		var str = "";
-		str += "<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>";
-		str += "<div class=\"thumbnail\">";
+		str += "<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3' id=\"codibookItem"+CodibookVo.no+"\">";
+		str += "<div class=\"thumbnail bts\">";
+		str += "	<button class=\"btn btn-default btn-xs deleteCodiBtn\" style=\"float:right;\" value="+CodibookVo.no+">X</button>";
 		str += "	<div id=\"openModal"+CodibookVo.no+"\"";
 		str += "	 	data-image=\"${pageContext.request.contextPath}/upload/"+CodibookVo.codi+"\" ";
 		str += "	 	data-wearimage=\"${pageContext.request.contextPath}/upload/"+CodibookVo.wear+"\" ";
@@ -432,6 +441,21 @@
 			data : {"voNo":voNo, "authNo":authNo},
 			success :function() {
 				console.log("좋아요 성공");
+			},
+			error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
+				console.error(status + " : " + error);
+			}
+		});
+	}
+	
+	function deletebtnClick(no) {
+		$.ajax({
+			url : "${pageContext.request.contextPath }/myroom/deleteBtnClick",
+			type : "post",
+			dataType : "json",
+			data : {"no":no},
+			success :function() {
+				console.log("삭제 성공");
 			},
 			error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
 				console.error(status + " : " + error);

@@ -102,6 +102,27 @@
 		]]>
 	</insert>
 	
+	<delete id="deleteBtnClick" parameterType="int">
+		<![CDATA[
+			delete from codi
+			where no = #{no}		
+		]]>
+	</delete>
+	
+	<delete id="codiclothDelete" parameterType="int">
+		<![CDATA[
+			delete from codi_cloth
+			where codi_no = #{no}		
+		]]>
+	</delete>
+	
+	<delete id="likepersonDelete" parameterType="int">
+		<![CDATA[
+			delete from like_person
+			where codi_no = #{no}		
+		]]>
+	</delete>
+	
 	<select id="getClothList" resultType="com.vestis.vo.ClothListVo" parameterType="map">
 		<![CDATA[
 			select cloth.no no, db_name dbName
