@@ -15,18 +15,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script
-	src="https://github.com/niklasvh/html2canvas/releases/download/v0.5.0-beta4/html2canvas.min.js"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" />
-
-
 <!-- Custom styles for this template -->
 <link
 	href="${pageContext.request.contextPath}/assets/css/business-casual.css"
@@ -259,13 +247,33 @@
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!-- 코디북 리스트 뿌리기 -->
 <script type="text/javascript">
 	$(document).ready(function() {
 		fetchBook("all");
 		console.log("ready!");
-			
+		
+		
+		$('#modal').on('show.bs.modal', function (event) {
+			  console.log('모달모달');
+			  var info = $(event.relatedTarget.dataset); // Button that triggered the modal
+			  console.log(info);
+			  var img = info[0].image; // Extract info from data-* attributes
+			  console.log(img);
+			  var profile = info[0].profile;
+			  console.log(profile);
+			  var nicname = info[0].nicname;
+			  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+			  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+			  var modal = $(this)
+			  
+			  
+			  $('.showPic').attr('src', img);
+			  $('.prifile_photo').attr('src', profile);
+			  $('.prifile_photo').html(nicname);
+
+			});
 	});
 
 	function fetchBook(purpose) {
@@ -312,14 +320,16 @@
 
 						});
 						
-						$('.getSrc').click(function() {
+						/* $('.getSrc').click(function() {
 							console.log("hello");
 							var src = $(this).attr('src');
-
+							
 							//프로필 사진과 닉네임을 가져와야한다
 							//db를 통해서 할것이므로 눌렀을 때 코디번호를 모달창에 전해야한다.
 							$('.showPic').attr('src', src);
-						});	
+						}); */	
+						
+						
 
 					},
 					error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
@@ -335,9 +345,11 @@
 		var str = "";
 		str += "<div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>";
 		str += "<div class=\"thumbnail\">";
-		str += "	<div";
-		str += "	 	data-image=${pageContext.request.contextPath}/upload/"+CodibookVo.codi;
-		str += "		data-toggle=\"modal\" data-target=\"#modal\" data-keyboard=\"true\"";
+		str += "	<div id=\"openModal"+CodibookVo.no+"\"";
+		str += "	 	data-image=\"${pageContext.request.contextPath}/upload/"+CodibookVo.codi+"\" ";
+		str += "	 	data-profile=\"${pageContext.request.contextPath}/upload/"+CodibookVo.profile+"\" ";
+		str += "	 	data-nicname=\""+CodibookVo.otherNicname+"\" ";
+		str += "		data-toggle=\"modal\" data-target=\'#modal\' data-keyboard=\"true\"";
 		str += "		data-backdrop=\"false\">";
 		str += "		<img class=\"img-responsive getSrc\" alt=\"\"";
 		str += "			src=${pageContext.request.contextPath}/upload/"+CodibookVo.codi+" style=\"cursor:pointer\"/>";
@@ -415,7 +427,6 @@
 			}
 		});
 	}
-
 </script>
 
 <script type="text/javascript">
