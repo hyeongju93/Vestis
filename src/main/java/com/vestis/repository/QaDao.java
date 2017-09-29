@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.vestis.vo.CommentVo;
 import com.vestis.vo.QaVo;
 
 
@@ -39,6 +40,19 @@ public class QaDao {
 		return sqlSession.selectList("qa.getlist2",pageMap);
 	}
 	
+	public void commetlist(CommentVo commentVo ){
+	System.out.println(commentVo);
+	sqlSession.insert("qa.commentlist", commentVo);
+	}
+	
+	
+	public List<CommentVo> commentlist2(QaVo qaVo ){
+	System.out.println("dao까지 정상");
+	System.out.println(qaVo);
+	return sqlSession.selectList("qa.commentlist2",qaVo);
+		
+	}
+	
 	public int gettotalcount0() {
 		return sqlSession.selectOne("qa.gettotalcount0");
 	}
@@ -65,6 +79,10 @@ public class QaDao {
 	
 	public int delete(int num) {
 		return sqlSession.delete("qa.delete", num);
+	}
+	
+	public int codelete(int num) {
+		return sqlSession.delete("qa.codelete", num);
 	}
 	
 	

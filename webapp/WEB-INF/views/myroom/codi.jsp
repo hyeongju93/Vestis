@@ -134,16 +134,16 @@ div:focus {
 </head>
 <body>
 	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-
+	
 	<div class="container">
 		<c:import url="/WEB-INF/views/includes/navigation.jsp"></c:import>
 		
 		<div class="codi-space">
 			<div id="row">
 				<div class="col-md-12">
-					<h10 class="text-left" style="color:white;">메인>My Room>코디북>코디하기</h10>
+					<h10 class="text-left" style="color:white;">>>메인>My Room>코디북>코디하기</h10>
 				</div>
-			</div>
+			</div>  
 
 			<div class="bts" style="margin-top: 27px; margin-bottom:5px;">
 				<button id="reset" class="btn btn-default" style="margin-left: 37%;">Reset</button>
@@ -151,84 +151,38 @@ div:focus {
 					method="post" style="margin: 0px; display: inline">
 					<Button id="save" class="btn btn-default">Save</Button> 
 					<input id="data" name="data" type="hidden">
+					<input id="info_weather" name="weather" type="hidden" value="${weatherNo }">
+					<input id="info_temp" name="temp" type="hidden" value="${temp }">	
 				</form>
 
 			</div>
 			<div id="space">
 				<div class="left-box" style="border-radius: 1em;">
-					<div style="float: left;">
+					<div style="float:left;">
 						<img alt="날씨"
 							src="${pageContext.request.contextPath}/assets/img/${weather}.png"
-							style="width: 30%; height: auto;">${temp }
+							style="width: 30%; height: auto;">${temp}
 					</div>
 
 				</div>
 				<div class="bts right-box">
 					<ul class="nav nav-pills" style="width: 100%; font-size: small">
-						<li class="active menu"><a href="#"> <span
-								class="badge pull-right">42</span>전체
+						<li class="active menu" value="0"><a>전체
 						</a></li>
-						<li class="menu"><a href="#"> <span
-								class="badge pull-right">16</span>상의
+						<li class="menu" value="2"><a>상의
 						</a></li>
-						<li class="menu"><a href="#"> <span
-								class="badge pull-right">16</span>하의
+						<li class="menu" value="3"><a>하의
 						</a></li>
-						<li class="menu"><a href="#"> <span
-								class="badge pull-right">16</span>신발
+						<li class="menu" value="4"><a>신발
 						</a></li>
-						<li class="menu"><a href="#"> <span
-								class="badge pull-right">16</span>외투
+						<li class="menu" value="1"><a>외투
 						</a></li>
-						<li class="menu"><a href="#"> <span
-								class="badge pull-right">16</span>기타
+						<li class="menu" value="5"><a>기타
 						</a></li>
 					</ul>
 					<div style="overflow:auto; width: 100%; height: 85.6%;">
-						<ul
+						<ul id="clothList"
 							style="list-style: none; padding-left: 0px; text-align: center; display: block;">
-							<li class="col-sm-3" style="padding-left: 0px;">
-								<div class="thumbnail">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/coat.png"
-										name="cloth">
-								</div>
-							</li>
-							<li class="col-sm-3" style="padding-left: 0px;">
-								<div class="thumbnail">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/blank.png"
-										name="cloth">
-								</div>
-							</li>
-							<li class="col-sm-3" style="padding-left: 0px;">
-								<div class="thumbnail">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/cap.png"
-										name="cloth">
-								</div>
-							</li>
-							<li class="col-sm-3" style="padding-left: 0px;">
-								<div class="thumbnail">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/shoes.png"
-										name="cloth">
-								</div>
-							</li>
-							<li class="col-sm-3" style="padding-left: 0px;">
-								<div class="thumbnail">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/blank2.png"
-										name="cloth">
-								</div>
-							</li>
-							<li class="col-sm-3" style="padding-left: 0px;">
-								<div class="thumbnail">
-									<img
-										src="${pageContext.request.contextPath}/assets/img/coat2.png"
-										name="cloth">
-								</div>
-							</li>
 						</ul>
 					</div>
 				</div>
@@ -241,14 +195,54 @@ div:focus {
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 
 </body>
-
+<script type="text/javascript">
+	$(document).ready(function() {
+		fetchList(0);
+		console.log("ready!");
+			
+	});
+	
+	function fetchList(type) {
+		var userNo = ${userNo};
+		$.ajax({
+			url : "${pageContext.request.contextPath }/myroom/clothList",
+			dataType : "json",
+			type : "post",
+			data : {"type":type, "userNo":userNo},
+			success : function(clothList) {
+				console.log("성공");
+				for (var i = 0; i < clothList.length; i++) {
+					renderCloth(clothList[i]);
+				}
+				clothAdd();
+			},
+			error : function(XHR, status, error) { //실패했을때 에러메세지 찍어달라는것, 통신상의 에러라던지 그런것들
+				console.error(status + " : " + error);
+			}
+		});
+	}
+	
+	function renderCloth(ClothListVo) {
+		str="";
+		str += "<li class=\"col-sm-3\" style=\"padding-left: 0px;\">";
+		str += "<div class=\"thumbnail\">";
+		str += "	<img src=\"${pageContext.request.contextPath}/upload/"+ClothListVo.dbName+"\" id="+ClothListVo.no+" name=\"cloth\">";
+		str += "</div>";
+		str += "</li>";
+		
+		$("#clothList").append(str);
+		
+	}
+</script>
 <!-- 메뉴에 대한 자바스크립트 -->
 <script type="text/javascript">
 	//메뉴를 클릭했을 때 그 메뉴가 강조
 	$(".menu").click(function() {
 		$(".menu").removeClass("active");
 		var $this = $(this);
-		console.log($this);
+		console.log($this.context.value);
+		$("#clothList").empty();
+		fetchList($this.context.value);
 		$this.addClass("active");
 
 	});
@@ -316,13 +310,16 @@ div:focus {
 	};
 
 	//메뉴에서 옷을 클릭했을 때 왼쪽 공간에 옷이 추가되도록 함
+	function clothAdd(){
 	var count = 0;
-	$("[name=cloth]")
-			.click(
+	$("[name=cloth]").click(
 					function choose() {
 						var layer = event.srcElement;
-
-						var img = layer.src
+						
+						var img = layer.src;
+						console.log(layer);
+						var value = layer.id;
+						console.log(layer.id);
 
 						//tabindex : 옷 이미지를 클릭했을 때 하늘색 테두리가 나오도록 하기 위함
 						//select(count) : 옷 이미지를 클릭했을 때 옷이 맨 앞으로 나오도록 zIndex를 설정하도록 함	
@@ -336,7 +333,7 @@ div:focus {
 								+ img
 								+ " ondblclick=\"remove("
 								+ count
-								+ ")\" class=\"dragger\" name=\"img\" style=\"width: 100%; height: 100%; cursor:pointer\" />"
+								+ ")\" id="+value+" class=\"dragger\" name=\"img\" style=\"width: 100%; height: 100%; cursor:pointer\" />"
 								+ "</div>";
 
 						count++;
@@ -358,6 +355,7 @@ div:focus {
 						$(".ui-resizable-se").resizeTouch();
 
 					});
+	}
 
 	//더블클릭했을 경우 이미지를 삭제해주는 메소드
 	function remove(no) {
@@ -399,13 +397,16 @@ div:focus {
 	$("#save").click(function() {
 		event.preventDefault();
 
-		var choice = new Array();
+		var chsitems = new Array();
 		$.each($("[name=img]"), function(index, item) {
-			console.log(index + "번째 요소 : " + item.src);
-			choice.push(item.src);
+			console.log(index + "번째 요소 : " + item.id);
+			chsitems.push(item.id);
 		});
-
-		console.log(choice)
+		
+		var weather = $("#info_weather");
+		var temp = $("#info_temp");
+		
+		console.log(chsitems)
 		//이미지 만들기
 		html2canvas($(".left-box"), {
 			onrendered : function(canvas) {
@@ -420,17 +421,22 @@ div:focus {
 				jQuery.ajaxSettings.traditional = true;
 				var allData = {
 					"data" : $("#canvas").serialize(),
-					"choice" : JSON.stringify(choice)
+					"choice" : chsitems,
+					"weather" : $("#info_weather").val(),
+					"temp" : $("#info_temp").val()
 				};
+				
+				console.log(allData);
 				jb.ajax({
-					url : "${pageContext.request.contextPath}/myroom/save",
+					url : "${pageContext.request.contextPath}/myroom/save/${userNo}",
 					type : "POST",
+					
 					data : allData,
-
+					
 					success : function(result) {
 						console.log(result);
 						alert("저장됐습니다.");
-						window.location.replace("${pageContext.request.contextPath}/myroom/codibook");
+						window.location.replace("${pageContext.request.contextPath}/myroom/codibook/${userNo}");
 					},
 
 					error : function(XHR, status, error) {

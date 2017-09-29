@@ -14,27 +14,48 @@
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/assets/css/business-casual.css" rel="stylesheet">
     
-    
+    <style>
+
+#labe {
+	float:left;
+	width:70px;
+}
+#contents {
+	width:700px;
+	height:250px;
+	
+}
+#titles {
+	width:700px;
+}
+
+#modii{
+	width: 1100px;
+	position:relative;
+	left: 400px;
+}
+</style>
+
+
 </head>
 <body>
 	
 	<div class="center-faded mt-4"></div>
 	
-    <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></div>
+    
     
     <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
     
   <div id="container">
 		
-		
 
-		<br><br><br><br>
-		<div class="bg-faded p-4 my-4">
+		<div class="bg-faded p-4 my-4" id="modii">
+		
 		<div id="content">
-		<div id="center">
-				<form class="center-form" method="post" action="${pageContext.request.contextPath}/qa/modify">
-					<input type="hidden" name="no" value="${qaVo.no}" />
+				<div id="board">
+					<form class="board-form" method="post" action="${pageContext.request.contextPath }/qa/modify?currNo=${param.currNo }&no=${vo.no }&kwd=${param.kwd}">
+						<input type="hidden" name="no" value="${qaVo.no}" />
 		
 		
 			
@@ -43,19 +64,19 @@
 							<th colspan="2">글수정</th>
 						</tr>
 						<tr>
-							<td class="label">제목</td>
-							<td><input type="text" name="title" value="${qaVo.title}"></td>
+							<td id="labe" class="label">제목</td>
+							<td><input id="titles" type="text" name="title" value=""></td>
 						</tr>
 						<tr>
-							<td class="label">내용</td>
+							<td id="labe" class="label">내용</td>
 							<td>
-								<textarea id="content" name="content">${qaVo.content}</textarea>
+								<textarea id="contents" name="content"></textarea>
 							</td>
 						</tr>
 					</table>
 				
 					<div class="bottom">
-						<a href="${pageContext.request.contextPath}/qa">취소</a>
+						<a href="${pageContext.request.contextPath}/qa/list?currNo=1">취소</a>
 						<input type="submit" value="수정">
 					</div>
 				</form>				
@@ -64,6 +85,11 @@
 
 		
 	</div><!-- /container -->
+	 <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+    <!-- Bootstrap core JavaScript -->
+    <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 </div>
 
 </body>

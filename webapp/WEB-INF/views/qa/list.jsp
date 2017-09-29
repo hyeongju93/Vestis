@@ -237,11 +237,4 @@ height: 35px;
 	
 	
   </body>
-
-
-
-
-
-
-
 </html>

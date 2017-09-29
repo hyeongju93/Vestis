@@ -66,6 +66,14 @@
 	</div><!-- /container -->
 </div>
 
+
+ <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="${pageContext.request.contextPath}/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/popper/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>
 

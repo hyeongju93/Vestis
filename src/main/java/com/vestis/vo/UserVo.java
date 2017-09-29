@@ -13,7 +13,7 @@ public class UserVo {
 	private String birthmonth;
 	private String birthday;
 	private String gender;
-	private int photo;
+	private int point;
 	private int profile_no;
 	private double lat;
 	private double lon;
@@ -23,7 +23,7 @@ public class UserVo {
 	}
 
 	public UserVo(int no, String email, String password, String name, String nicname, String phone, String address,
-			String birth, String birthyear, String birthmonth, String birthday, String gender, int photo,
+			String birth, String birthyear, String birthmonth, String birthday, String gender, int point,
 			int profile_no, double lat, double lon) {
 		super();
 		this.no = no;
@@ -38,7 +38,7 @@ public class UserVo {
 		this.birthmonth = birthmonth;
 		this.birthday = birthday;
 		this.gender = gender;
-		this.photo = photo;
+		this.point = point;
 		this.profile_no = profile_no;
 		this.lat = lat;
 		this.lon = lon;
@@ -140,12 +140,12 @@ public class UserVo {
 		this.gender = gender;
 	}
 
-	public int getPhoto() {
-		return photo;
+	public int getPoint() {
+		return point;
 	}
 
-	public void setPhoto(int photo) {
-		this.photo = photo;
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 	public int getProfile_no() {
@@ -177,9 +177,10 @@ public class UserVo {
 		return "UserVo [no=" + no + ", email=" + email + ", password=" + password + ", name=" + name + ", nicname="
 				+ nicname + ", phone=" + phone + ", address=" + address + ", birth=" + birth + ", birthyear="
 				+ birthyear + ", birthmonth=" + birthmonth + ", birthday=" + birthday + ", gender=" + gender
-				+ ", photo=" + photo + ", profile_no=" + profile_no + ", lat=" + lat + ", lon=" + lon + "]";
+				+ ", point=" + point + ", profile_no=" + profile_no + ", lat=" + lat + ", lon=" + lon + "]";
 	}
 
+	
 
 	
 	

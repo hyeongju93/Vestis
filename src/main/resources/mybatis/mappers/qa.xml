@@ -29,6 +29,27 @@ order by rn desc
 	]]>
 	</select>
 
+	<insert id="commentlist" parameterType="com.vestis.vo.CommentVo">
+	<![CDATA[
+		insert into center_comment
+		values(seq_center_comment_no.nextval, #{personNo}, #{centerNo}, #{content}, sysdate)
+
+	]]>
+	</insert>
+
+	<select id="commentlist2" parameterType="com.vestis.vo.QaVo" resultType="com.vestis.vo.CommentVo">
+		<![CDATA[
+			select rn,no,personNo,centerNo,content,regDate,nicname
+from(select  rownum rn,no,personNo,centerNo,content,regDate,nicname
+from (select c.no no, c.person_no personNo, c.center_no centerNo,c.content content,c.reg_date regDate,p.nicname nicname
+			from center_comment c,person p
+			where p.no=c.person_no)
+            where centerNo=#{no} order by no desc)
+            order by rn
+		]]>
+	</select>
+
+
 	
 	
 	
@@ -63,7 +84,7 @@ order by rn desc
 	
 	<insert id="insert" parameterType="com.vestis.vo.QaVo">
 		insert into center
-		values(seq_center_no.nextval,#{title},#{content},sysdate,#{personNO})
+		values(seq_center_no.nextval,#{personNO},#{title},#{content},sysdate,2)
 	</insert>
 	
 	<update id="update" parameterType="com.vestis.vo.QaVo">
@@ -76,6 +97,13 @@ order by rn desc
 	<delete id="delete" parameterType="int">
 		delete from center
 		where no=#{no}
+	</delete>
+	
+	<delete id="codelete" parameterType="int">
+	<![CDATA[
+		delete from center_comment
+		where no=#{num}
+		]]>
 	</delete>
 	
 	<!-- <update id="count" parameterType="com.mysite.vo.QaVo">

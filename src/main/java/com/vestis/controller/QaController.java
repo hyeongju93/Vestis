@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.vestis.service.QaService;
+import com.vestis.vo.CommentVo;
 import com.vestis.vo.PageVo;
 import com.vestis.vo.QaVo;
+import com.vestis.vo.UserVo;
 
 @Controller
 @RequestMapping("/qa")
@@ -26,12 +30,12 @@ public class QaController {
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public String list(Model model,int currNo) {
 		
-		//°íÁ¤ FAQ
+		//ï¿½ï¿½ï¿½ï¿½ FAQ
 		PageVo pageVo1=qaService.getPage1(1);		
 		List<QaVo> fq=qaService.getlist(currNo,pageVo1);
 		
 		
-		//À¯µ¿ Q&A
+		//ï¿½ï¿½ï¿½ï¿½ Q&A
 		PageVo pageVo2=qaService.getPage2(currNo);		
 		List<QaVo> list=qaService.getlist2(currNo,pageVo2);
 		
@@ -46,9 +50,49 @@ public class QaController {
 		return "qa/list";
 	}
 	
+	/*ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½*/ 
+	@ResponseBody
+	@RequestMapping(value="/comment",method=RequestMethod.POST)
+	public List<CommentVo> comment(@RequestParam("text") String text,
+						@RequestParam("no") int no,
+							HttpSession session) {
+		UserVo userVo=(UserVo) session.getAttribute("authUser");
+		System.out.println(userVo);
+		System.out.println("centerï¿½ï¿½È£: "+no);
+		CommentVo commentVo=new CommentVo();
+		commentVo.setPersonNo(userVo.getNo());
+		commentVo.setCenterNo(no);
+		commentVo.setContent(text);
+		
+		
+		System.out.println(text);
+		
+		qaService.commentlist(commentVo);
+		
+		QaVo qaVo=new QaVo();
+		qaVo.setNo(no);
+		List<CommentVo> cvo= qaService.commentlist2(qaVo);
+		return cvo;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/comment_view",method=RequestMethod.POST)
+	public List<CommentVo> comment_view(QaVo QaVo,Model model) {
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		System.out.println(QaVo);
+		List<CommentVo> cvo= qaService.commentlist2(QaVo);
+		
+		System.out.println(cvo);
+		return cvo;
+	}
+	
+	
+	
+	
 	@RequestMapping(value="/read",method=RequestMethod.GET)
 	public String read(QaVo qavo,Model model,@RequestParam("flag") int flag) {
 		QaVo vo=qaService.getqa(qavo,flag);
+		System.out.println(vo);
 		model.addAttribute("vo", vo);
 		
 		return "qa/read";
@@ -76,14 +120,26 @@ public class QaController {
 	public String modify(@ModelAttribute QaVo qavo,@RequestParam("currNo") int currNo,@RequestParam("kwd") String kwd) throws UnsupportedEncodingException {
 		qaService.update(qavo);
 		kwd=URLEncoder.encode(kwd, "UTF-8");
-		return "redirect:/qa/read?flag=0&no="+qavo.getNo()+"&currNo="+currNo+"&kwd="+kwd;	//kwd¿¡ ÇÑ±Û·Î º¸³¾½Ã ¹Þ´Â ÀÔÀå¿¡¼­ ?? ·Î ¹ÞÀ½
+		return "redirect:/qa/read?flag=0&no="+qavo.getNo()+"&currNo="+currNo+"&kwd="+kwd;	//kwdï¿½ï¿½ ï¿½Ñ±Û·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½å¿¡ï¿½ï¿½ ?? ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	
 	
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public String delete(@RequestParam("no") int no ) {
-		qaService.delete(no);
+		
 		return "redirect:/qa/list?currNo=1";
+	}
+	
+	@RequestMapping(value="/codelete",method=RequestMethod.GET)
+	public String codelete(@RequestParam("commentNo") int no, @RequestParam("centerNo") int centerNo, String currNo)  {
+		qaService.codelete(no);
+		QaVo qaVo=new QaVo();
+		qaVo.setNo(no);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
+		System.out.println(no);
+		
+		return "redirect:/qa/read?flag=1&currNo="+currNo+"&no="+centerNo;
+	
 	}
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)
