@@ -252,7 +252,7 @@
 <!-- 코디북 리스트 뿌리기 -->
 <script type="text/javascript">
 	$(document).ready(function() {
-		fetchBook("all");
+		es_fetchBook("all");
 		console.log("ready!");
 		
 		
@@ -285,7 +285,7 @@
 			});
 	});
 
-	function fetchBook(purpose) {
+	function es_fetchBook(purpose) {
 		var num = ${userNo};
 		var authNo = ${authUser.no};
 		console.log(purpose+num);
@@ -297,7 +297,8 @@
 					success : function(codibookList) {
 						console.log("성공");
 						for (var i = 0; i < codibookList.length; i++) {
-							render(codibookList[i]);
+							console.log(codibookList.length);
+							es_render(codibookList[i]);
 							
 						}
 						$('.likebtn').click(function() {
@@ -347,7 +348,7 @@
 				});
 	}
 	
-	function render(CodibookVo) {
+	function es_render(CodibookVo) {
 		var userNo = ${userNo};
 		var authNo = ${authUser.no};
 		
@@ -445,7 +446,7 @@
 		var listType = $(this).val();
 		console.log(listType);
 		$("#codibookItemList").empty();
-		fetchBook(listType);
+		es_fetchBook(listType);
 	});
 </script>
 

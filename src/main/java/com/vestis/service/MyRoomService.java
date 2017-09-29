@@ -4,9 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.swing.plaf.synth.SynthSplitPaneUI;
-
-import org.apache.ibatis.type.IntegerTypeHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -88,4 +85,5 @@ public class MyRoomService {
 		System.out.println("옷 들어옴");
 		return myRoomDao.getClothList(type, userNo);
 	}
+
 }
