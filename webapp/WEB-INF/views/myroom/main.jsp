@@ -42,7 +42,10 @@
 .none ul{
 	list-style-type: none;
 }
-
+.top{
+	margin-top:30px;
+	margin-left:5px;
+}
 /* .carousel-control-prev-icon{
 	background-image: url("/Vestis/assets/img/images.png") !important;
 	
@@ -104,7 +107,7 @@
 				</div>
 				<!-- 양쪽버튼 -->
 				 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				   <span style="color:black" aria-hidden="true"><h1>＜</h1></span>
+				   <span style="color:black" aria-hidden="true"><h1>《</h1></span>
 				   <span class="sr-only">Previous</span>
 				 </a>
 				 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
@@ -150,11 +153,11 @@
 				</div>
 				<!-- 양쪽버튼 -->
 				 <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-				   <span style="color:black" aria-hidden="true"><h1>◁</h1></span>
+				   <span style="color:black" aria-hidden="true"><h1>《</h1></span>
 				   <span class="sr-only">Previous</span>
 				 </a>
 				 <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-				   <span style="color:black" aria-hidden="true"><h1>▶</h1></span>
+				   <span style="color:black" aria-hidden="true"><h1>》</h1></span>
 				   <span class="sr-only">Next</span>
 				 </a>
 			</div>

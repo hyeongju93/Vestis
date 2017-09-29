@@ -179,16 +179,19 @@ function getUserData() {
   			/* 	$('#move').submit(); */
 				 if(result==0){
 					alert("로그인에 실패했습니다.");
+					
 					return false;
 				} else if (result==1){
 					alert("로그인에 성공하였습니다.");
       				$('#move').submit();
+      				
 				} else {
 					
 				}
 				
 			},
 			error : function(XHR, status, error) {
+			
 				console.error(status + " : " + error);
 			}
 		});
@@ -198,9 +201,8 @@ function getUserData() {
 window.fbAsyncInit = function() {
     //SDK loaded, initialize it
     FB.init({
-        appId      : '/* 154264235160211 */',
+        appId      : '154264235160211',
         cookie     : true,  // enable cookies to allow the server to access
-        status     : false,
                 // the session
         xfbml      : true,  // parse social plugins on this page
         version    : 'v2.10' // use graph api version 2.8
@@ -212,6 +214,7 @@ window.fbAsyncInit = function() {
             //user is authorized
             //document.getElementById('loginBtn').style.display = 'none';
             getUserData();
+           
         } else {
             //user is not authorized
         }
@@ -268,12 +271,14 @@ document.getElementById('loginBtnn').addEventListener('click', function() {
 							success : function(result){	//list-ajax에서 보낸 것을 guestbook으로 받음
 								console.log("성공");
 								console.log(result);
+								
 								if(result==0){
 									alert("아이디와 비밀번호가 맞지 않습니다.");
 									return false;
 								} else if(result==1) {
 									alert("로그인에 성공하였습니다.");
 									$('#loginForm').submit();
+									
 								} else {
 									
 									
@@ -282,6 +287,7 @@ document.getElementById('loginBtnn').addEventListener('click', function() {
 							},
 							error : function(XHR, status, error) {
 								console.error(status + " : " + error);
+								
 							}
 						});
 				});
