@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link href="${pageContext.request.contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +65,7 @@
 					</div>
 					<div class="col-md-1">
 						<a data-role="button" class="loginhead" id="logout" href="${pageContext.request.contextPath }/user/logout">로그아웃</a>
-						</div>
+					</div>
 					</c:otherwise>
 			</c:choose>
 		
@@ -96,7 +95,7 @@
 	</div>
     	
     </div>
-    <a href="${pageContext.request.contextPath }/main/test" class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></a>
+    <a href="${pageContext.request.contextPath }/main" class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block"><span style="color:white">VESTIS</span></a>
     
     
     <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
@@ -108,8 +107,7 @@
         
         
         <ul class="navbar-nav mx-auto">
-        	<li class="nav-item active px-lg-4">
-            	
+        	<li class="nav-item active px-lg-4">            	
         	<c:choose>
 				<c:when test="${empty sessionScope.authUser }">
 					<a id="roomheadd" class="nav-link text-uppercase text-expanded" href="#">my room
@@ -122,7 +120,7 @@
               			</script>
 				</c:when>
 				<c:otherwise>
-					<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom/main">my room
+					<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/myroom/${authUser.no}">my room
                 	<span class="sr-only">(current)</span>
               		</a>
 				</c:otherwise>

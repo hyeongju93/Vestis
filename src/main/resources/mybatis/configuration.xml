@@ -6,9 +6,9 @@
 	<mappers>
 	<mapper resource="mybatis/mappers/center.xml" />
 	<mapper resource="mybatis/mappers/qa.xml" />
+	<mapper resource="mybatis/mappers/myroom.xml" />
 	<mapper resource="mybatis/mappers/user.xml" />
 	<mapper resource="mybatis/mappers/img.xml" />
 	<mapper resource="mybatis/mappers/market.xml" />
-	
 	</mappers>	
 </configuration>

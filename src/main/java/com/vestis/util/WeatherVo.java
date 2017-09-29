@@ -1,14 +1,14 @@
-package com.vestis.vo;
+package com.vestis.util;
 
-public class WeatherInfo {
+public class WeatherVo {
 	private String temperature;
 	private String humidity;
 	private String skyName;
 	private String skyCode;
-	public WeatherInfo() {
+	public WeatherVo() {
 		super();
 	}
-	public WeatherInfo(String temperature, String humidity, String skyName, String skyCode) {
+	public WeatherVo(String temperature, String humidity, String skyName, String skyCode) {
 		super();
 		this.temperature = temperature;
 		this.humidity = humidity;
@@ -41,10 +41,9 @@ public class WeatherInfo {
 	}
 	@Override
 	public String toString() {
-		return "WeatherInfo [temperature=" + temperature + ", humidity=" + humidity + ", skyName=" + skyName
+		return "WeatherVo [temperature=" + temperature + ", humidity=" + humidity + ", skyName=" + skyName
 				+ ", skyCode=" + skyCode + "]";
 	}
-	
 	
 	
 	

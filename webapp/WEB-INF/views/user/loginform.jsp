@@ -57,7 +57,7 @@
       </div>
       </div>
       <div class="modal-body">
-				<form id="loginForm" method="POST" action="${pageContext.request.contextPath }/main/test"
+				<form id="loginForm" method="POST" action="${pageContext.request.contextPath }/main"
 					novalidate="novalidate">
 					<div class="form-group">
 						<label for="username" class="control-label">UserEmail</label> 
@@ -296,7 +296,7 @@ document.getElementById('loginBtnn').addEventListener('click', function() {
       <div class="modal-footer">
         <button type="button" id="btnn" class="btn btn btn-info" data-dismiss="modal">나가기</button>
         <!-- <button type="button" class="btn btn-primary">로그인</button> -->
-        <form id="move" method="POST" action="${pageContext.request.contextPath }/main/test">
+        <form id="move" method="POST" action="${pageContext.request.contextPath }/main">
         	<input type="hidden">
         </form>
       </div>

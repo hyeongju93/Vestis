@@ -30,12 +30,12 @@ public class QaController {
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public String list(Model model,int currNo) {
 		
-		//°íÁ¤ FAQ
+		//ï¿½ï¿½ï¿½ï¿½ FAQ
 		PageVo pageVo1=qaService.getPage1(1);		
 		List<QaVo> fq=qaService.getlist(currNo,pageVo1);
 		
 		
-		//À¯µ¿ Q&A
+		//ï¿½ï¿½ï¿½ï¿½ Q&A
 		PageVo pageVo2=qaService.getPage2(currNo);		
 		List<QaVo> list=qaService.getlist2(currNo,pageVo2);
 		
@@ -50,7 +50,7 @@ public class QaController {
 		return "qa/list";
 	}
 	
-	/*¿©±â°¡ ´ñ±Û*/ 
+	/*ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½*/ 
 	@ResponseBody
 	@RequestMapping(value="/comment",method=RequestMethod.POST)
 	public List<CommentVo> comment(@RequestParam("text") String text,
@@ -58,7 +58,7 @@ public class QaController {
 							HttpSession session) {
 		UserVo userVo=(UserVo) session.getAttribute("authUser");
 		System.out.println(userVo);
-		System.out.println("center¹øÈ£: "+no);
+		System.out.println("centerï¿½ï¿½È£: "+no);
 		CommentVo commentVo=new CommentVo();
 		commentVo.setPersonNo(userVo.getNo());
 		commentVo.setCenterNo(no);
@@ -78,7 +78,7 @@ public class QaController {
 	@ResponseBody
 	@RequestMapping(value="/comment_view",method=RequestMethod.POST)
 	public List<CommentVo> comment_view(QaVo QaVo,Model model) {
-		System.out.println("³ª Á¤»ó");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		System.out.println(QaVo);
 		List<CommentVo> cvo= qaService.commentlist2(QaVo);
 		
@@ -120,7 +120,7 @@ public class QaController {
 	public String modify(@ModelAttribute QaVo qavo,@RequestParam("currNo") int currNo,@RequestParam("kwd") String kwd) throws UnsupportedEncodingException {
 		qaService.update(qavo);
 		kwd=URLEncoder.encode(kwd, "UTF-8");
-		return "redirect:/qa/read?flag=0&no="+qavo.getNo()+"&currNo="+currNo+"&kwd="+kwd;	//kwd¿¡ ÇÑ±Û·Î º¸³¾½Ã ¹Þ´Â ÀÔÀå¿¡¼­ ?? ·Î ¹ÞÀ½
+		return "redirect:/qa/read?flag=0&no="+qavo.getNo()+"&currNo="+currNo+"&kwd="+kwd;	//kwdï¿½ï¿½ ï¿½Ñ±Û·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ ï¿½ï¿½ï¿½å¿¡ï¿½ï¿½ ?? ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	}
 	
 	
@@ -135,7 +135,7 @@ public class QaController {
 		qaService.codelete(no);
 		QaVo qaVo=new QaVo();
 		qaVo.setNo(no);
-		System.out.println("µé¾î¿È");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		System.out.println(no);
 		
 		return "redirect:/qa/read?flag=1&currNo="+currNo+"&no="+centerNo;
