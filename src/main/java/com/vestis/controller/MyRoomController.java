@@ -181,13 +181,13 @@ public class MyRoomController {
 		return "success";
 	}
 
-	@RequestMapping(value="/clothes")
-	public String clothes(Model model) {
+	@RequestMapping(value="/clothes/{userNo}")
+	public String clothes(Model model, @PathVariable("userNo") int userNo) {
 		List<ImgVo> list1= fileUploadService.list();
 		System.out.println(list1.toString());
 		System.out.println(list1);
 		model.addAttribute("list",list1);
-		
+		model.addAttribute("userNo", userNo);
 		return "/myroom/clothes";
 	}
 

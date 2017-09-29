@@ -33,7 +33,7 @@
 	<div style="text-align:center">
       <p>${sessionScope.authUser.nicname}</p>
       <p>point:${sessionScope.authUser.point}</p>
-      <p><a href="${pageContext.request.contextPath }/myroom/clothes">옷장</a></p>
+      <p><a href="${pageContext.request.contextPath }/myroom/clothes/${userNo}">옷장</a></p>
       <p><a href="${pageContext.request.contextPath }/myroom/codibook/${userNo}">코디북</a></p>
       <p><a href="${pageContext.request.contextPath }/myroom/codi/${userNo}">코디하기</a></p>
    	</div> 

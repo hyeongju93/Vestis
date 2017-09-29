@@ -15,7 +15,7 @@
  
  
  
- <footer class=" bg-faded text-center py-5 clear absolute">
+ <footer class=" bg-faded text-center py-5 clear ">
       <div class="container">
         <p class="m-0"> &copy;</p>
       </div>
