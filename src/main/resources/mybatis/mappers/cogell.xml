@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cogell">
+	
+ 	<select id="joinrank" resultType="com.vestis.vo.UserVo">
+		<![CDATA[
+			select rn,no,profile_no,email,name,nicname,reg_date
+from (select rownum rn,no,profile_no,email,name,nicname,reg_date
+from (select no,profile_no,email,name,nicname,reg_date from person
+order by reg_date desc))
+where rn>=1 and rn<=5
+		]]>
+	</select>
+	
+	<select id="clothrank" resultType="com.vestis.vo.UserVo">
+		<![CDATA[
+			select *
+from (select rownum rn,no,nicname,sum,profile_no
+from (select p.no no,p.nicname nicname, count(p.no) sum,p.profile_no profile_no
+from person p,cloth c
+where p.no=c.person_no
+group by p.no,p.nicname,p.profile_no
+order by count(p.no) desc))
+where rn>=1 and rn<=5
+		]]>
+	</select>
+
+
+	<select id="getCodiBookList" resultType="com.vestis.vo.CodibookVo" parameterType="map">
+		<![CDATA[
+			select *                                   
+from (select rownum rn,no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, likeflag                                          
+from (select no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, nvl2(like_person.person_no, 1, 0 ) likeflag
+			from like_person, (select codi.no no, p2.no otherNo, p2.nicname otherNicname,person.no ownerNo,person.nicname ownername, 
+									pro_img.db_name profile,
+									codiimg.db_name codi,
+									wear.db_name wear,
+									choose, NVL(likes, 0) likes,codi_date
+									from codi, person, img wear, img codiimg, img pro_img, person p2,
+									     (select codi_no like_codi_no,count(codi_no) likes
+                                            from like_person
+                                            group by codi_no)
+									where p2.no = codi.person_no
+                            			and person.no = codi.other_no	
+			                            and codi_no = codiimg.no
+									    and codi_photo_no = wear.no
+									    and p2.profile_no = pro_img.no
+			                            and codi.no = like_codi_no(+)
+									order by codi_date desc)
+			where no =like_person.CODI_NO(+)
+			and #{authNo}=like_person.PERSON_NO(+)
+            order by codi_date desc))
+            where rn>=1 and rn<=3
+			]]>
+	</select>
+	
+	
+	
+	<select id="getCodiBookList2" resultType="com.vestis.vo.CodibookVo" parameterType="map">
+		<![CDATA[
+			select *                                   
+from (select rownum rn,no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, likeflag                                          
+from (select no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, nvl2(like_person.person_no, 1, 0 ) likeflag
+			from like_person, (select codi.no no, p2.no otherNo, p2.nicname otherNicname,person.no ownerNo,person.nicname ownername, 
+									pro_img.db_name profile,
+									codiimg.db_name codi,
+									wear.db_name wear,
+									choose, NVL(likes, 0) likes,codi_date
+									from codi, person, img wear, img codiimg, img pro_img, person p2,
+									     (select codi_no like_codi_no,count(codi_no) likes
+                                            from like_person
+                                            group by codi_no)
+									where p2.no = codi.person_no
+                            			and person.no = codi.other_no	
+			                            and codi_no = codiimg.no
+									    and codi_photo_no = wear.no
+									    and p2.profile_no = pro_img.no
+			                            and codi.no = like_codi_no(+)
+									order by codi_date desc)
+			where no =like_person.CODI_NO(+)
+			and #{authNo}=like_person.PERSON_NO(+)
+            order by codi_date desc))
+            where rn>=4 and rn<=6
+			]]>
+	</select>
+	
+	
+	<select id="getCodiBookList3" resultType="com.vestis.vo.CodibookVo" parameterType="map">
+		<![CDATA[
+select *                                   
+from (select rownum rn,no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, likeflag                                          
+from (select no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, nvl2(like_person.person_no, 1, 0 ) likeflag
+			from like_person, (select codi.no no, p2.no otherNo, p2.nicname otherNicname,person.no ownerNo,person.nicname ownername, 
+									pro_img.db_name profile,
+									codiimg.db_name codi,
+									wear.db_name wear,
+									choose, NVL(likes, 0) likes,codi_date
+									from codi, person, img wear, img codiimg, img pro_img, person p2,
+									     (select like_codi_no,count(like_codi_no) likes
+from (select codi_no like_codi_no,person_no,reg_date
+from like_person
+where to_char(sysdate,'YY')=to_char(reg_date,'YY')
+    and to_char(sysdate,'MM')=to_char(reg_date,'MM'))
+group by like_codi_no)
+									where p2.no = codi.person_no
+                            			and person.no = codi.other_no	
+			                            and codi_no = codiimg.no
+									    and codi_photo_no = wear.no
+									    and p2.profile_no = pro_img.no
+			                            and codi.no = like_codi_no(+)
+									order by likes desc)
+			where no =like_person.CODI_NO(+)
+			and 1=like_person.PERSON_NO(+)
+            order by likes desc))
+            where rn>=1 and rn<=4
+			]]>
+	</select>
+
+ 
+ 
+ 
+ 
+ 	<select id="getCodiBookRList" resultType="com.vestis.vo.CodibookVo" parameterType="map">
+		<![CDATA[
+select *                                   
+from (select rownum rn,no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, likeflag                                          
+from (select no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, nvl2(like_person.person_no, 1, 0 ) likeflag
+			from like_person, (select codi.no no, p2.no otherNo, p2.nicname otherNicname,person.no ownerNo,person.nicname ownername, 
+									pro_img.db_name profile,
+									codiimg.db_name codi,
+									wear.db_name wear,
+									choose, NVL(likes, 0) likes,codi_date
+									from codi, person, img wear, img codiimg, img pro_img, person p2,
+									     (select codi_no like_codi_no,count(codi_no) likes
+                                            from like_person
+                                            group by codi_no)
+									where p2.no = codi.person_no
+                            			and person.no = codi.other_no	
+			                            and codi_no = codiimg.no
+									    and codi_photo_no = wear.no
+									    and p2.profile_no = pro_img.no
+			                            and codi.no = like_codi_no(+)
+									order by codi_date desc)
+			where no =like_person.CODI_NO(+)
+			and #{authNo}=like_person.PERSON_NO(+)
+            order by DBMS_RANDOM.VALUE))
+            where rn>=1 and rn<=6
+			]]>
+	</select>
+	
+	
+	<select id="getCodiBookList4" resultType="com.vestis.vo.CodibookVo" parameterType="map">
+		<![CDATA[
+			select *                                   
+from (select rownum rn,no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, likeflag                                          
+from (select no, otherNo, otherNicname,ownerNo,ownername, profile, codi, wear, likes, choose,codi_date, nvl2(like_person.person_no, 1, 0 ) likeflag
+			from like_person, (select codi.no no, p2.no otherNo, p2.nicname otherNicname,person.no ownerNo,person.nicname ownername, 
+									pro_img.db_name profile,
+									codiimg.db_name codi,
+									wear.db_name wear,
+									choose, NVL(likes, 0) likes,codi_date
+									from codi, person, img wear, img codiimg, img pro_img, person p2,
+									     (select codi_no like_codi_no,count(codi_no) likes
+                                            from like_person
+                                            group by codi_no)
+									where p2.no = codi.person_no
+                            			and person.no = codi.other_no	
+			                            and codi_no = codiimg.no
+									    and codi_photo_no = wear.no
+									    and p2.profile_no = pro_img.no
+			                            and codi.no = like_codi_no(+)
+									order by codi_date desc)
+			where no =like_person.CODI_NO(+)
+			and #{authNo}=like_person.PERSON_NO(+)
+            order by codi_date desc))
+            where rn>=1 and rn<=6
+			]]>
+	</select>
+	
+	
+</mapper>

@@ -19,12 +19,6 @@
 	]]>
 	</select> 
 	
-	<select id="getlist2" resultType="com.vestis.vo.MarketVo">
-	<![CDATA[
-		select no,person_no,cloth_no,title,reg_date regDate from market
-	]]>
-	</select> 
-	
 	<select id="dbdb" parameterType="map" resultType="com.vestis.vo.ClothVo">
 	<![CDATA[
 		select c.no
@@ -34,8 +28,111 @@
 	]]>
 	</select> 
 	
-	<delete id="delete">
+	<select id="gettotalcount2"  resultType="int">
+		<![CDATA[
+			select count(*) from market
+		]]>
+	</select>
 	
+	<select id="getlist2" parameterType="map"  resultType="com.vestis.vo.MarketVo">
+	<![CDATA[
+		select *
+from (select rownum rn,no,nicname,regDate,title,person_no,cloth_no
+from (select b.no no,nicname,b.reg_date regDate,title,person_no person_no,cloth_no 
+from market b,person r 
+where b.person_NO=r.no
+order by b.no))
+where rn<=#{endNum} and rn>#{startNum}
+order by rn desc
+	]]>
+	</select>
+	
+	
+	<select id="searchcount"  parameterType="map" resultType="int">
+		<![CDATA[
+			select count(*)
+from (select *
+        from market b, person r
+        where b.person_no=r.no)
+where title like #{nicname} or nicname like  #{nicname}
+		]]>
+	</select>
+
+	<select id="search"  parameterType="map" resultType="com.vestis.vo.MarketVo">
+	<![CDATA[
+		select *
+from (select rownum rn,no,nicname,regDate,title,person_no
+from (select b.no no,nicname,b.reg_date regDate,title,person_no 
+from market b,person r 
+where b.person_no = r.no
+order by b.no)
+where title like #{nicname} or nicname like #{nicname})
+where rn<=#{endNum} and rn>#{startNum}
+order by rn desc
+	]]>
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from market
+		where no=#{no}
 	</delete>
+	
+	<select id="getmarket" parameterType="com.vestis.vo.MarketVo" resultType="com.vestis.vo.MarketVo">
+		<![CDATA[
+			select title,content,person_no,no,cloth_no,reg_date regDate
+			from market
+			where no=#{no}
+		]]>
+	</select>
+	
+	<update id="update" parameterType="com.vestis.vo.MarketVo">
+		update market
+		set title=#{title}, content=#{content}, cloth_no=#{cloth_no}
+		where no=#{no}
+	</update>
+	
+	<insert id="commentlist" parameterType="com.vestis.vo.MarketCommentVo">
+	<![CDATA[
+		insert into market_comment
+		values(seq_market_comment_no.nextval, #{personNo}, #{marketNo}, #{content}, sysdate)
+
+	]]>
+	</insert>
+
+	<select id="commentlist2" parameterType="com.vestis.vo.MarketVo" resultType="com.vestis.vo.MarketCommentVo">
+		<![CDATA[
+			select rn,no,personNo,marketNo,content,regDate,nicname
+from(select  rownum rn,no,personNo,marketNo,content,regDate,nicname
+from (select c.no no, c.person_no personNo, c.market_no marketNo,c.content content,c.reg_date regDate,p.nicname nicname
+			from market_comment c,person p
+			where p.no=c.person_no)
+            where marketNo=#{no} order by no desc)
+            order by rn
+		]]>
+	</select>
+	
+	
+	<delete id="codelete" parameterType="int">
+	<![CDATA[
+		delete from market_comment
+		where no=#{num}
+		]]>
+	</delete>
+	
+	<select id="image"  parameterType="int" resultType="int">
+		<![CDATA[
+			select img_no
+			from cloth
+			where no=#{mo}
+		]]>
+	</select>
+	
+	<select id="image2"  parameterType="int" resultType="String">
+		<![CDATA[
+			select db_name
+			from img
+			where no=#{fileNo}
+		]]>
+	</select>
 	
 </mapper>

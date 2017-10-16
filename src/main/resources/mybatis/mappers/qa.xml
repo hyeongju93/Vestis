@@ -7,7 +7,7 @@
 	<![CDATA[
 		select *
 from (select rownum rn,no,nicname,regDate,title,personNO
-from (select b.no no,nicname,reg_date regDate,title,person_NO personNO 
+from (select b.no no,nicname,b.reg_date regDate,title,person_NO personNO 
 from center b,person r 
 where b.person_NO=r.no and flag=1
 order by b.no))
@@ -20,7 +20,7 @@ order by rn desc
 	<![CDATA[
 		select *
 from (select rownum rn,no,nicname,regDate,title,personNO
-from (select b.no no,nicname,reg_date regDate,title,person_NO personNO 
+from (select b.no no,nicname,b.reg_date regDate,title,person_NO personNO 
 from center b,person r 
 where b.person_NO=r.no and flag=2
 order by b.no))
@@ -126,7 +126,7 @@ where title like #{nicname} or nicname like  #{nicname}
 	<![CDATA[
 		select *
 from (select rownum rn,no,nicname,regDate,title,personNO
-from (select b.no no,nicname,reg_date regDate,title,person_NO personNO 
+from (select b.no no,nicname,b.reg_date regDate,title,person_NO personNO 
 from center b,person r 
 where b.person_NO = r.no
 order by b.no)

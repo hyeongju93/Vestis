@@ -207,13 +207,14 @@ public class MyRoomController {
 		return "myroom/form";
 	}
 	
-	@RequestMapping(value="/upload")
+	@RequestMapping(value="/upload/{userNo}")
 	public String upload(@RequestParam("file") MultipartFile file, Model model, @RequestParam("valh") String valh, @RequestParam("huserNo") int huserNo) {
 		
 		System.out.println(valh);	//옷 타입 번호
 		String imgNo=fileUploadService.restore(file);
 		
 		System.out.println(huserNo);	//올린 사람 번호
+		int userNo=huserNo;
 		int val=Integer.valueOf(valh);
 		System.out.println(imgNo);	//이미지 번호 
 		
@@ -222,6 +223,7 @@ public class MyRoomController {
 		
 		List<ImgVo> list1= fileUploadService.list();
 		model.addAttribute("list",list1);
+		model.addAttribute("userNo", huserNo);
 		
 		return "myroom/clothes";
 	}
@@ -244,9 +246,10 @@ public class MyRoomController {
 		return list;
 	}
 	
-	@RequestMapping(value="/add")
+	@RequestMapping(value="/clothes/add")
 	public String add() {
-		return "/myroom/add";
+		System.out.println("add");
+		return "myroom/add";
 	}
 
 }

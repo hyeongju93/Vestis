@@ -50,7 +50,7 @@ public class QaController {
 		return "qa/list";
 	}
 	
-	/*���Ⱑ ���*/ 
+	//3
 	@ResponseBody
 	@RequestMapping(value="/comment",method=RequestMethod.POST)
 	public List<CommentVo> comment(@RequestParam("text") String text,
@@ -74,7 +74,7 @@ public class QaController {
 		List<CommentVo> cvo= qaService.commentlist2(qaVo);
 		return cvo;
 	}
-	
+	//3
 	@ResponseBody
 	@RequestMapping(value="/comment_view",method=RequestMethod.POST)
 	public List<CommentVo> comment_view(QaVo QaVo,Model model) {
@@ -88,7 +88,7 @@ public class QaController {
 	
 	
 	
-	
+	//1
 	@RequestMapping(value="/read",method=RequestMethod.GET)
 	public String read(QaVo qavo,Model model,@RequestParam("flag") int flag) {
 		QaVo vo=qaService.getqa(qavo,flag);
@@ -108,28 +108,28 @@ public class QaController {
 		qaService.insert(qavo);
 		return "redirect:/qa/list?currNo=1";
 	}
-	
+	//2
 	@RequestMapping(value="/modifyform",method=RequestMethod.GET)
 	public String modifyform(QaVo qavo,Model model) {
 		QaVo vo=qaService.getqainfo(qavo);
 		model.addAttribute("vo", vo);
 		return "qa/modifyform";
 	}
-	
+	//2
 	@RequestMapping(value="/modify",method=RequestMethod.POST)
 	public String modify(@ModelAttribute QaVo qavo,@RequestParam("currNo") int currNo,@RequestParam("kwd") String kwd) throws UnsupportedEncodingException {
 		qaService.update(qavo);
 		kwd=URLEncoder.encode(kwd, "UTF-8");
-		return "redirect:/qa/read?flag=0&no="+qavo.getNo()+"&currNo="+currNo+"&kwd="+kwd;	//kwd�� �ѱ۷� ������ �޴� ���忡�� ?? �� ����
+		return "redirect:/qa/read?flag=0&no="+qavo.getNo()+"&currNo="+currNo+"&kwd="+kwd;	//kwd
 	}
 	
 	
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public String delete(@RequestParam("no") int no ) {
-		
+		qaService.delete(no);
 		return "redirect:/qa/list?currNo=1";
 	}
-	
+	//3
 	@RequestMapping(value="/codelete",method=RequestMethod.GET)
 	public String codelete(@RequestParam("commentNo") int no, @RequestParam("centerNo") int centerNo, String currNo)  {
 		qaService.codelete(no);

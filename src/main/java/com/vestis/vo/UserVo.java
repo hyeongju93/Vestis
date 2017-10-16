@@ -1,6 +1,7 @@
 package com.vestis.vo;
 
 public class UserVo {
+	private int rn;
 	private int no;
 	private String email;
 	private String password;
@@ -18,15 +19,18 @@ public class UserVo {
 	private String profileDBName;
 	private double lat;
 	private double lon;
+	private String regDate;
+	private String savename;
 	
 	public UserVo() {
 		super();
 	}
 
-	public UserVo(int no, String email, String password, String name, String nicname, String phone, String address,
-			String birth, String birthyear, String birthmonth, String birthday, String gender, int point,
-			int profile_no, double lat, double lon) {
+	public UserVo(int rn, int no, String email, String password, String name, String nicname, String phone,
+			String address, String birth, String birthyear, String birthmonth, String birthday, String gender,
+			int point, int profile_no, String profileDBName, double lat, double lon, String regDate, String savename) {
 		super();
+		this.rn = rn;
 		this.no = no;
 		this.email = email;
 		this.password = password;
@@ -41,8 +45,19 @@ public class UserVo {
 		this.gender = gender;
 		this.point = point;
 		this.profile_no = profile_no;
+		this.profileDBName = profileDBName;
 		this.lat = lat;
 		this.lon = lon;
+		this.regDate = regDate;
+		this.savename = savename;
+	}
+
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 
 	public int getNo() {
@@ -157,6 +172,14 @@ public class UserVo {
 		this.profile_no = profile_no;
 	}
 
+	public String getProfileDBName() {
+		return profileDBName;
+	}
+
+	public void setProfileDBName(String profileDBName) {
+		this.profileDBName = profileDBName;
+	}
+
 	public double getLat() {
 		return lat;
 	}
@@ -172,30 +195,31 @@ public class UserVo {
 	public void setLon(double lon) {
 		this.lon = lon;
 	}
-	
-	public String getProfileDBName() {
-		return profileDBName;
+
+	public String getRegDate() {
+		return regDate;
 	}
 
-	public void setProfileDBName(String profileDBName) {
-		this.profileDBName = profileDBName;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
+	public String getSavename() {
+		return savename;
+	}
+
+	public void setSavename(String savename) {
+		this.savename = savename;
 	}
 
 	@Override
 	public String toString() {
-		return "UserVo [no=" + no + ", email=" + email + ", password=" + password + ", name=" + name + ", nicname="
-				+ nicname + ", phone=" + phone + ", address=" + address + ", birth=" + birth + ", birthyear="
-				+ birthyear + ", birthmonth=" + birthmonth + ", birthday=" + birthday + ", gender=" + gender
-				+ ", point=" + point + ", profile_no=" + profile_no + ", profileDBName=" + profileDBName + ", lat="
-				+ lat + ", lon=" + lon + "]";
+		return "UserVo [rn=" + rn + ", no=" + no + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", nicname=" + nicname + ", phone=" + phone + ", address=" + address + ", birth=" + birth
+				+ ", birthyear=" + birthyear + ", birthmonth=" + birthmonth + ", birthday=" + birthday + ", gender="
+				+ gender + ", point=" + point + ", profile_no=" + profile_no + ", profileDBName=" + profileDBName
+				+ ", lat=" + lat + ", lon=" + lon + ", regDate=" + regDate + ", savename=" + savename + "]";
 	}
 
 	
-
-	
-
-	
-	
-	
-
 }

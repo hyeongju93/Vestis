@@ -20,7 +20,7 @@ public class FileUploadDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public String upload(@ModelAttribute ImgVo imgVo) {
+	public String upload(ImgVo imgVo) {
 		System.out.println(imgVo);
 		sqlSession.insert("img.upload", imgVo);
 		String dbName=imgVo.getDbName();

@@ -100,7 +100,7 @@
 	<insert id="likebtnClick" parameterType="map">
 		<![CDATA[
 			insert into like_person
-			values(#{voNo}, #{authNo})			
+			values(#{voNo}, #{authNo},sysdate)			
 		]]>
 	</insert>
 	

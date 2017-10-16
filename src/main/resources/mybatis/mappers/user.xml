@@ -5,14 +5,14 @@
 	<insert id="join" parameterType="com.vestis.vo.UserVo">
 		<![CDATA[
 		insert into person
-			values(seq_person_no.nextval,0,#{address},#{email},#{password},#{name},#{phone},#{gender},#{nicname},#{birth},0,#{lat},#{lon})	
+			values(seq_person_no.nextval,0,#{address},#{email},#{password},#{name},#{phone},#{gender},#{nicname},#{birth},0,#{lat},#{lon},sysdate)	
 				]]>
 	</insert>
 	
 	<insert id="snsjoin" parameterType="com.vestis.vo.UserVo">
 		<![CDATA[
 		insert into person
-			values(seq_person_no.nextval,0,'noinput',#{email},#{password},#{name},'noinput','noinput',#{nicname},sysdate,0,0,0)	
+			values(seq_person_no.nextval,0,'noinput',#{email},#{password},#{name},'noinput','noinput',#{nicname},sysdate,0,0,0,sysdate)	
 				]]>
 	</insert>
 	

@@ -21,7 +21,7 @@
 	<insert id="add" parameterType="map">
 		<![CDATA[
 			insert into cloth
-			values(seq_img_no.nextval,#{personNo},#{typeNo},#{imgNo},0)
+			values(seq_cloth_no.nextval,#{personNo},#{typeNo},#{imgNo},0)
 		]]>
 	</insert>
 	

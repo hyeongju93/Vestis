@@ -130,7 +130,7 @@
               	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/cogell/list">codi gallery</a>
             </li>
             <li class="nav-item px-lg-4">
-              	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/market/list">market</a>
+              	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/market/list?currNo=1">market</a>
             </li>
             <li class="nav-item px-lg-4">
               	<a class="nav-link text-uppercase text-expanded" href="${pageContext.request.contextPath }/center/list">service center</a>

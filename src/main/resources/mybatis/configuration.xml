@@ -10,5 +10,6 @@
 	<mapper resource="mybatis/mappers/user.xml" />
 	<mapper resource="mybatis/mappers/img.xml" />
 	<mapper resource="mybatis/mappers/market.xml" />
+	<mapper resource="mybatis/mappers/cogell.xml" />
 	</mappers>	
 </configuration>

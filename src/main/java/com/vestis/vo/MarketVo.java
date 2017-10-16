@@ -2,25 +2,40 @@ package com.vestis.vo;
 
 public class MarketVo {
 	
+	private int rn;
 	private int no;
 	private int person_no;
 	private int cloth_no;
 	private String title;
 	private String content;
 	private String regDate;
+	private String nicname;
+	private String savename;
 
 	public MarketVo() {
 		super();
 	}
 
-	public MarketVo(int no, int person_no, int cloth_no, String title, String content, String regDate) {
+	public MarketVo(int rn, int no, int person_no, int cloth_no, String title, String content, String regDate,
+			String nicname, String savename) {
 		super();
+		this.rn = rn;
 		this.no = no;
 		this.person_no = person_no;
 		this.cloth_no = cloth_no;
 		this.title = title;
 		this.content = content;
 		this.regDate = regDate;
+		this.nicname = nicname;
+		this.savename = savename;
+	}
+
+	public int getRn() {
+		return rn;
+	}
+
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 
 	public int getNo() {
@@ -71,10 +86,32 @@ public class MarketVo {
 		this.regDate = regDate;
 	}
 
+	public String getNicname() {
+		return nicname;
+	}
+
+	public void setNicname(String nicname) {
+		this.nicname = nicname;
+	}
+
+	public String getSavename() {
+		return savename;
+	}
+
+	public void setSavename(String savename) {
+		this.savename = savename;
+	}
+
 	@Override
 	public String toString() {
-		return "MarketVo [no=" + no + ", person_no=" + person_no + ", cloth_no=" + cloth_no + ", title=" + title
-				+ ", content=" + content + ", regDate=" + regDate + "]";
+		return "MarketVo [rn=" + rn + ", no=" + no + ", person_no=" + person_no + ", cloth_no=" + cloth_no + ", title="
+				+ title + ", content=" + content + ", regDate=" + regDate + ", nicname=" + nicname + ", savename="
+				+ savename + "]";
 	}
+
+	
+	
+	
+	
 	
 }
