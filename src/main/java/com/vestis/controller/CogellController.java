@@ -29,6 +29,10 @@ public class CogellController {
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
+		
+		
+		System.out.println("cogell start");
+		
 		System.out.println("cogell start");
 		List<UserVo> list=cogellService.joinrank();
 		List<UserVo> clist=cogellService.clothrank();
